@@ -35,10 +35,10 @@ namespace PIMTool.Controllers
             return base.Ok(_mapper.Map<IEnumerable<ProjectEmployeeDto>>(entities));
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectEmployeeDto>> Get([FromRoute][Required] int id)
+        [HttpGet("{projectId}/{employeeId}")]
+        public async Task<ActionResult<ProjectEmployeeDto>> Get([FromRoute][Required] int projectId, [FromRoute][Required] int employeeId)
         {
-            var entity = await _projectEmployeeService.GetAsync(id);
+            var entity = await _projectEmployeeService.GetAsync(employeeId, projectId);
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -125,15 +125,15 @@ namespace PIMTool.Controllers
         //    //return Ok("update success");
         //}
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<ProjectEmployeeDto>> DeleteProjectEmployee([FromRoute][Required] int id)
+        [HttpDelete]
+        public async Task<ActionResult<ProjectEmployeeDto>> DeleteProjectEmployee([FromQuery][Required] int projectId, [FromQuery][Required] int employeeId)
         {
-            var projectEmployee = await _projectEmployeeService.GetAsync(id);
+            var projectEmployee = await _projectEmployeeService.GetAsync(employeeId, projectId);
             if (projectEmployee == null)
             {
                 return NotFound();
             }
-            await _projectEmployeeService.DeleteAsync(projectEmployee); 
+            await _projectEmployeeService.DeleteAsync(projectEmployee);
             var listProjectEmployees = await _projectEmployeeService.GetProjectEmployees();
             if (!ModelState.IsValid)
             {

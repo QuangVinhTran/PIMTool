@@ -39,7 +39,7 @@ namespace PIMTool.Services
         public async Task<IEnumerable<Project>> GetProjects()
         {
             //var entities = await _repository.Get().ToListAsync();
-            var entities = await _pimContext.Projects.Include(x=>x.Group.GroupLeader).ToListAsync();
+            var entities = await _pimContext.Projects.Include(x=>x.Group.GroupLeader).OrderByDescending(y=>y.Id).ToListAsync();
             return entities;
         }
 

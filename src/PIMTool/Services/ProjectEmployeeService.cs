@@ -2,44 +2,44 @@
 using PIMTool.Core.Domain.Entities;
 using PIMTool.Core.Interfaces.Repositories;
 using PIMTool.Core.Interfaces.Services;
+using PIMTool.Database;
 
 namespace PIMTool.Services
 {
     public class ProjectEmployeeService : IProjectEmployeeService
     {
-        private readonly IRepository<ProjectEmployee> _repository;
+        private readonly PimContext _context;
 
-        public ProjectEmployeeService(IRepository<ProjectEmployee> repository)
+        public ProjectEmployeeService(PimContext context)
         {
-            _repository = repository;
+            _context = context;
         }
 
         public async Task AddAsync(ProjectEmployee projectEmployee)
         {
-            await _repository.AddAsync(projectEmployee);
-            await _repository.SaveChangesAsync();
+            _context.ProjectEmployees.Add(projectEmployee);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(ProjectEmployee projectEmployee)
         {
-            _repository.Delete(projectEmployee);
-            await _repository.SaveChangesAsync();
+            _context.ProjectEmployees.Remove(projectEmployee);
+            await _context.SaveChangesAsync();
         }
 
-        public async Task<ProjectEmployee> GetAsync(int id)
+        public async Task<ProjectEmployee> GetAsync(int EmployeeId, int ProjectId)
         {
-            return await _repository.GetAsync(id);
+            return await _context.ProjectEmployees.SingleOrDefaultAsync(x => x.EmployeeId == EmployeeId && x.ProjectId == ProjectId);
         }
 
         public async Task<IEnumerable<ProjectEmployee>> GetProjectEmployees()
         {
-            var entities = await _repository.Get().ToListAsync();
-            return entities;
+           return await _context.ProjectEmployees.ToListAsync();
         }
 
         public async Task UpdateAsync()
         {
-            await _repository.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }
