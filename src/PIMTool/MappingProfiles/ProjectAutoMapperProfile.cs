@@ -8,7 +8,10 @@ namespace PIMTool.MappingProfiles
     {
         public ProjectAutoMapperProfile()
         {
-            CreateMap<Project, ProjectDto>();
+            CreateMap<Project, ProjectDto>().ReverseMap();
+            CreateMap<Group, GroupDto>().ReverseMap();
+            CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<ProjectEmployee, ProjectEmployeeDto>().ReverseMap();
         }
     }
 }

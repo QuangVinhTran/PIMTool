@@ -1,4 +1,5 @@
-using Microsoft.EntityFrameworkCore;
+ using Microsoft.EntityFrameworkCore;
+using PIMTool.Core.Domain.Entities;
 using PIMTool.Database;
 using PIMTool.Extensions;
 using PIMTool.Middlewares;
@@ -46,11 +47,10 @@ app.MapControllers();
 
 app.Run();
 
-
-
 void EnsureMigrate(WebApplication webApp)
 {
     using var scope = webApp.Services.CreateScope();
     var pimContext = scope.ServiceProvider.GetRequiredService<PimContext>();
     pimContext.Database.Migrate();
+    DbInitializer.Initialize(pimContext);
 }
