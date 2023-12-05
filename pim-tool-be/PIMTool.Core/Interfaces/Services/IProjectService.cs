@@ -12,7 +12,6 @@ namespace PIMTool.Core.Interfaces.Services
         Task<IEnumerable<Project>> GetProjectsPagination(int skip, int limit);
         Task<IEnumerable<Project>> Search(string? searchVal, int? status);
         Task<IEnumerable<Project>> SearchWithPagination(string? searchVal, int? status, int skip, int limit);
-
         Task UpdateAsync();
     }
 }

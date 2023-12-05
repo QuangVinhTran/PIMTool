@@ -3,6 +3,7 @@ using PIMTool.Core.Interfaces.Repositories;
 using PIMTool.Core.Interfaces.Services;
 using Microsoft.EntityFrameworkCore;
 using PIMTool.Database;
+using PIMTool.Core.Exceptions;
 
 namespace PIMTool.Services
 {
@@ -21,6 +22,12 @@ namespace PIMTool.Services
         {
             try
             {
+                //check duplicate project number
+                var projectWithSameProjectNumber = await _pimContext.Projects.FirstOrDefaultAsync(x => x.ProjectNumber == project.ProjectNumber);
+                if (projectWithSameProjectNumber != null)
+                {
+                    throw new ProjectNumberAlreadyExistsException();
+                }
                 await _repository.AddAsync(project);
                 await _repository.SaveChangesAsync();
                 return project;

@@ -34,17 +34,12 @@ namespace PIMTool.Services
 
         public async Task<IEnumerable<ProjectEmployee>> GetProjectEmployees()
         {
-           return await _context.ProjectEmployees.ToListAsync();
+            return await _context.ProjectEmployees.ToListAsync();
         }
 
         public async Task<int[]> GetProjectMembers(int id)
         {
             return await _context.ProjectEmployees.Where(x => x.ProjectId == id).Select(x => x.EmployeeId).ToArrayAsync();
-        }
-
-        public async Task UpdateAsync()
-        {
-            await _context.SaveChangesAsync();
         }
     }
 }

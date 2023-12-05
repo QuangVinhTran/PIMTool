@@ -65,7 +65,7 @@ namespace PIMTool.Controllers
         public async Task<ActionResult<GroupDto>> UpdateGroup([FromBody] GroupDto groupDto)
         {
             var group = _mapper.Map<Group>(groupDto);
-            await _groupService.UpdateAsync(group);
+            await _groupService.UpdateAsync();
             var listGroups = await _groupService.GetGroups();
             if (!ModelState.IsValid)
             {

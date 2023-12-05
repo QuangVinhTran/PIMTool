@@ -13,6 +13,6 @@ namespace PIMTool.Core.Interfaces.Services
         Task DeleteAsync(Group group);
         Task<Group> GetAsync(int id);
         Task<IEnumerable<Group>> GetGroups();
-        Task UpdateAsync(Group group);
+        Task UpdateAsync();
     }
 }

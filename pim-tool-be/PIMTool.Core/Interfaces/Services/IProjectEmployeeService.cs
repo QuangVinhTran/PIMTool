@@ -14,6 +14,5 @@ namespace PIMTool.Core.Interfaces.Services
         Task<ProjectEmployee> GetAsync(int EmployeeId, int ProjectId);
         Task<IEnumerable<ProjectEmployee>> GetProjectEmployees();
         Task<int[]> GetProjectMembers(int id);
-        Task UpdateAsync();
     }
 }

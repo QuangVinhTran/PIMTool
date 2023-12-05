@@ -41,7 +41,7 @@ namespace PIMTool.Services
             return entities;
         }
 
-        public async Task UpdateAsync(Group group)
+        public async Task UpdateAsync()
         {
             await _repository.SaveChangesAsync();
         }

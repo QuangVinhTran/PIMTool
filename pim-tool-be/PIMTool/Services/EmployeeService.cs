@@ -17,8 +17,15 @@ namespace PIMTool.Services
 
         public async Task AddAsync(Employee emp)
         {
-            await _repository.AddAsync(emp);
-            await _repository.SaveChangesAsync();
+            try
+            {
+                await _repository.AddAsync(emp);
+                await _repository.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new System.Exception(e.Message);
+            }
         }
 
         public async Task DeleteAsync(Employee emp)
