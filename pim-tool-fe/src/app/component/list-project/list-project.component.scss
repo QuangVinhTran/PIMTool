@@ -1,0 +1,155 @@
+.list-project-container {
+  width: 90%;
+  .area-title {
+    font-size: 18pt;
+    color: var(--gray);
+    width: 95%;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.5rem;
+  }
+
+  .search-area {
+    display: flex;
+    padding: 1rem 0;
+    align-items: center;
+    margin-bottom: 1rem;
+    input {
+      height: 2rem;
+      margin-right: 1rem;
+      width: 35%;
+      padding-left: 1rem;
+      opacity: 0.6;
+    }
+
+    select {
+      height: 2rem;
+      width: 20%;
+      margin-right: 2rem;
+      padding-left: 1rem;
+      opacity: 0.6;
+    }
+
+    .modal-footer {
+      border: none;
+    }
+
+    .search-btn {
+      height: 2rem;
+      button {
+        background-color: var(--blue);
+        padding: 0.2rem 2rem;
+      }
+    }
+
+    .reset-btn {
+      height: 2rem;
+      button {
+        background-color: transparent;
+        padding: 0.2rem 2rem;
+        color: var(--blue);
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--line);
+
+    .tableHeading{
+      width: 100%;
+
+      &_select{
+        width: 10%;
+      }
+
+      &_number{
+        width: 10%;
+      }
+
+      &_name{
+        width: 35%;
+      }
+
+      &_status{
+        width: 15%;
+      }
+
+      &_customer{
+        width: 25%;
+      }
+
+      &_start{
+        width: 10%;
+      }
+
+      &_delete{
+        width: 5%;
+      }
+    }
+
+    th {
+      border: 1px solid var(--line);
+      padding: 0.4rem 0.7rem;
+      font-weight: normal;
+      color: var(--gray);
+    }
+
+    td {
+      padding: 10px;
+      text-align: left;
+      border-right: 1px solid var(--line);
+    }
+
+    th:first-child,
+    td:first-child {
+      width: 0px;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 80px;
+    }
+
+    th:nth-child(2), th:nth-child(6), td:nth-child(6) {
+      text-align: center;
+    }
+
+    td:nth-child(2) {
+      text-align: right;
+    }
+
+    th:last-child,
+    td:last-child {
+      width: 30px;
+      text-align: center;
+      border-right: none;
+    }
+
+    i.fas.fa-trash-alt {
+      color: red;
+    }
+  }
+
+  .selected-items {
+    margin: 1rem 0;
+    background-color: rgb(214, 240, 248);
+    color: var(--blue);
+    padding:0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.btn-close-popup{
+  cursor: pointer;
+}
+
+.highlight-page{
+  background-color: var(--blue);
+  color: white;
+}

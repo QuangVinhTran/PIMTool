@@ -1,0 +1,154 @@
+<div class="new-project-container">
+  <p class="area-title">{{actionTitle | translate}}</p>
+  <div class="alert alert-danger alert-popup" role="alert" style="margin-top: 0.5rem"
+    *ngIf="(detailForm.submitted && detailForm.invalid) || isFailed" #alertPopup>
+    <span>{{ globalErr | translate }}</span>
+    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="form-container">
+    <form #detailForm="ngForm" (ngSubmit)="editMode ? onUpdateProject(detailForm) : onAddProject(detailForm)">
+
+      <div class="form-group">
+        <label for="projectNumber">{{ 'projectDetail.projectNumber' | translate }} <span
+            class="required">*</span></label>
+        <div class="input-container">
+          <input type="text" ngModel [readonly]="editMode" [ngModel]="editMode ? updateProject.projectNumber: null"
+            *ngIf="!editMode || editMode" name="projectNumber" class="form-control short-input" id="projectNumber"
+            [ngClass]="{ 'red-border': numberErr !== '' }" required />
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="numberErr != ''" style="margin: 0 !important; transform: translateY(-2rem)">
+        <label for="number"></label>
+        <div class="input-container">
+          <div class="form-text" class="required">
+            {{ numberErr | translate }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">{{ 'projectDetail.projectName' | translate }} <span class="required">*</span></label>
+        <div class="input-container">
+          <input type="text" [ngModel]="editMode ? updateProject.name : null" *ngIf="!editMode || editMode" name="name"
+            class="form-control" id="name" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="customer">{{ 'projectDetail.customer' | translate }} <span class="required">*</span></label>
+        <div class="input-container">
+          <input type="text" [ngModel]="editMode ? updateProject.customer : null" *ngIf="!editMode || editMode"
+            name="customer" class="form-control" id="customer" required />
+        </div>
+      </div>
+
+      <div class="form-group group-input">
+        <label for="groupId">{{ 'projectDetail.group' | translate }} <span class="required">*</span></label>
+        <div class="input-container">
+          <select id="groupId" name="groupId" [ngModel]="editMode ? updateProject.groupId : null"
+            *ngIf="!editMode || editMode" class="short-input" required>
+            <option *ngFor="let group of groups" value="{{ group?.id }}">
+              Group {{ group?.id }} ({{ group?.groupLeader?.visa }})
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">{{ 'projectDetail.status' | translate }} <span class="required">*</span></label>
+        <div class="input-container">
+          <select id="status" name="status" [ngModel]="editMode ? updateProject.status : null"
+            *ngIf="!editMode || editMode" class="short-input" required>
+            <option value="" disabled>NEW</option>
+            <option value=0>New</option>
+            <option value=1>Planned</option>
+            <option value=2>In Progress</option>
+            <option value=3>Finished</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-date">
+        <div class="form-group form-date__start">
+          <label for="startDate">{{ 'projectDetail.startDate' | translate }} <span class="required">*</span></label>
+          <div class="input-container">
+            <input type="date" [ngModel]="editMode ? updateProject.startDate : null" *ngIf="!editMode || editMode"
+              name="startDate" class="form-control short-input" id="startDate"
+              [ngClass]="{ 'red-border': ennDateErr !== '' }" required />
+          </div>
+        </div>
+
+        <div class="form-group form-date__end">
+          <label for="endDate">{{ 'projectDetail.endDate' | translate }} </label>
+          <div class="input-container">
+            <input type="date" [ngModel]="editMode ? updateProject.endDate : null" *ngIf="!editMode || editMode"
+              name="endDate" class="form-control short-input" id="endDate"
+              [ngClass]="{ 'red-border': ennDateErr !== '' }" />
+          </div>
+        </div>
+      </div>
+
+      <div style="margin: 0 !important; display: flex; justify-content: flex-end" *ngIf="ennDateErr != ''">
+        <div class="form-text err-date">
+          {{ ennDateErr | translate}}
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <div class="modal-footer cancel-btn">
+          <button type="button" (click)="navigateToList()" class="btn">
+            {{ 'projectDetail.btnCancel' | translate }}
+          </button>
+        </div>
+        <div class="modal-footer create-btn">
+          <button type="submit" class="btn btn-primary">{{btnSubmitContent | translate}}</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-group member-outside-form" [ngClass]="{ 'member-outside-form-err': numberErr !== '' }">
+      <label for="member">{{ 'projectDetail.members' | translate }} </label>
+      <div class="input-container">
+        <div style="width: 100%;">
+          <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="empList" (completeMethod)="search($event)"
+            [showEmptyMessage]="true" [emptyMessage]="emptyMessage" (onSelect)="selectEmpId($event)" [delay]="800"
+            [multiple]="true" [completeOnFocus]="true" [style]="{'display': 'block', 'width': '100%'}" [size]="20"
+            (onUnselect)="unselectEmpId($event)" [unique]="true" inputId="member">
+            <ng-template let-emp pTemplate="item">
+              <div class="flex align-items-center gap-2">
+                <div>{{ emp.visa }}: {{emp.firstName}} {{emp.lastName}}</div>
+              </div>
+            </ng-template>
+
+            <ng-template let-val pTemplate="selectedItem">
+              <div class="flex align-items-center gap-2">
+                <div>{{ val.visa }}: {{val.firstName}} {{val.lastName}}</div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group member-err" *ngIf="membersError != ''"
+      style="margin: 0 !important; transform: translateY(-2rem)">
+      <label for="members"></label>
+      <div class="input-container">
+        <div class="form-text" class="required">
+          {{ membersError | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <pre>{{ detailForm.value.projectNumber | json }}</pre>
+<pre>{{ detailForm.value.name | json }}</pre>
+<pre>{{ detailForm.value.customer | json }}</pre>
+<pre>{{ detailForm.value.groupId | json }}</pre>
+<pre>{{ detailForm.value.status | json }}</pre>
+<pre>{{ detailForm.value.startDate | json }}</pre>
+<pre>{{ detailForm.value.endDate | json }}</pre> -->
