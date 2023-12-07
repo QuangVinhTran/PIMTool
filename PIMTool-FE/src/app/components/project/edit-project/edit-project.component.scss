@@ -1,0 +1,105 @@
+.form-add-wrapper {
+  height: 100%;
+  width: 1403px;
+  .invalid-form-error {
+    position: absolute;
+    margin: -50px 0 50px 0;
+    width: 52%;
+    color: red;
+  }
+  .header-create-wrapper {
+    padding-bottom: 13px;
+    border-bottom: solid 1px #ccc;
+    width: 66%;
+    //margin-right: 34%; //450px
+    margin-bottom: 60px;
+    h2 {
+      color: #666;
+      font-weight: 500;
+    }
+  }
+  .form-add-project {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+    margin-right: 150px; // 450 default
+    margin-top: 100px;
+    .form-field-wrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      width: 100%;
+      .form-field {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 0.5em;
+        .label-field {
+          margin-right: 50px;
+          width: 200px;
+          label {
+            font-size: 14pt;
+            font-weight: 400;
+            color: #d8bbbb;
+            margin-right: 60px;
+          }
+        }
+        .input-field {
+          width: 575px;
+          input,
+          select {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 38px;
+            text-align: left;
+            color: #666;
+            padding-left: 10px;
+          }
+        }
+        .input-small {
+          width: 14% !important;
+        }
+        .input-large {
+          width: 52% !important;
+        }
+        .input-member {
+          height: 30px !important;
+        }
+        .input-date {
+          width: 28% !important;
+        }
+        .end-date-label {
+          margin-right: -96px;
+        }
+        .error-noti {
+          // width: 400px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          margin-left: 20px;
+          color: red;
+        }
+      }
+    }
+    .form-field-member {
+      margin-bottom: 30px !important;
+      span {
+        height: 30px;
+      }
+    }
+    .button-wrapper {
+      text-align: end;
+      width: 73.2%;
+      border-top: solid 1px #ccc;
+      button {
+        height: 35px;
+        width: 195px;
+        margin-top: 50px;
+      }
+      button:last-child {
+        margin-left: 52px;
+        background-color: #2f85fa;
+      }
+    }
+  }
+}

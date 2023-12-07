@@ -1,0 +1,94 @@
+﻿<Properties StartupConfiguration="{7C092E93-8F43-4667-B518-8F3FC7C81156}|Unit Tests">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Application/Services/ProjectService.cs" relfile="Apis/Application/Services/ProjectService.cs" line="117" column="1" />
+      <Breakpoint file="/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Application/Services/ProjectService.cs" relfile="Apis/Application/Services/ProjectService.cs" line="341" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <DisabledProjects>
+    <String>Tests/Domain.Tests/Infrastructure.Tests/Infrastructure.Tests.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Tests.Infrastructure.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/Infrastructure.Tests/Repositories/Repository.cs">
+    <Files>
+      <File FileName="Apis/Application/Services/ProjectService.cs" Line="165" Column="50" />
+      <File FileName="Apis/WebAPI/Controllers/ProjectController.cs" />
+      <File FileName="Apis/WebAPI/Program.cs" />
+      <File FileName="Apis/Application/ViewModels/ProjectViewModels/UpdateProjectViewModel.cs" />
+      <File FileName="Apis/Application/ViewModels/ProjectViewModels/CreateProjectViewModel.cs" />
+      <File FileName="Apis/Application/Interfaces/Services/IProjectService.cs" />
+      <File FileName="Apis/Application/ViewModels/ProjectViewModels/ProjectViewModel.cs" />
+      <File FileName="Apis/WebAPI/Middlewares/PerformanceMiddleware.cs" />
+      <File FileName="Apis/WebAPI/Controllers/EmployeeController.cs" />
+      <File FileName="Apis/Application/Interfaces/Services/IEmployeeService.cs" Line="15" Column="2" />
+      <File FileName="Apis/Application/Services/EmployeeService.cs" Line="54" Column="44" />
+      <File FileName="Apis/Infrastructures/Mappers/MapperConfigurationsProfile.cs" />
+      <File FileName="Tests/Domain.Tests/GlobalUsings.cs" Line="1" Column="1" />
+      <File FileName="Tests/Infrastructure.Tests/PimContextTests.cs" Line="13" Column="1" />
+      <File FileName="Tests/Domain.Tests/SetupTests.cs" Line="46" Column="1" />
+      <File FileName="Apis/Infrastructures/DenpendencyInjection.cs" Line="32" Column="1" />
+      <File FileName="Apis/WebAPI/DependencyInjection.cs" Line="26" Column="6" />
+      <File FileName="Tests/Application.Tests/UnitTest1.cs" Line="7" Column="1" />
+      <File FileName="Tests/WebAPI.Tests/UnitTest1.cs" Line="7" Column="1" />
+      <File FileName="Tests/Infrastructure.Tests/GlobalUsings.cs" Line="1" Column="1" />
+      <File FileName="Tests/Infrastructure.Tests/UnitOfWorkTests.cs" Line="29" Column="1" />
+      <File FileName="Apis/Infrastructures/UnitOfWork.cs" Line="19" Column="42" />
+      <File FileName="Apis/Infrastructures/Repositories/Repository.cs" Line="37" Column="10" />
+      <File FileName="Apis/Application/Interfaces/Repositories/IRepository.cs" Line="14" Column="58" />
+      <File FileName="Tests/Infrastructure.Tests/Mappers/MapperConfigurasionTests.cs" Line="27" Column="6" />
+      <File FileName="Apis/Domain/Entities/Employee.cs" Line="23" Column="44" />
+      <File FileName="Tests/Infrastructure.Tests/Repositories/Repository.cs" Line="131" Column="36" />
+      <File FileName="Apis/Infrastructures/Repositories/ProjectEmployeeRepository.cs" Line="1" Column="1" />
+      <File FileName="Apis/Infrastructures/Repositories/GroupRepository.cs" Line="6" Column="63" />
+      <File FileName="Apis/Application/Interfaces/Repositories/IGroupRepository.cs" Line="4" Column="19" />
+      <File FileName="Apis/Application/Interfaces/Repositories/IProjectRepository.cs" Line="1" Column="1" />
+      <File FileName="Apis/Application/Interfaces/Repositories/IEmployeeRepository.cs" Line="9" Column="2" />
+      <File FileName="Apis/Domain/Entities/ProjectEmployee.cs" Line="1" Column="1" />
+      <File FileName="Apis/Domain/Entities/IEntity.cs" Line="1" Column="1" />
+      <File FileName="Apis/Domain/Entities/Project.cs" Line="1" Column="1" />
+      <File FileName="Apis/Infrastructures/Repositories/EmployeeRepository.cs" Line="23" Column="10" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PIMTool">
+            <Node name="Apis" expanded="True">
+              <Node name="Application">
+                <Node name="Interfaces" expanded="True">
+                  <Node name="Repositories" expanded="True" />
+                  <Node name="Services" expanded="True" />
+                </Node>
+                <Node name="Services" expanded="True" />
+              </Node>
+              <Node name="Domain">
+                <Node name="Entities" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Tests" expanded="True">
+              <Node name="Application.Tests" expanded="True" />
+              <Node name="Domain.Tests">
+                <Node name="Dependencies" expanded="True" />
+              </Node>
+              <Node name="Infrastructure.Tests">
+                <Node name="Dependencies" expanded="True" />
+                <Node name="Mappers" expanded="True" />
+                <Node name="Repositories">
+                  <Node name="Repository.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="PIMTool" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Apis.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

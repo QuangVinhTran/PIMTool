@@ -1,0 +1,12 @@
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/bin/Release/net7.0/Domain.deps.json
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/bin/Release/net7.0/Domain.dll
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/bin/Release/net7.0/Domain.pdb
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.AssemblyInfoInputs.cache
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.AssemblyInfo.cs
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.csproj.CoreCompileInputs.cache
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.sourcelink.json
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.dll
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/refint/Domain.dll
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/Domain.pdb
+/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/Release/net7.0/ref/Domain.dll
