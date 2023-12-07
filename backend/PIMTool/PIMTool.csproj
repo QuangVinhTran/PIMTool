@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PIMTool.Core\PIMTool.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Scripts\01.Init_Database.sql" />
+      <None Remove="Scripts\02.Update_Group.sql" />
+      <EmbeddedResource Include="Scripts\02.Update_Group.sql" />
+      <None Remove="Scripts\03.Add_Project_Indexes.sql" />
+      <EmbeddedResource Include="Scripts\03.Add_Project_Indexes.sql" />
+      <None Remove="Scripts\04.Update_Project_Indexes.sql" />
+      <EmbeddedResource Include="Scripts\04.Update_Project_Indexes.sql" />
+    </ItemGroup>
+
+</Project>

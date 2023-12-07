@@ -1,0 +1,112 @@
+@import "src/styles";
+
+.layout-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 10rem;
+  border-bottom: 1px solid #c4c4c4;
+  height: 100%;
+  .app-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    h1 {
+      font-size: 1.5rem;
+      color: gray;
+      font-weight: $fw-little-bold;
+    }
+  }
+
+  .header-option {
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    .language {
+      img {
+        cursor: pointer;
+      }
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .language-container {
+        position: absolute;
+        top: 1.5rem;
+        border-radius: 1rem;
+        z-index: 1;
+        width: max-content;
+        animation: dropdown linear 0.2s;
+        transform-origin: top;
+        ul {
+          background-color: #f4f4f4;
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem;
+          li {
+            cursor: pointer;
+            width: 100%;
+            padding: 0.25rem;
+            background-color: transparent;
+            transition-property: background-color;
+            transition-duration: 0.1s;
+            transition-timing-function: linear;
+            font-weight: $fw-semibold;
+            border-radius: 4px;
+            &:hover {
+              background-color: gray;
+              color: whitesmoke;
+            }
+          }
+        }
+      }
+      span {
+        cursor: pointer;
+      }
+      .active-language {
+        font-weight: bold;
+        color: $color-blue;
+      }
+      span:nth-child(2)::before {
+        content: '';
+        background-color: red;
+        border-right: 2px solid $color-blue;
+        margin-left: 0.3rem;
+        margin-right: 0.3rem;
+      }
+    }
+    .function {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      .text-blue {
+        font-weight: bold;
+        color: $color-blue;
+      }
+      .font-semibold {
+        font-weight: bold;
+        opacity: 0.3;
+      }
+      .pointer {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@keyframes dropdown {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}

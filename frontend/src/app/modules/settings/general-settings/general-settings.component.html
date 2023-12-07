@@ -1,0 +1,25 @@
+<section class="settings-container">
+  <h2>Settings</h2>
+  <ul>
+    <li>
+      <app-setting-item [text]="'Dark mode:'"
+                        [status]="settings.darkMode"
+                        (toggle)="toggle(SettingActionTypes.TOGGLE_DARK_MODE)"></app-setting-item>
+    </li>
+    <li>
+      <app-setting-item [text]="'Allow import from file:'"
+                        [status]="settings.allowImportFile"
+                        (toggle)="toggle(SettingActionTypes.TOGGLE_FILE_IMPORT)"></app-setting-item>
+    </li>
+    <li>
+      <app-setting-item [text]="'Allow export to file:'"
+                        [status]="settings.allowExportFile"
+                        (toggle)="toggle(SettingActionTypes.TOGGLE_FILE_EXPORT)"></app-setting-item>
+    </li>
+    <li>
+      <app-setting-item [text]="'Allow multiple languages:'"
+                        [status]="settings.allowMultipleLanguages"
+                        (toggle)="toggle(SettingActionTypes.TOGGLE_MULTIPLE_LANGUAGES)"></app-setting-item>
+    </li>
+  </ul>
+</section>

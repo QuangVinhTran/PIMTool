@@ -1,0 +1,29 @@
+<header class="layout-header">
+  <div class="app-logo">
+    <img src="../../../assets/media/logo_elca.png" alt="Elca logo">
+    <h1>Project Information Management</h1>
+  </div>
+  <div class="header-option">
+    <div class="language">
+      <ng-container *ngIf="allowMultiLanguages">
+        <img src="../../../assets/media/language-icon-removebg.png" alt="Language" width="20" (mouseover)="displayLanguageOptions = true">
+        <div *ngIf="displayLanguageOptions" class="language-container" (mouseleave)="displayLanguageOptions = false">
+          <ul>
+            <li (click)="switchLanguage('en')">English</li>
+            <li (click)="switchLanguage('vn')">Tiếng Việt</li>
+            <li (click)="switchLanguage('fr')">Français</li>
+            <li (click)="switchLanguage('jp')">日本語</li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="!allowMultiLanguages">
+        <span (click)="switchLanguage('en'); setLang();" [ngClass]="{'active-language' : currentLanguage === 'en'}">EN</span>
+        <span (click)="switchLanguage('fr'); setLang();" [ngClass]="{'active-language' : currentLanguage === 'fr'}">FR</span>
+      </ng-container>
+    </div>
+    <div class="function">
+      <span class="text-blue">{{'HELP' | translate}}</span>
+      <span class="font-semibold pointer" (click)="logout()">{{'LOG_OUT' | translate}}</span>
+    </div>
+  </div>
+</header>

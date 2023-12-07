@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool", "PIMTool\PIMTool.csproj", "{B5DBCFA2-AA0E-41B3-96A8-E4E7424A2B51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Core", "PIMTool.Core\PIMTool.Core.csproj", "{A4F850C7-BC33-4933-855A-CA06B6B13FDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.CronJob", "PIMTool.CronJob\PIMTool.CronJob.csproj", "{1F241391-2B78-4CDE-B78C-CA671FAC4254}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Test", "PIMTool.Test\PIMTool.Test.csproj", "{03C1C13A-8678-4EF1-B578-BF9D066706FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5DBCFA2-AA0E-41B3-96A8-E4E7424A2B51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DBCFA2-AA0E-41B3-96A8-E4E7424A2B51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DBCFA2-AA0E-41B3-96A8-E4E7424A2B51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DBCFA2-AA0E-41B3-96A8-E4E7424A2B51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F850C7-BC33-4933-855A-CA06B6B13FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F850C7-BC33-4933-855A-CA06B6B13FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F850C7-BC33-4933-855A-CA06B6B13FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F850C7-BC33-4933-855A-CA06B6B13FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F241391-2B78-4CDE-B78C-CA671FAC4254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F241391-2B78-4CDE-B78C-CA671FAC4254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F241391-2B78-4CDE-B78C-CA671FAC4254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F241391-2B78-4CDE-B78C-CA671FAC4254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C1C13A-8678-4EF1-B578-BF9D066706FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C1C13A-8678-4EF1-B578-BF9D066706FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C1C13A-8678-4EF1-B578-BF9D066706FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C1C13A-8678-4EF1-B578-BF9D066706FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal

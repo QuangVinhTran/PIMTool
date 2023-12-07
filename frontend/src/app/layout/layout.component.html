@@ -1,0 +1,12 @@
+<div class="layout-wrapper">
+  <app-header></app-header>
+  <div class="main-content">
+    <nav class="side-bar">
+      <app-side-bar></app-side-bar>
+    </nav>
+    <main class="main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+<app-page-loader *ngIf="isLoading"></app-page-loader>

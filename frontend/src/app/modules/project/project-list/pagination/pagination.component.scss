@@ -1,0 +1,39 @@
+@import "../../../../../styles";
+
+.pagination {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row;
+    border: $border-lightgray;
+    color: $color-blue;
+    font-size: 0.7rem;
+    li {
+      border: $border-lightgray;
+      width: 1.75rem;
+      height: 1.75rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      span {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .active {
+      background-color: #dfdfdf !important;
+      color: gray !important;
+    }
+    .disabled {
+      color: gray !important;
+      pointer-events: none;
+    }
+  }
+}

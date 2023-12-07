@@ -1,0 +1,17 @@
+.layout-wrapper {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: 1fr min(90dvh);
+
+  .main-content {
+    min-height: 80dvh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    .side-bar {
+      grid-column: 1 / 3;
+    }
+    .main {
+      grid-column: 3 / 13;
+    }
+  }
+}

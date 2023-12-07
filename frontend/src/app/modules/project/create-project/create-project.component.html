@@ -1,0 +1,155 @@
+<div class="create-project-layout">
+  <div class="title-container">
+    <h2>{{(doCreate ? 'NEW_PROJECT' : 'EDIT_PROJECT') | translate}}</h2>
+    <button *ngIf="allowImportFile && doCreate" (click)="importFile = true" class="common-button">Import from file</button>
+    <!-- <input type="file" accept=".csv,.xlsx" hidden #file> -->
+  </div>
+  <div *ngIf="(createProjectForm.get('projectNumber')?.invalid && createProjectForm.get('projectNumber')?.touched
+    || createProjectForm.get('name')?.invalid && createProjectForm.get('name')?.touched
+    || createProjectForm.get('customer')?.invalid && createProjectForm.get('customer')?.touched
+    || createProjectForm.get('groupId')?.invalid && createProjectForm.get('groupId')?.touched
+    || createProjectForm.get('status')?.invalid && createProjectForm.get('status')?.touched
+    || createProjectForm.get('startDate')?.invalid && createProjectForm.get('startDate')?.touched) && showErrorMsg" class="error-container">
+    <p class="error-msg">{{'CREATE_PROJECT_WARNING_MSG' | translate}}</p>
+    <p class="btn-close" (click)="hideErrorMsg()">&times;</p>
+  </div>
+  <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()">
+    <div class="input-container">
+      <label for="projectNumber" class="required">{{'PROJECT_NUMBER' | translate}}</label>
+      <input
+        formControlName="projectNumber"
+        type="number"
+        id="projectNumber"
+        class="form-input"
+        [ngClass]="{'alert': (createProjectForm.get('projectNumber')?.invalid && createProjectForm.get('projectNumber')?.touched) || !isValidProjectNumber}"
+        (focusout)="validateProjectNumber()">
+      <div class="validation-msg-container">
+        <span *ngIf="!isValidProjectNumber" class="validation-msg">
+          {{'DUPLICATE_PROJECT_NUMBER_WARNING_MSG' | translate}}
+        </span>
+      </div>
+      <div *ngIf="createProjectForm.get('projectNumber')?.invalid && createProjectForm.get('projectNumber')?.touched" class="alert-container">
+        <span matTooltip="{{'REQUIRE_PROJECT_NUMBER' | translate}}" matTooltipPosition="above">{{'REQUIRE_PROJECT_NUMBER' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="name" class="required">{{'PROJECT_NAME' | translate}}</label>
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        class="form-input"
+        maxlength="51"
+        [ngClass]="{'alert': createProjectForm.get('name')?.invalid && createProjectForm.get('name')?.touched}">
+      <div *ngIf="createProjectForm.get('name')?.invalid && createProjectForm.get('name')?.touched" class="alert-container">
+        <span matTooltip="{{'REQUIRE_PROJECT_NAME' | translate}}" matTooltipPosition="above">{{'REQUIRE_PROJECT_NAME' | translate}}</span>
+      </div>
+      <div *ngIf="createProjectForm.get('name')?.getRawValue().length > 50" class="alert-container">
+        <span matTooltip="{{'ERR_PROJECT_NAME' | translate}}" matTooltipPosition="above">{{'ERR_PROJECT_NAME' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="customer" class="required">{{'CUSTOMER' | translate}}</label>
+      <input
+        formControlName="customer"
+        type="text"
+        id="customer"
+        class="form-input"
+        maxlength="50"
+        [ngClass]="{'alert': createProjectForm.get('customer')?.invalid && createProjectForm.get('customer')?.touched}">
+      <div *ngIf="createProjectForm.get('customer')?.invalid && createProjectForm.get('customer')?.touched" class="alert-container">
+        <span matTooltip="{{'REQUIRE_CUSTOMER' | translate}}" matTooltipPosition="above">{{'REQUIRE_CUSTOMER' | translate}}</span>
+      </div>
+      <div *ngIf="createProjectForm.get('customer')?.getRawValue().length > 50" class="alert-container">
+        <span matTooltip="{{'ERR_CUSTOMER' | translate}}" matTooltipPosition="above">{{'ERR_CUSTOMER' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="group" class="required">{{'GROUP' | translate}}</label>
+      <select
+        formControlName="groupId"
+        id="group"
+        class="form-input"
+        [ngClass]="{'alert': createProjectForm.get('groupId')?.invalid && !createProjectForm.get('groupId')?.pristine}">
+        <option hidden selected value="">{{'SELECT_GROUP' | translate}}</option>
+        <option [value]="group?.id" *ngFor="let group of groups">{{group?.name}}</option>
+      </select>
+      <div *ngIf="createProjectForm.get('group')?.invalid && createProjectForm.get('group')?.touched" class="alert-container">
+        <span matTooltip="{{'REQUIRE_GROUP' | translate}}" matTooltipPosition="above">{{'REQUIRE_GROUP' | translate}}</span>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="members">{{'MEMBERS' | translate}}</label>
+      <div class="member-select">
+        <div class="member-input-group">
+          <drag-scroll [scrollbar-hidden]="true" [snap-disabled]="true" *ngIf="selectedMembers.length > 0">
+            <ul class="selected-members-container">
+              <li drag-scroll-item *ngFor="let selectedMember of selectedMembers">
+                <span>{{selectedMember | employeeFormat}}</span>
+                <fa-icon [icon]="faXmark" class="x-mark-icon" (click)="deselectMember(selectedMember.id)"></fa-icon>
+              </li>
+            </ul>
+          </drag-scroll>
+          <input
+            formControlName="members"
+            type="text"
+            (focusin)="focus = true"
+            (focusout)="focus = false"
+            (keyup)="filterMember()"
+            id="members">
+        </div>
+        <ul *ngIf="(focus || mouseIn) && filteredMembers.length > 0" class="member-dropdown" (mouseenter)="mouseIn = true" (mouseleave)="mouseIn = false">
+          <li *ngFor="let member of filteredMembers" (click)="selectMember(member.id)">{{member | employeeFormat}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <label for="status" class="required">{{'STATUS' | translate}}</label>
+      <select
+        formControlName="status"
+        id="status"
+        class="form-input"
+        [ngClass]="{'alert': createProjectForm.get('status')?.invalid && !createProjectForm.get('status')?.pristine}">
+        <option value="NEW" selected>{{'NEW' | translate}}</option>
+        <option value="PLA">{{'PLANNED' | translate}}</option>
+        <option value="INP">{{'IN_PROGRESS' | translate}}</option>
+        <option value="FIN">{{'FINISHED' | translate}}</option>
+      </select>
+    </div>
+
+    <div class="date-selection">
+      <label for="startDate" class="required" >{{'START_DATE' | translate}}</label>
+      <input
+        formControlName="startDate"
+        type="date"
+        id="startDate"
+        #startDate
+        class="form-input"
+        (click)="startDate.showPicker()"
+        [ngClass]="{'alert': createProjectForm.get('startDate')?.invalid && !createProjectForm.get('startDate')?.pristine}">
+      <label for="endDate">{{'END_DATE' | translate}}</label>
+      <input
+        formControlName="endDate"
+        type="date"
+        class="form-input"
+        id="endDate"
+        #endDate
+        (click)="endDate.showPicker()">
+    </div>
+
+    <div class="btn-group">
+      <button type="button" class="btn btn-cancel" (click)="router.navigate(['project/project-list'])">{{'CANCEL' | translate}}</button>
+      <button class="btn btn-create" [ngClass]="{'forbid': createProjectForm.invalid}">{{(doCreate ? 'CREATE_PROJECT' : 'UPDATE') | translate}}</button>
+    </div>
+  </form>
+  <app-page-loader *ngIf="isLoading"></app-page-loader>
+<!--  <app-create-project-success *ngIf="!isLoading && isRequestSent" [showModal]="isRequestSent" [isSuccess]="isSuccess" [message]="message"></app-create-project-success>-->
+</div>
+<div *ngIf="importFile" @slideDown @slideUp style="position: absolute; top: 0; left: 0;">
+  <app-file-import (hide)="importFile = false"></app-file-import>
+</div>

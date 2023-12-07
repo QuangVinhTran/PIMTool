@@ -1,0 +1,259 @@
+@import "../../../../styles";
+
+.create-project-layout {
+  padding: 2rem 23rem 0 2rem;
+  font-size: $font-regular;
+  font-weight: $fw-semibold;
+  color: $text-faded;
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    h2 {
+      opacity: 0.5;
+    }
+  }
+  .error-container {
+    background-color: #f2dfdc;
+    color: #c67273;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    margin-top: 0.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .error-msg {
+      background-color: inherit;
+      width: fit-content;
+    }
+    .btn-close {
+      background-color: inherit;
+      color: $text-faded;
+      opacity: $o-70;
+      cursor: pointer;
+      font-size: 1.25em;
+    }
+  }
+  form {
+    padding: 3rem 0 0 3rem;
+    display: flex;
+    flex-flow: column;
+    gap: 2.375rem;
+    .validation-msg-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .validation-msg {
+        left: 1rem;
+        position: absolute;
+        white-space: nowrap;
+        color: red;
+      }
+    }
+    .required::after {
+      content: '*';
+      color: red;
+      margin-left: 0.75rem;
+      font-weight: bold;
+    }
+    .form-input {
+      outline: none;
+      border: 1px solid rgba(128, 128, 128, .5);
+      padding: 0 0.5rem;
+      height: 30px;
+      border-radius: 0.3rem;
+      box-shadow: 0 0 2px #333 inset;
+    }
+    input[type=date], select {
+      font-size: 1em;
+      font-weight: $fw-semibold;
+      color: $text-faded;
+    }
+    select {
+      -webkit-appearance: none;
+      background-image: url("/assets/media/black-arrow-down-icon-png.png");
+      background-size: 1rem 1rem;
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-origin: content-box;
+    }
+    .input-container {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      position: relative;
+      align-items: center;
+      label {
+        grid-column: 1 / 4;
+      }
+      input[type=text]{
+        grid-column: 4 / 13;
+      }
+      input[type=number], select {
+        grid-column: 4 / 7;
+      }
+      .alert {
+        border-color: red;
+        box-shadow: 0 0 2px red inset;
+        &::after {
+          content: '*';
+        }
+      }
+      .member-select {
+        grid-column: 4 / 13;
+        position: relative;
+        .member-input-group {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 1rem;
+          border: 1px solid rgba(128, 128, 128, .5);
+          padding: 0 0.5rem;
+          height: 30px;
+          border-radius: 0.3rem;
+          box-shadow: 0 0 2px #333 inset;
+          .selected-members-container {
+            list-style: none;
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            align-items: center;
+            padding-right: 5rem;
+            li {
+              width: max-content;
+              border: 1px solid rgba(128, 128, 128, .5);
+              border-radius: 0.2rem;
+              padding: 0 0.25rem;
+              background-color: #e6e7e4;
+              display: flex !important;
+              justify-content: space-between;
+              align-items: center;
+              gap: 0.25rem;
+              cursor: pointer;
+              span {
+                background-color: inherit;
+                user-select: none;
+              }
+              .x-mark-icon {
+                background: transparent;
+                cursor: pointer;
+              }
+            }
+          }
+          input {
+            outline: none;
+            border: none;
+            width: 100%;
+            min-width: 30%;
+            &:focus {
+              cursor: auto;
+            }
+          }
+        }
+        .member-dropdown {
+          border: $border-gray;
+          list-style: none;
+          position: absolute;
+          width: 100%;
+          gap: 0.2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          background-color: white;
+          z-index: 1;
+          li {
+            width: 100%;
+            cursor: pointer;
+            padding: 0.2rem;
+            transition-property: background-color;
+            transition-duration: 0.15s;
+            transition-timing-function: linear;
+            &:hover {
+              background-color: gray;
+              color: whitesmoke;
+            }
+          }
+        }
+      }
+      .alert-container {
+        position: absolute;
+        right: 0;
+        transform: translateX(calc(100% + 5px));
+        max-width: 20rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: red;
+      }
+    }
+    .date-selection {
+      display: grid;
+      align-items: center;
+      grid-template-columns: repeat(12, 1fr);
+      label[for=startDate] {
+        grid-column: 1 / 4;
+      }
+      #startDate {
+        grid-column: 4 / 7;
+      }
+      label[for=endDate] {
+        grid-column: 8 / 10;
+      }
+      #endDate {
+        grid-column: 10 / 13;
+      }
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        //display: none;
+        z-index: -1;
+      }
+      input[type=date] {
+        -webkit-appearance: none;
+        background-image: url("/assets/media/calendar.png");
+        background-size: 1.5rem 1.5rem;
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        cursor: pointer;
+      }
+    }
+    .btn-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 4rem;
+      border-top: 1px solid gray;
+      padding-top: 2rem;
+      .btn {
+        border-radius: 0.25rem;
+        padding: 0 4rem;
+        cursor: pointer;
+        height: 35px;
+        font-weight: $fw-semibold;
+        border: $border-gray;
+      }
+      .btn-create {
+        background-color: $color-blue;
+        color: white;
+        &:hover {
+          background-color: $color-dark-blue;
+        }
+      }
+      .btn-cancel {
+        background-color: #b9b9b9;
+        &:hover {
+          background-color: #999797;
+        }
+      }
+      .forbid {
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+drag-scroll {
+  //width: fit-content;
+  //max-width: 70%;
+}

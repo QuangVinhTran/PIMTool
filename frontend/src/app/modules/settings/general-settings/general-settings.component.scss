@@ -1,0 +1,12 @@
+.settings-container {
+  padding: 2rem;
+  ul {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    list-style: none;
+  }
+}

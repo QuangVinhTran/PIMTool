@@ -1,1 +1,0 @@
-﻿Put your context and anything that related to your context (e.g: Seeder, EntityConfigutation...)

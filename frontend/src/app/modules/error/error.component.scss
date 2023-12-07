@@ -1,0 +1,31 @@
+@import 'src/styles';
+
+.error-page-layout {
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  .error-msg-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    font-size: 1.3rem;
+    font-weight: $fw-bold;
+    color: gray;
+    a, :visited {
+      text-decoration: none;
+    }
+    .contact {
+      color: $color-dark-primary;
+      cursor: pointer;
+    }
+    .search {
+      color: $color-blue;
+      cursor: pointer;
+    }
+  }
+}

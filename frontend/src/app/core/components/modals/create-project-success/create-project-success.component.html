@@ -1,0 +1,8 @@
+<div class="create-project-success" *ngIf="showModal">
+  <div class="msg-container">
+    <fa-icon [icon]="faXmark" class="btn-close" (click)="hideModal()"></fa-icon>
+    <img *ngIf="isSuccess" src="../../../../../assets/media/success-check-transparent.png" alt="Check" class="x-mark" width="150">
+    <img *ngIf="!isSuccess" src="../../../../../assets/media/error-x-mark-transparent.png" alt="X Mark" class="x-mark" width="100">
+    <h3>{{message}}</h3>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+version: '1.0.0'
+
+services: 
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-CU18-ubuntu-20.04
+    container_name: pimtool-monolithic-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+      - MSSQL_PID=Express
+    ports:
+      - 1435:1433
+    networks:
+      - pimtool-network
+  
+  api:
+    depends_on: 
+      - sqlserver
+    image: ${DOCKER_REGISTRY}/pim-tool:monolithic
+    build:
+      context: .
+      dockerfile: ./PIMTool/Dockerfile
+    container_name: pimtool-monolithic-api
+    ports:
+      - 20000:80
+    networks:
+      - pimtool-network
+        
+networks:
+  pimtool-network:

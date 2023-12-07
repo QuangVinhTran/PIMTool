@@ -1,0 +1,6 @@
+<div class="setting-item">
+  <p>{{text}}</p>
+  <div (click)="handleToggle()" class="toggle-container">
+    <div class="toggle-control" [ngClass]="status ? 'move-right' : 'move-left'"></div>
+  </div>
+</div>
