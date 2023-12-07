@@ -17,8 +17,7 @@ namespace PIMTool.Test
         public void Setup()
         {
             var services = new ServiceCollection();
-            var builder = WebApplication.CreateBuilder();
-            services.AddDbContext<PimContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<PimContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
             services.Register();
             ServiceProvider = services.BuildServiceProvider();
             Context = ServiceProvider.GetRequiredService<PimContext>();

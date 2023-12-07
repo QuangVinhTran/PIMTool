@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using PIMTool.Core.Domain.Entities;
 using PIMTool.Core.Interfaces.Services;
 using PIMTool.Services;
@@ -18,12 +19,73 @@ namespace PIMTool.Test.Services
         public void SetUp()
         {
             _groupService = ServiceProvider.GetRequiredService<IGroupService>();
+            if (Context.Database.IsInMemory())
+            {
+                var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+                Context.Employees.AddRangeAsync(emps);
+                Context.SaveChangesAsync();
+            }
         }
 
         [Test]
         public async Task TestGetGroups()
         {
             // Arrange
+            var groups = new List<Group>()
+                {
+                    new Group
+                    {
+                        GroupLeaderId = 1
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 2
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 3
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 4
+                    },
+                };
+            await Context.Groups.AddRangeAsync(groups);
+            await Context.SaveChangesAsync();
 
             // Act
             var entities = await _groupService.GetGroups();
@@ -36,7 +98,28 @@ namespace PIMTool.Test.Services
         public async Task TestGetAsync()
         {
             // Arrange
-            int id = 1;
+            var groups = new List<Group>()
+                {
+                    new Group
+                    {
+                        GroupLeaderId = 1
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 2
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 3
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 4
+                    },
+                };
+            await Context.Groups.AddRangeAsync(groups);
+            await Context.SaveChangesAsync();
+            int id = groups[0].Id;
 
             // Act
             var entity = await _groupService.GetAsync(id);
@@ -46,47 +129,134 @@ namespace PIMTool.Test.Services
         }
 
         [Test]
-        [Ignore("This test is ignored because it is not implemented yet.")]
         public async Task TestAddAsync()
         {
             // Arrange
+            var groups = new List<Group>()
+                {
+                    new Group
+                    {
+                        GroupLeaderId = 1
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 2
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 3
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 4
+                    },
+                };
+            await Context.Groups.AddRangeAsync(groups);
+            await Context.SaveChangesAsync();
+
+            var newEmp = new Employee
+            {
+                FirstName = "Chau",
+                LastName = "Tran",
+                Visa = "TMC",
+                BirthDate = new DateTime(2003, 03, 09),
+                Version = new byte[0]
+            };
+            await Context.Employees.AddAsync(newEmp);
+            await Context.SaveChangesAsync();
+
             var group = new Group
             {
-                GroupLeaderId = 9
+                GroupLeaderId = newEmp.Id
             };
 
+
             // Act
-            await _groupService.AddAsync(group);
+            await Context.Groups.AddAsync(group);
+            await Context.SaveChangesAsync();
+            var entities = await _groupService.GetGroups();
 
             // Assert
-            Assert.That(group.Id, Is.GreaterThan(0));
+            Assert.That(entities.Count(), Is.EqualTo(5));
         }
 
         [Test]
-        [Ignore("Ignore a test")]
         public async Task TestUpdateAsync()
         {
             // Arrange
-            var updateGroup = await _groupService.GetAsync(5);
-            updateGroup.GroupLeaderId = 10;
+            var groups = new List<Group>()
+                {
+                    new Group
+                    {
+                        GroupLeaderId = 1
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 2
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 3
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 4
+                    },
+                };
+            await Context.Groups.AddRangeAsync(groups);
+            await Context.SaveChangesAsync();
+
+            var emp = new Employee
+            {
+                FirstName = "Chau",
+                LastName = "Tran",
+                Visa = "TMC",
+                BirthDate = new DateTime(2003, 03, 09),
+                Version = new byte[0]
+            };
+            await Context.Employees.AddAsync(emp);
+            await Context.SaveChangesAsync();
+
+            var updateGroup = await _groupService.GetAsync(1);
+            updateGroup.GroupLeaderId = emp.Id;
             // Act
             await _groupService.UpdateAsync();
-            var entity = await _groupService.GetAsync(5);
+            var entity = await _groupService.GetAsync(1);
             // Assert
-            Assert.That(entity.GroupLeaderId, Is.EqualTo(10));
+            Assert.That(entity.GroupLeaderId, Is.EqualTo(emp.Id));
         }
 
         [Test]
-        [Ignore("Ignore a test")]
         public async Task TestDeleteAsync()
         {
             // Arrange
-            var delGroup = await _groupService.GetAsync(5);
+            var groups = new List<Group>()
+                {
+                    new Group
+                    {
+                        GroupLeaderId = 1
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 2
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 3
+                    },
+                    new Group
+                    {
+                        GroupLeaderId = 4
+                    },
+                };
+            await Context.Groups.AddRangeAsync(groups);
+            await Context.SaveChangesAsync();
+            var delGroup = await _groupService.GetAsync(4);
             // Act
             await _groupService.DeleteAsync(delGroup);
-            var entity = await _groupService.GetAsync(5);
+            var entities = await _groupService.GetGroups();
             // Assert
-            Assert.That(entity, Is.Null);
+            Assert.That(entities.Count(), Is.EqualTo(3));
         }
     }
 }

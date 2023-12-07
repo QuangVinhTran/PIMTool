@@ -24,6 +24,43 @@ namespace PIMTool.Test.Services
         public async Task TestGetEmployees()
         {
             // Arrange
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
 
             // Act
             var entities = await _employeeService.GetEmployees();
@@ -36,6 +73,43 @@ namespace PIMTool.Test.Services
         public async Task TestSearch()
         {
             // Arrange
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
             string searchVal = "u";
 
             // Act
@@ -49,7 +123,44 @@ namespace PIMTool.Test.Services
         public async Task TestGetAsync()
         {
             // Arrange
-            int id = 1;
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
+            int id = emps[0].Id;
 
             // Act
             var entity = await _employeeService.GetAsync(id);
@@ -59,50 +170,165 @@ namespace PIMTool.Test.Services
         }
 
         [Test]
-        [Ignore("This test is ignored because it will add a new employee to the database")]
         public async Task TestAddEmployee()
         {
             // Arrange
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
+
             var emp = new Employee
             {
+                FirstName = "Test FirstName",
+                LastName = "Test LastName",
                 Visa = "ABC",
-                FirstName = "Test",
-                LastName = "Test",
-                BirthDate = DateTime.Now.Subtract(TimeSpan.FromDays(365 * 20))
+                BirthDate = new DateTime(2003, 03, 09),
+                Version = new byte[0]
             };
+            
 
             // Act
             await _employeeService.AddAsync(emp);
-            var entity = await _employeeService.GetAsync(emp.Id);
+            await Context.SaveChangesAsync();
+            var entities = await _employeeService.GetEmployees();
             // Assert
-            Assert.That(entity, Is.Not.Null);
+            Assert.That(entities.Count(), Is.EqualTo(5));
         }
 
         [Test]
-        [Ignore("This test is ignored because it will update an employee in the database")]
         public async Task TestUpdateEmployee()
         {
             // Arrange
-            var updateEmp = await _employeeService.GetAsync(8);
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
+
+            var updateEmp = await _employeeService.GetAsync(emps[0].Id);
             updateEmp.FirstName = "Test FirstName Updated";
+
             // Act
             await _employeeService.UpdateAsync();
-            var entity = await _employeeService.GetAsync(8);
+            var entity = await _employeeService.GetAsync(emps[0].Id);
+
             // Assert
             Assert.That(entity.FirstName, Is.EqualTo("Test FirstName Updated"));
         }
 
         [Test]
-        [Ignore("This test is ignored because it will delete an employee from the database")]
         public async Task TestDeleteEmployee()
         {
             // Arrange
-            var delEmp = await _employeeService.GetAsync(8);
+            var emps = new List<Employee>()
+                {
+                    new Employee
+                    {
+                       FirstName = "Dung",
+                       LastName = "Nguyen",
+                       Visa = "NTD",
+                       BirthDate = new DateTime(2003, 03, 09),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Van",
+                       LastName = "Thanh",
+                       Visa = "VTV",
+                       BirthDate = new DateTime(2003, 07, 14),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Dat",
+                       LastName = "Do",
+                       Visa = "DTD",
+                       BirthDate = new DateTime(2003, 10, 23),
+                       Version = new byte[0]
+                    },
+                    new Employee
+                    {
+                       FirstName = "Hao",
+                       LastName = "Nguyen",
+                       Visa = "NVH",
+                       BirthDate = new DateTime(1968, 08, 15),
+                       Version = new byte[0]
+                    },
+                };
+            await Context.Employees.AddRangeAsync(emps);
+            await Context.SaveChangesAsync();
+            var delEmp = await _employeeService.GetAsync(emps[0].Id);
             // Act
             await _employeeService.DeleteAsync(delEmp);
-            var entity = await _employeeService.GetAsync(8);
+            var entities = await _employeeService.GetEmployees();
             // Assert
-            Assert.That(entity, Is.Null);
+            Assert.That(entities.Count(), Is.EqualTo(3));
         }
     }
 }
