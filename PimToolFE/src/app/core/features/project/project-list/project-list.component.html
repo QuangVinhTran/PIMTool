@@ -1,0 +1,56 @@
+
+<p style="margin-top: 20px; margin-bottom: 40px;padding-bottom: 10px; border-bottom: 1px solid #ddd;">Project List</p>
+
+<div class="row">
+  <div class="col-sm-4">
+    <input type="text" class="form-control" placeholder="Project number, name, customer name">
+  </div>
+  <div class="col-sm-2 ">
+    <select class="form-control">
+      <option value="NEW" selected>New</option>
+      <option value="PLA">Planned</option>
+      <option value="INP">In progress</option>
+      <option value="FIN">Finished</option>
+    </select>
+  </div>
+  <div class="col-sm-2">
+    <button class="btn btn-create pt-1">Create Project</button>
+  </div>
+  <div class="col-sm-2">
+    <a class="btn btn-create col-sm-2 pt-1" href="#" role="button">Create Project</a>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <div class="col-sm-10">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <td></td>
+      <td>Number</td>
+      <td>Name</td>
+      <td>Status</td>
+      <td>Customer</td>
+      <td>Start Date</td>
+      <td>Delete</td>
+    </tr>
+    </thead>
+    <ng-container *ngIf="projects">
+      <tbody>
+      <tr *ngFor="let project of projects">
+        <td><input type="checkbox" style="width: 15px; height: 15px"/></td>
+        <td>{{project.projectNumber}}</td>
+        <td>{{project.name}}</td>
+        <td>{{status[project.status]}}</td>
+        <td>{{project.customer}}</td>
+        <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
+        <td style="text-align: center"><span class="glyphicon glyphicon-trash" style="color: red;"></span></td>
+      </tr>
+      </tbody>
+    </ng-container>
+  </table>
+</div>
+</div>
+

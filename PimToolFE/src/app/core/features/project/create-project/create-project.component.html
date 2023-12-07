@@ -1,0 +1,104 @@
+
+<p style="margin-top: 20px;padding-bottom: 10px; border-bottom: 1px solid #ddd;">New Project</p>
+<div *ngIf="showAlert;else noAlert" class="alert alert-danger" role="alert">
+  <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  Please enter all the mandatory fields (*)
+</div>
+<ng-template #noAlert>
+  <div style="margin-bottom: 60px">
+  </div>
+</ng-template>
+
+<form (ngSubmit)="onFormSubmit()">
+<div class="row">
+  <label  class="col-sm-3 control-label">Project Number<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 ">
+    <input type="text" class="form-control" [(ngModel)]="model.projectNumber" name="project number">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Project Name<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" [(ngModel)]="model.name" name="project name">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Customer<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" [(ngModel)]="model.customer" name="customer">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Group<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3">
+    <select class="form-control" *ngFor="let group of groups" [(ngModel)]="model.groupId" name="group">
+      <option value="{{group.id}}" >{{group.name}}</option>
+    </select>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Members</label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" [(ngModel)]="membersInput" name="member">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Status<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 mt-2">
+    <select class="form-control" [(ngModel)]="model.status" name="status">
+      <option value="0">New</option>
+      <option value="1">Planned</option>
+      <option value="2">In progress</option>
+      <option value="3">Finished</option>
+    </select>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Start Date<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 mt-2">
+    <div class="input-group">
+      <input type="date" class="form-control" [(ngModel)]="model.startDate" name="start date">
+       <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+  </div>
+  <label class="col-sm-2 control-label" style="padding-left: 50px">End Date</label>
+  <div class="col-sm-3 mt-2">
+    <div class="input-group">
+      <input type="date" class="form-control" [(ngModel)]="model.endDate" name="end date">
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <div class="col-sm-6"></div>
+  <button class="btn btn-cancel col-sm-2 pt-1" type="button" [routerLink]="['project/list']">Cancel</button>
+  <button class="btn btn-create col-sm-2 pt-1" type="submit">Create Project</button>
+</div>
+</form>

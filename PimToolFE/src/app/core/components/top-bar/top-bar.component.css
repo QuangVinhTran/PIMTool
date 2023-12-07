@@ -1,0 +1,38 @@
+/*
+.top-bar-font {
+  font-family: "Segoe UI", sans-serif;
+  color: #666666;
+}
+
+.nav-link.disabled {
+  color: #0000004d;
+}
+
+*/
+
+
+.navbar-brand-name > img {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.navbar-brand-name{
+  display: inline-block;
+  margin: -5px 10px;
+}
+.nav-name {
+  padding-left: 30px;
+  font-family: "Segoe UI";
+  color: #666666;
+  font-weight: bold;
+  font-size: 18pt;
+
+}
+.container-fluid {
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-brand {
+  margin-left: 160px;
+}
+

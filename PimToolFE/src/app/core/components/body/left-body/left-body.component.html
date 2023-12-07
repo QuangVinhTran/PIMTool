@@ -1,0 +1,32 @@
+<!--
+<ul class="nav flex-column mt-3">
+  <li class="nav-item ">
+    <a class="nav-link" aria-current="page" [routerLink]="['project/list']"  >Project list</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-bs-toggle="dropdown">
+      New
+    </a>
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+    <li><a class="dropdown-item" [routerLink]="['project/create']" >Project</a></li>
+    <li><a class="dropdown-item disabled"  aria-disabled="true" href="#">Customer</a></li>
+    <li><a class="dropdown-item disabled"  aria-disabled="true" href="#" >Suplier</a></li>
+  </ul>
+  </li>
+</ul>
+-->
+<ul class="nav nav-pills nav-stacked " style="margin-top: 10px">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['project/list']" routerLinkActive="projectListActive">Project list</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+      New <span></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-left">
+      <li><a class="dropdown-item" [routerLink]="['project/create']" routerLinkActive="projectActive">Project</a></li>
+      <li class="disabled"><a class="dropdown-item" href="#">Customer</a></li>
+      <li class="disabled"><a class="dropdown-item" href="#">Supplier</a></li>
+    </ul>
+  </li>
+</ul>

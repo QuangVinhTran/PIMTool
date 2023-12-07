@@ -1,0 +1,40 @@
+.space {
+  height: 38px;
+}
+
+input, .form-select-sm {
+  height: 30px;
+}
+
+
+p {
+  font-family: "Segoe UI Semibold";
+  font-size: 18pt;
+  color: #666666;
+}
+
+label {
+  font-family: "Segoe UI Semibold";
+  font-size: 14pt;
+  color: #666666;
+}
+
+.btn{
+  height: 35px;
+  justify-content: center;
+}
+
+.btn-cancel {
+  background-color: #F2F2F2;
+  color: black;
+}
+
+.btn-create {
+  background-color: #0074CB;
+  color: white;
+  margin-left: 68px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
