@@ -1,0 +1,85 @@
+<div class="projects-list-layout">
+  <div class="title-container">
+    <h2>{{'PROJECT_LIST' | translate}}</h2>
+    <button *ngIf="allowExportFile" class="common-button" (click)="exportFile = true">Export to file</button>
+  </div>
+  <app-search-bar (searchProjectEvent)="setProjects()"></app-search-bar>
+  <div *ngIf="showAdvancedFilter" @open @close>
+    <app-advanced-filter></app-advanced-filter>
+  </div>
+  
+  <table>
+    <colgroup>
+      <col span="1" style="width: 3%">
+      <col span="1" style="width: 7%">
+      <col span="1" style="width: 40%">
+      <col span="1" style="width: 13%">
+      <col span="1" style="width: 18%">
+      <col span="1" style="width: 12%">
+      <col span="1" style="width: 7%">
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th></th>
+        <th (click)="addSort('projectNumber')">{{'NUMBER' | translate}}</th>
+        <th (click)="addSort('name')" [ngClass]="{'sort-ascending': true}">{{'NAME' | translate}}</th>
+        <th (click)="addSort('status')">{{'STATUS' | translate}}</th>
+        <th (click)="addSort('customer')">{{'CUSTOMER' | translate}}</th>
+        <th (click)="addSort('startDate')">{{'START_DATE' | translate}}</th>
+        <th>{{'DELETE' | translate}}</th>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="!isLoading">
+      <tr *ngFor="let project of projects">
+        <td>
+          <input type="checkbox"
+                 name="{{project.id}}"
+                 (click)="selectProject(project.id)"
+                 [checked]="isProjectSelected(project.id)"
+                 [disabled]="project.status.toUpperCase() !== 'NEW'">
+        </td>
+        <td>
+          <a routerLink="/project/update/{{project.projectNumber}}">{{project.projectNumber}}</a>
+        </td>
+        <td>{{project.name}}</td>
+        <td>{{project.status | resolveStatus | translate}}</td>
+        <td>{{project.customer}}</td>
+        <td>{{project.startDate | formatUtcDate}}</td>
+        <td>
+          <fa-icon [icon]="faTrash" *ngIf="project.status.toUpperCase() === 'NEW'" (click)="selectProjectToDelete(project.id, project.name)" class="fa-trash"></fa-icon>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot *ngIf="selectedProjects.length > 0">
+      <tr>
+        <td colspan="7">
+          <div class="delete-items-container">
+            <p>{{selectedProjects.length}} {{'ITEMS_SELECTED' | translate}}</p>
+            <div class="right-container">
+              <p>{{'DELETE_SELECTED_ITEMS' | translate}}</p>
+              <fa-icon [icon]="faTrash" class="fa-trash" (click)="showDeleteModal = true; singleDeletion = false;"></fa-icon>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <app-pagination [paginationStatus]="paginationStatus"
+                  (childEvent)="setProjects()"
+                  *ngIf="!isLoading && paginationStatus.lastPage > 1"
+                  class="pagination">
+  </app-pagination>
+  <p *ngIf="!isLoading && (!projects || projects.length === 0)" class="empty-msg">{{'EMPTY_PROJECT_LIST' | translate}}</p>
+  <app-loader *ngIf="isLoading"></app-loader>
+  <app-delete-confirmation *ngIf="showDeleteModal"
+                           [projectName]="projectToDelete.name"
+                           [isSingle]="singleDeletion"
+                           (cancelEvent)="cancelDelete()"
+                           (deleteEvent)="singleDeletion ? deleteSingleProject() : deleteMultipleProjects()"></app-delete-confirmation>
+</div>
+<div *ngIf="exportFile" @slideDown @slideUp style="position: absolute; top: 0; left: 0;">
+  <app-file-export (hide)="exportFile = false"></app-file-export>
+</div>

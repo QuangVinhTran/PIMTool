@@ -1,0 +1,52 @@
+<section class="advanced-filter">
+  <div class="content">
+    <div class="text-filter">
+      <div class="input-filter-field">
+        <label for="leaderName">{{'LEADER' | translate}}:</label>
+        <input [(ngModel)]="advancedFilter.leaderName"
+               (change)="updateFilter(AdvancedFilterFieldName.LeaderName)"
+               type="text"
+               id="leaderName"
+               placeholder="{{'LEADER_NAME' | translate}}">
+      </div>
+      <div class="input-filter-field">
+        <label for="member">{{'MEMBER' | translate}}:</label>
+        <input [(ngModel)]="advancedFilter.memberName"
+               (change)="updateFilter(AdvancedFilterFieldName.MemberName)"
+               type="text"
+               id="member"
+               placeholder="{{'MEMBER_NAME' | translate}}">
+      </div>
+    </div>
+    <div class="date-range">
+      <p class="date-range-label">{{'START_DATE' | translate}}:</p>
+      <div class="date-from">
+        <label for="startDateFrom">{{'FROM' | translate}}:</label>
+        <app-date-input [(date)]="advancedFilter.startDateRange.from"
+                        (change)="updateFilter(AdvancedFilterFieldName.StartDateFrom)"
+                        id="startDateFrom"></app-date-input>
+      </div>
+      <div class="date-to">
+        <label for="startDateTo">{{'TO' | translate}}:</label>
+        <app-date-input [(date)]="advancedFilter.startDateRange.to"
+                        (change)="updateFilter(AdvancedFilterFieldName.StartDateTo)"
+                        id="startDateTo"></app-date-input>
+      </div>
+    </div>
+    <div class="date-range">
+      <p class="date-range-label">{{'END_DATE' | translate}}:</p>
+      <div class="date-from">
+        <label for="endDateFrom">{{'FROM' | translate}}:</label>
+        <app-date-input [(date)]="advancedFilter.endDateRange.from"
+                        (change)="updateFilter(AdvancedFilterFieldName.EndDateFrom)"
+                        id="endDateFrom"></app-date-input>
+      </div>
+      <div class="date-to">
+        <label for="endDateTo">{{'TO' | translate}}:</label>
+        <app-date-input [(date)]="advancedFilter.endDateRange.to"
+                        (change)="updateFilter(AdvancedFilterFieldName.EndDateTo)"
+                        id="endDateTo"></app-date-input>
+      </div>
+    </div>
+  </div>
+</section>

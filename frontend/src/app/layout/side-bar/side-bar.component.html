@@ -1,0 +1,23 @@
+<nav class="nav">
+  <ul>
+    <li [ngClass]="{'active': currentRoute === routes.PROJECT_LIST}">
+      <a [routerLink]="[routes.PROJECT_LIST]">{{'PROJECT_LIST' | translate}}</a>
+    </li>
+
+    <li [ngClass]="{'active': currentRoute === routes.CREATE_PROJECT}">
+      <a [routerLink]="[routes.CREATE_PROJECT]">{{'NEW' | translate}}</a>
+    </li>
+
+    <li [ngClass]="{'active': currentRoute === routes.PROJECT}">
+      <a [routerLink]="[routes.PROJECT]">{{'PROJECT' | translate}}</a>
+    </li>
+
+    <li [ngClass]="{'active': currentRoute === routes.CUSTOMER}">
+      <a [routerLink]="[routes.CUSTOMER]">{{'CUSTOMER' | translate}}</a>
+    </li>
+
+    <li [ngClass]="{'active': currentRoute === routes.SUPPLIER}">
+      <a [routerLink]="[routes.SUPPLIER]">{{'SUPPLIER' | translate}}</a>
+    </li>
+  </ul>
+</nav>

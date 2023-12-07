@@ -1,0 +1,94 @@
+@import '../../../../styles';
+
+.projects-list-layout {
+  padding: 2rem 12rem 2rem 2rem;
+  font-size: $font-regular;
+  font-weight: $fw-semibold;
+  color: $text-faded;
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    h2 {
+      opacity: 0.5;
+    }
+  }
+  .empty-msg {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.5em;
+  }
+  table, th, tfoot {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  table {
+    width: 100%;
+    margin-top: 4rem;
+    thead {
+      height: 2rem;
+      th {
+        opacity: 0.5;
+        text-align: start;
+        padding-left: 1rem;
+        cursor: pointer;
+        &:last-child, &:first-child {
+          cursor: auto;
+        }
+        .sort-up {
+          margin-top: 5px;
+        }
+        .sort-down {
+          margin-bottom: 2px;
+        }
+      }
+    }
+    td {
+      text-align: start;
+      border-left: 1px solid black;
+      padding: 0.7rem 1rem;
+      input[type=checkbox] {
+        width: 15px;
+        height: 15px;
+      }
+      a, a:visited {
+        text-decoration: none;
+        color: inherit;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+    td:first-child, td:last-child {
+      text-align: center!important;
+    }
+    td:nth-child(2) {
+      text-align: end;
+    }
+    tfoot {
+      td {
+        .delete-items-container {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          color: $color-blue;
+          .right-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-right: 1.125rem;
+            color: red;
+          }
+        }
+      }
+    }
+  }
+  .fa-trash {
+    color: red;
+    cursor: pointer;
+  }
+}

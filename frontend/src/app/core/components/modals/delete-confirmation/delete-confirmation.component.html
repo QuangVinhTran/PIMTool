@@ -1,0 +1,11 @@
+<div class="delete-confirmation" *ngIf="showModal">
+  <div class="msg-container">
+    <fa-icon [icon]="faXmark" class="btn-close" (click)="cancel()"></fa-icon>
+    <p>{{isSingle ? 'Are you are to delete this project?' : 'Are you sure to delete selected projects?'}} </p>
+    <p *ngIf="isSingle">{{projectName}}</p>
+    <div class="btn-group">
+      <button class="btn-cancel" (click)="cancel()">Cancel</button>
+      <button class="btn-delete" (click)="delete()">Delete</button>
+    </div>
+  </div>
+</div>

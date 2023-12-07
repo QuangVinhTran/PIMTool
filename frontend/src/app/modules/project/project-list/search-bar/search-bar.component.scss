@@ -1,0 +1,46 @@
+@import '../../../../../styles';
+
+.search-bar {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+  .search-input {
+    padding: 0.325rem 1rem;
+    min-width: 23rem;
+    outline: none;
+    border: 1px solid gray;
+    font-weight: $fw-semibold;
+    opacity: $o-70;
+  }
+  select {
+    padding: 0.325rem;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    min-width: 12rem;
+    font-weight: $fw-semibold;
+    opacity: $o-70;
+  }
+  .button {
+    padding: 0.325rem 2rem;
+    font-weight: $fw-semibold;
+    border: none;
+    cursor: pointer;
+  }
+  .search-button {
+    color: whitesmoke;
+    background-color: $color-dark-blue;
+  }
+  .reset-button {
+    color: $color-blue;
+    background-color: transparent;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .show-advanced-filter{
+    cursor: pointer;
+  }
+}

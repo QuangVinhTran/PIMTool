@@ -1,0 +1,52 @@
+$loader-width: 6rem;
+$loader-height: 6rem;
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row;
+  width: 100%;
+  height: 100%;
+  h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: -2rem;
+  }
+  .loader {
+    width: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    margin-top: 5rem;
+    li {
+      font-size: 1.5rem;
+      color: #2f85fa;
+      position: absolute;
+      top: 0;
+      &:last-child {
+        animation: 2s ease-in-out slide-in infinite;
+      }
+      &:nth-child(3) {
+        animation: 2s ease-in-out 0.5s slide-in infinite;
+      }
+      &:nth-child(2) {
+        animation: 2s ease-in-out 1s slide-in infinite;
+      }
+      &:first-child {
+        animation: 2s ease-in-out 1.5s slide-in infinite;
+      }
+    }
+  }
+}
+
+@keyframes slide-in {
+  from {
+    right: 100%;
+  }
+  to {
+    right: 0;
+  }
+}

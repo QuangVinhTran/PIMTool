@@ -1,0 +1,19 @@
+<div class="search-bar">
+  <input type="text"
+         placeholder="{{'PROJECT_NUMBER_NAME_CUSTOMER' | translate}}"
+         [(ngModel)]="searchKeyword"
+         (keyup)="$event.key === 'Enter' && search()"
+         class="rounded search-input">
+
+  <select name="projectStatus" id="projectStatus" class="rounded" [(ngModel)]="projectStatus">
+    <option hidden selected value="">{{(currentProjectStatus && (currentProjectStatus | resolveStatus)) || 'PROJECT_STATUS' | translate}}</option>
+    <option value="NEW">{{'NEW' | resolveStatus | translate}}</option>
+    <option value="PLA">{{'PLA' | resolveStatus | translate}}</option>
+    <option value="INP">{{'INP' | resolveStatus | translate}}</option>
+    <option value="FIN">{{'FIN' | resolveStatus | translate}}</option>
+  </select>
+
+  <button class="button search-button rounded" type="button" (click)="search()">{{'SEARCH_PROJECT' | translate}}</button>
+  <button class="button reset-button rounded" type="button" (click)="resetSearch()">{{'RESET_SEARCH' | translate}}</button>
+  <p class="show-advanced-filter" (click)="store.dispatch(showAdvancedFilter())">{{'ADVANCED_FILTER' | translate}}</p>
+</div>

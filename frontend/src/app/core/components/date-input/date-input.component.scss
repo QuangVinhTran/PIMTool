@@ -1,0 +1,19 @@
+.date-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 0.25rem;
+  padding: 0 0.25rem;
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    z-index: -1;
+  }
+  .date-input {
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+  }
+  .date-icon {
+    cursor: pointer;
+  }
+}

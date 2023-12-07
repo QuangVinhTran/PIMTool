@@ -1,0 +1,123 @@
+<div class="pagination">
+  <ul class="">
+    <li (click)="toPreviousPage()" [ngClass]="{'disabled' : paginationStatus.pageIndex === 1}">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+    </li>
+    <ng-container *ngIf="paginationStatus.pageIndex < 5">
+      <li *ngFor="let i of [].constructor(Math.min(paginationStatus.lastPage, 5)); index as j"
+          [ngClass]="{'active': paginationStatus.pageIndex == j+1}"
+          (click)="setPage(j+1)">
+        <span matTooltip="{{j+1}}" matTooltipPosition="above">
+          {{j+1}}
+        </span>
+      </li>
+
+      <ng-container *ngIf="paginationStatus.lastPage > 5">
+        <li (mouseover)="changeNextMultiIcon()" (mouseleave)="resetIcon()" (click)="toNextMultiPage()">
+          <fa-icon [icon]="nextMultiPageIcon"></fa-icon>
+        </li>
+        <li (click)="setPage(paginationStatus.lastPage)">
+          <span matTooltip="{{paginationStatus.lastPage}}" matTooltipPosition="above">
+            {{paginationStatus.lastPage}}
+          </span>
+        </li>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="paginationStatus.pageIndex >= 5 && (paginationStatus.lastPage - paginationStatus.pageIndex > 4) && paginationStatus.lastPage > 5">
+      <li (click)="setPage(1)">
+        <span matTooltip="1" matTooltipPosition="above">1</span>
+      </li>
+
+      <li (mouseover)="changePrevMultiIcon()" (mouseleave)="resetIcon()" (click)="toPrevMultiPage()">
+        <fa-icon [icon]="prevMultiPageIcon"></fa-icon>
+      </li>
+
+      <li (click)="setPage(paginationStatus.pageIndex - 2)">
+        <span matTooltip="{{paginationStatus.pageIndex - 2}}" matTooltipPosition="above">
+          {{paginationStatus.pageIndex - 2}}
+        </span>
+      </li>
+
+      <li (click)="setPage(paginationStatus.pageIndex - 1)">
+        <span matTooltip="{{paginationStatus.pageIndex - 1}}" matTooltipPosition="above">
+          {{paginationStatus.pageIndex - 1}}
+        </span>
+      </li>
+
+      <li class="active">{{paginationStatus.pageIndex}}</li>
+
+      <li *ngIf="paginationStatus.lastPage > paginationStatus.pageIndex"
+          (click)="setPage(paginationStatus.pageIndex + 1)">
+        <span matTooltip="{{paginationStatus.pageIndex + 1}}" matTooltipPosition="above">
+          {{paginationStatus.pageIndex + 1}}
+        </span>
+      </li>
+
+      <li *ngIf="paginationStatus.lastPage - paginationStatus.pageIndex > 1"
+          (click)="setPage(paginationStatus.pageIndex +2)">
+        <span matTooltip="{{paginationStatus.pageIndex + 2}}" matTooltipPosition="above">
+          {{paginationStatus.pageIndex + 2}}</span>
+      </li>
+
+      <li (mouseover)="changeNextMultiIcon()"
+          (mouseleave)="resetIcon()"
+          (click)="toNextMultiPage()">
+        <fa-icon [icon]="nextMultiPageIcon"></fa-icon>
+      </li>
+
+      <li (click)="setPage(paginationStatus.lastPage)">
+        <span matTooltip="{{paginationStatus.lastPage}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage}}
+        </span>
+      </li>
+    </ng-container>
+
+    <ng-container *ngIf="(paginationStatus.lastPage - paginationStatus.pageIndex < 5) && paginationStatus.pageIndex > 5">
+      <li (click)="setPage(1)">
+        <span matTooltip="1" matTooltipPosition="above">1</span>
+      </li>
+      <li (mouseover)="changePrevMultiIcon()" (mouseleave)="resetIcon()" (click)="toPrevMultiPage()">
+        <fa-icon [icon]="prevMultiPageIcon"></fa-icon>
+      </li>
+      <li [ngClass]="{'active': paginationStatus.pageIndex == paginationStatus.lastPage - 4}"
+          (click)="setPage(paginationStatus.lastPage - 4)">
+        <span matTooltip="{{paginationStatus.lastPage - 4}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage - 4}}
+        </span>
+      </li>
+
+      <li [ngClass]="{'active': paginationStatus.pageIndex == paginationStatus.lastPage - 3}"
+          (click)="setPage(paginationStatus.lastPage - 3)">
+        <span matTooltip="{{paginationStatus.lastPage - 3}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage - 3}}
+        </span>
+      </li>
+
+      <li [ngClass]="{'active': paginationStatus.pageIndex == paginationStatus.lastPage - 2}"
+          (click)="setPage(paginationStatus.lastPage - 2)">
+        <span matTooltip="{{paginationStatus.lastPage - 2}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage - 2}}
+        </span>
+      </li>
+
+      <li [ngClass]="{'active': paginationStatus.pageIndex == paginationStatus.lastPage - 1}"
+          (click)="setPage(paginationStatus.lastPage - 1)">
+        <span matTooltip="{{paginationStatus.lastPage - 1}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage - 1}}
+        </span>
+      </li>
+
+      <li [ngClass]="{'active': paginationStatus.pageIndex == paginationStatus.lastPage}"
+          (click)="setPage(paginationStatus.lastPage)">
+        <span matTooltip="{{paginationStatus.lastPage}}" matTooltipPosition="above">
+          {{paginationStatus.lastPage}}
+        </span>
+      </li>
+    </ng-container>
+
+    <li (click)="toNextPage()" [ngClass]="{'disabled': paginationStatus.isLastPage}">
+      <fa-icon [icon]="faChevronRight"></fa-icon>
+    </li>
+  </ul>
+</div>

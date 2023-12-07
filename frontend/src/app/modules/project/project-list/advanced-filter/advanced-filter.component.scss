@@ -1,0 +1,55 @@
+@import "../../../../../styles";
+
+.advanced-filter {
+  overflow: hidden;
+  margin-top: 1rem;
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    .text-filter {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 4rem;
+      .input-filter-field {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        input {
+          padding: 0.325rem 1rem;
+          min-width: 15rem;
+          outline: none;
+          border: $border-gray;
+          font-weight: $fw-little-bold;
+          opacity: $o-70;
+          border-radius: 0.25rem;
+        }
+      }
+    }
+    .date-range {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      .date-range-label {
+        grid-column: 1 / 4;
+      }
+      .date-from {
+        grid-column: 4 / 7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+      .date-to {
+        grid-column: 8 / 11;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+  }
+}
