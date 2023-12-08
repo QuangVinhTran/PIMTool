@@ -24,14 +24,12 @@ namespace Application.Services
 
             var employee = _mapper.Map<Employee>(model);
 
-            //employee.Version = _unitOfWork.GetTimeStamp();
-
             await _unitOfWork.EmployeeRepository.AddAsync(employee);
 
             var isSuccess = await _unitOfWork.SaveChangeAsync() > 0;
             if (!isSuccess)
             {
-                throw new CreateException("Create fail !!!");
+                throw new CreateException("Create employee failed !!!");
             }
             else
             {
@@ -118,13 +116,6 @@ namespace Application.Services
             {
                 throw new NotFoundException($"Employe with id {id} not found");
             }
-
-            // Kiểm tra Version trước khi cập nhật
-            // if (!model.Version.SequenceEqual(existingEmployee.Version))
-            // {
-            //     response = ServiceResponse<UpdateEmployeeViewModel>.ErrorResult("Conflict: Employee data has been updated by another user.");
-            //     return response;
-            // }
 
             var employeeUpdate = _mapper.Map(model, existingEmployee);
             //employeeUpdate.Version = _unitOfWork.GetTimeStamp();

@@ -40,6 +40,7 @@ namespace Domain.Tests
             _mapperConfig = mappingConfig.CreateMapper();
 
             _fixture = new Fixture();
+            _fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
             _fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
             _unitOfWorkMock = new Mock<IUnitOfWork>();

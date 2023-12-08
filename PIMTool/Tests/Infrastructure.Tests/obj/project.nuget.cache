@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M6tbZWU8Th2sayj2rzkcCNEmFuKMSa0fMYadBiRYylX6NtWJyj9RhLCdRhq4ftDEIDr5YBK6hz4fngVMZpMvEg==",
+  "dgSpecHash": "A9+FTaSfjN9575dZ8/5WSG5CtCeKKde7GjpCL4qIBRWNNu7rY1YCN0ywnLH42TyrxvjeXAClYsLD9IOdPvMZtw==",
   "success": true,
-  "projectFilePath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Infrastructure.Tests/Infrastructure.Tests.csproj",
+  "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Infrastructure.Tests/Infrastructure.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/thinhtran/.nuget/packages/autofixture/4.18.1/autofixture.4.18.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
@@ -11,6 +11,7 @@
     "/Users/thinhtran/.nuget/packages/azure.identity/1.6.0/azure.identity.1.6.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/coverlet.collector/3.2.0/coverlet.collector.3.2.0.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/coverlet.msbuild/6.0.0/coverlet.msbuild.6.0.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/fare/2.1.1/fare.2.1.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/fluentassertions/6.12.0/fluentassertions.6.12.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.2/microsoft.aspnetcore.authentication.jwtbearer.7.0.2.nupkg.sha512",

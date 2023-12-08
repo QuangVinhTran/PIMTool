@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RsluaaPbQe0VqV4ouP1PmxgCBmUMtzxXx08cUY3BC3hV2oOFWmbvpqHVUkzVzSRMUdYpRIF+dRu0hsRwoLFiaA==",
+  "dgSpecHash": "YXvk1WKasRqA9dfKbL0OhWzJl/LcBwMfIsgwjceZUwe2lK45KDCynSZtr8NDrX7E8bUHUxsCrZynmg7zvufuuw==",
   "success": true,
-  "projectFilePath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
+  "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/thinhtran/.nuget/packages/autofixture/4.18.1/autofixture.4.18.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",

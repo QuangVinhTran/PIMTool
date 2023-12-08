@@ -1,10 +1,12 @@
 ﻿using System;
+using Application.Commons;
 using Application.Interfaces.Repositories;
 using AutoFixture;
 using Domain.Entities;
 using Domain.Tests;
 using FluentAssertions;
 using Infrastructures.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Tests.Repositories
 {
@@ -66,9 +68,11 @@ namespace Infrastructure.Tests.Repositories
             var mockData = _fixture.Build<Employee>().Create();
 
             await _repository.AddAsync(mockData);
-            var result = await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-            result.Should().Be(1);
+            var addedEntity = await _dbContext.Employees.FirstOrDefaultAsync(e => e.Id == mockData.Id);
+
+            addedEntity.Should().NotBeNull();
         }
 
         [Fact]
@@ -77,9 +81,10 @@ namespace Infrastructure.Tests.Repositories
             var mockData = _fixture.Build<Employee>().CreateMany(10).ToList();
 
             await _repository.AddRangeAsync(mockData);
-            var result = await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-            result.Should().Be(10);
+            var count = await _dbContext.Employees.CountAsync();
+            count.Should().Be(10);
         }
 
         [Fact]
@@ -91,9 +96,10 @@ namespace Infrastructure.Tests.Repositories
 
             _repository.Delete(mockData);
 
-            var result = await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-            result.Should().Be(1);
+            var exists = await _dbContext.Employees.AnyAsync(x => x.Id == mockData.Id);
+            exists.Should().BeFalse();
         }
 
         [Fact]
@@ -116,35 +122,35 @@ namespace Infrastructure.Tests.Repositories
             await _dbContext.Employees.AddRangeAsync(mockData);
             await _dbContext.SaveChangesAsync();
 
-            var paginasion = await _repository.ToPagination();
+            var pagination = await _repository.ToPagination(0, 10);
 
-            paginasion.Previous.Should().BeFalse();
-            paginasion.Next.Should().BeTrue();
-            paginasion.Items.Count.Should().Be(10);
-            paginasion.TotalItemsCount.Should().Be(45);
-            paginasion.TotalPagesCount.Should().Be(5);
-            paginasion.PageIndex.Should().Be(0);
-            paginasion.PageSize.Should().Be(10);
+            pagination.Previous.Should().BeFalse();
+            pagination.Next.Should().BeTrue();
+            pagination.Items.Count.Should().Be(10);
+            pagination.TotalItemsCount.Should().Be(45);
+            pagination.TotalPagesCount.Should().Be(5);
+            pagination.PageIndex.Should().Be(0);
+            pagination.PageSize.Should().Be(10);
         }
 
         [Fact]
-        public async Task GenericRepository_ToPagination_ShouldReturnCorrectDataSecoundPage()
+        public async Task GenericRepository_ToPagination_ShouldReturnCorrectDataSecondPage()
         {
             var mockData = _fixture.Build<Employee>().CreateMany(45).ToList();
             await _dbContext.Employees.AddRangeAsync(mockData);
             await _dbContext.SaveChangesAsync();
 
 
-            var paginasion = await _repository.ToPagination(1, 20);
+            var pagination = await _repository.ToPagination(1, 20);
 
 
-            paginasion.Previous.Should().BeTrue();
-            paginasion.Next.Should().BeTrue();
-            paginasion.Items.Count.Should().Be(20);
-            paginasion.TotalItemsCount.Should().Be(45);
-            paginasion.TotalPagesCount.Should().Be(3);
-            paginasion.PageIndex.Should().Be(1);
-            paginasion.PageSize.Should().Be(20);
+            pagination.Previous.Should().BeTrue();
+            pagination.Next.Should().BeTrue();
+            pagination.Items.Count.Should().Be(20);
+            pagination.TotalItemsCount.Should().Be(45);
+            pagination.TotalPagesCount.Should().Be(3);
+            pagination.PageIndex.Should().Be(1);
+            pagination.PageSize.Should().Be(20);
         }
 
         [Fact]
@@ -155,30 +161,30 @@ namespace Infrastructure.Tests.Repositories
             await _dbContext.SaveChangesAsync();
 
 
-            var paginasion = await _repository.ToPagination(2, 20);
+            var pagination = await _repository.ToPagination(2, 20);
 
 
-            paginasion.Previous.Should().BeTrue();
-            paginasion.Next.Should().BeFalse();
-            paginasion.Items.Count.Should().Be(5);
-            paginasion.TotalItemsCount.Should().Be(45);
-            paginasion.TotalPagesCount.Should().Be(3);
-            paginasion.PageIndex.Should().Be(2);
-            paginasion.PageSize.Should().Be(20);
+            pagination.Previous.Should().BeTrue();
+            pagination.Next.Should().BeFalse();
+            pagination.Items.Count.Should().Be(5);
+            pagination.TotalItemsCount.Should().Be(45);
+            pagination.TotalPagesCount.Should().Be(3);
+            pagination.PageIndex.Should().Be(2);
+            pagination.PageSize.Should().Be(20);
         }
 
         [Fact]
         public async Task GenericRepository_ToPagination_ShouldReturnWithoutData()
         {
-            var paginasion = await _repository.ToPagination();
+            var pagination = await _repository.ToPagination();
 
-            paginasion.Previous.Should().BeFalse();
-            paginasion.Next.Should().BeFalse();
-            paginasion.Items.Count.Should().Be(0);
-            paginasion.TotalItemsCount.Should().Be(0);
-            paginasion.TotalPagesCount.Should().Be(0);
-            paginasion.PageIndex.Should().Be(0);
-            paginasion.PageSize.Should().Be(5);
+            pagination.Previous.Should().BeFalse();
+            pagination.Next.Should().BeFalse();
+            pagination.Items.Count.Should().Be(0);
+            pagination.TotalItemsCount.Should().Be(0);
+            pagination.TotalPagesCount.Should().Be(0);
+            pagination.PageIndex.Should().Be(0);
+            pagination.PageSize.Should().Be(5);
         }
 
     }

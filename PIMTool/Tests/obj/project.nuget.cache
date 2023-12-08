@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bV/61pwZib1PlQFyemBEAYz2/UEs9fuozWG+Sa3RZHCJ0Gr6E/o//V+L0aNgO983573wu4bASbkeSqOsQ06GAw==",
+  "dgSpecHash": "jkS2wh94HVYoLeDKuL0nlcFYT/+9AwxNGs/JWbCUd5DXFddLAUICkjUocv4o48cMyVZjRc0ZOcTIOb9YJzn74w==",
   "success": true,
-  "projectFilePath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Tests.csproj",
+  "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Tests.csproj",
   "expectedPackageFiles": [
     "/Users/thinhtran/.nuget/packages/coverlet.collector/3.2.0/coverlet.collector.3.2.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.codecoverage/17.7.1/microsoft.codecoverage.17.7.1.nupkg.sha512",

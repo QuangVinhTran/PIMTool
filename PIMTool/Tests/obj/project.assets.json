@@ -5516,11 +5516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Tests.csproj",
+      "projectUniqueName": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Tests.csproj",
       "projectName": "Tests",
-      "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Tests.csproj",
+      "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Tests.csproj",
       "packagesPath": "/Users/thinhtran/.nuget/packages/",
-      "outputPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/obj/",
+      "outputPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thinhtran/.nuget/NuGet/NuGet.Config"

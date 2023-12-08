@@ -8471,11 +8471,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
+      "projectUniqueName": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
       "projectName": "Domain.Tests",
-      "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
+      "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Domain.Tests/Domain.Tests.csproj",
       "packagesPath": "/Users/thinhtran/.nuget/packages/",
-      "outputPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Tests/Domain.Tests/obj/",
+      "outputPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Domain.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thinhtran/.nuget/NuGet/NuGet.Config"
@@ -8491,14 +8491,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Application/Application.csproj": {
-              "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Application/Application.csproj"
+            "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Application/Application.csproj": {
+              "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Application/Application.csproj"
             },
-            "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj": {
-              "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj"
+            "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj": {
+              "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj"
             },
-            "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Infrastructures/Infrastructures.csproj": {
-              "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Infrastructures/Infrastructures.csproj"
+            "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj": {
+              "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj"
             }
           }
         }

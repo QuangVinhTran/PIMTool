@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "84kdwdV6Brihsl3TTmu5mDChDpUlGtaRzXe7ZM/oTR0HHjzN9Vh46GSb87F2Pai11ea2XX53vALYPLuY2X2HTg==",
+  "dgSpecHash": "dnOChnlFUcW25CXmduNVOBU2aUQGgE232/sL1prM4gZfdlMoxtK7td/wI30r45K7Jk5dMQ3hwCty5m0/NdsmZA==",
   "success": true,
-  "projectFilePath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/WebAPI/WebAPI.csproj",
+  "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/WebAPI/WebAPI.csproj",
   "expectedPackageFiles": [
     "/Users/thinhtran/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
@@ -116,16 +116,5 @@
     "/Users/thinhtran/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Newtonsoft.Json' 9.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-5crp-9r3c-p9vr",
-      "libraryId": "Newtonsoft.Json",
-      "targetGraphs": [
-        "net7.0"
-      ]
-    }
-  ]
+  "logs": []
 }

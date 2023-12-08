@@ -20,7 +20,6 @@ namespace Infrastructures.Repositories
             await _set.AddAsync(entity, cancellationToken);
         }
 
-
         public async Task<IEnumerable<ProjectEmployee>> SearchProjectEmployeeById(int searchTerm, CancellationToken cancellationToken = default)
         {
             IQueryable<ProjectEmployee> query = _pimContext.ProjectEmployees;
@@ -35,6 +34,5 @@ namespace Infrastructures.Repositories
             var entitiesToRemove = await _set.Where(x => ids.Contains(x.EmployeeId)).ToListAsync(cancellationToken);
             _set.RemoveRange(entitiesToRemove);
         }
-
     }
 }

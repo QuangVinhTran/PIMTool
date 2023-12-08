@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj": {}
+    "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj": {}
   },
   "projects": {
-    "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj": {
+    "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj",
+        "projectUniqueName": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/Domain.csproj",
+        "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/Domain.csproj",
         "packagesPath": "/Users/thinhtran/.nuget/packages/",
-        "outputPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Domain/obj/",
+        "outputPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/thinhtran/.nuget/NuGet/NuGet.Config"

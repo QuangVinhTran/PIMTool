@@ -30,4 +30,10 @@
     <ProjectReference Include="..\..\Apis\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\Apis\Infrastructures\Infrastructures.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Customized\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Customized\" />
+  </ItemGroup>
 </Project>

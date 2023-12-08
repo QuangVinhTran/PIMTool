@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "i59rW60q3JuAFPBpJ5rmyHJC6JmybmQhHefjokizdV8Js4gSqv2QnSRtHc4rxkwzRMbnCkzju8+ChoHAqKZsDw==",
+  "dgSpecHash": "uAJ57ut8WPjrWb+Sql/29aV8mj3wtgJSYx8UuaivGWiKt972b74XyFCuDvD1uMF2sXjA1awLzCGh4/1IdR+dAA==",
   "success": true,
-  "projectFilePath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Infrastructures/Infrastructures.csproj",
+  "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj",
   "expectedPackageFiles": [
     "/Users/thinhtran/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.0/automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

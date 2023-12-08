@@ -23,8 +23,6 @@ namespace Application.Services
 
             var group = _mapper.Map<Group>(model);
 
-            //group.Version = _unitOfWork.GetTimeStamp();
-
             await _unitOfWork.GroupRepository.AddAsync(group);
 
             var isSuccess = await _unitOfWork.SaveChangeAsync() > 0;
@@ -51,7 +49,6 @@ namespace Application.Services
                 response = ServiceResponse<bool>.NotFoundResult("Group");
                 return response;
             }
-
 
             _unitOfWork.GroupRepository.Delete(exist);
 
@@ -118,15 +115,7 @@ namespace Application.Services
                 return response;
             }
 
-            // Kiểm tra Version trước khi cập nhật
-            // if (!model.Version.SequenceEqual(existingGroup.Version))
-            // {
-            //     response = ServiceResponse<UpdateGroupViewModel>.ErrorResult("Conflict: Group data has been updated by another user.");
-            //     return response;
-            // }
-
             var groupUpdate = _mapper.Map(model, existingGroup);
-            //groupUpdate.Version = _unitOfWork.GetTimeStamp();
             _unitOfWork.GroupRepository.Update(groupUpdate);
 
             var updated = _mapper.Map<UpdateGroupViewModel>(groupUpdate);

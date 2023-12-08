@@ -6325,11 +6325,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/WebAPI/WebAPI.csproj",
+      "projectUniqueName": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/WebAPI/WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/WebAPI/WebAPI.csproj",
+      "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/WebAPI/WebAPI.csproj",
       "packagesPath": "/Users/thinhtran/.nuget/packages/",
-      "outputPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/WebAPI/obj/",
+      "outputPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/WebAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/thinhtran/.nuget/NuGet/NuGet.Config"
@@ -6345,8 +6345,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Infrastructures/Infrastructures.csproj": {
-              "projectPath": "/Users/thinhtran/Documents/ELCA-Resource-PIMTool/PIMTool/src/PIMTool/Apis/Infrastructures/Infrastructures.csproj"
+            "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj": {
+              "projectPath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj"
             }
           }
         }

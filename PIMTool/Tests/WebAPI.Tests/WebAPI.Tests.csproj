@@ -20,6 +20,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.14" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Apis\WebAPI\WebAPI.csproj" />
+    <ProjectReference Include="..\Domain.Tests\Domain.Tests.csproj" />
+  </ItemGroup>
 </Project>
