@@ -226,7 +226,7 @@ namespace Application.Services
             return response;
         }
 
-        public async Task<Pagination<ProjectViewModel>> FilterProjectsAsync(string searchTerm, StatusEnum? status, int pageIndex, int pageSize = 5, CancellationToken cancellationToken = default)
+        public async Task<Pagination<ProjectViewModel>> FilterProjectsAsync(string? searchTerm, StatusEnum? status, int pageIndex, int pageSize = 5, CancellationToken cancellationToken = default)
         {
             var filteredProjects = await _unitOfWork.ProjectRepository.FilterProjectsAsync(searchTerm, status);
 

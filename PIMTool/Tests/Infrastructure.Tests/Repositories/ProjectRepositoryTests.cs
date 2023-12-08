@@ -2,22 +2,26 @@
 using Application.Interfaces.Repositories;
 using AutoFixture;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Tests;
 using Domain.Tests.Customized;
 using FluentAssertions;
+using Infrastructures;
 using Infrastructures.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 
 namespace Infrastructure.Tests.Repositories
 {
-	public class ProjectRepositoryTests : SetupTest
-	{
-		private readonly IProjectRepository _projectRepository;
-		public ProjectRepositoryTests()
-		{
-			_projectRepository = new ProjectRepository(
-				_dbContext);
-		}
+    public class ProjectRepositoryTests : SetupTest
+    {
+        private readonly IProjectRepository _projectRepository;
+
+        public ProjectRepositoryTests()
+        {
+            _projectRepository = new ProjectRepository(
+                _dbContext);
+        }
 
         [Fact]
         public async Task ProjectRepository_AddAsync_ShouldReturnCorrectData()
@@ -178,6 +182,43 @@ namespace Infrastructure.Tests.Repositories
             // Assert
             result.Should().BeEmpty();
         }
+
+        [Fact]
+        public async void ProjectRepository_IsProjectNumberExists_ShouldReturnTrue_WhenProjectExists()
+        {
+            // arrange
+            var fixture = new CustomizedFixture();
+            var project = fixture.Create<Project>();
+            await _dbContext.Projects.AddRangeAsync(project);
+            await _dbContext.SaveChangesAsync();
+
+            // act
+            var result = _projectRepository.IsProjectNumberExists(project.ProjectNumber);
+
+            // assert
+            result.Should().BeTrue();
+        }
+
+        [Fact]
+        public async Task ProjectRepository_FilterProjectsAsync_Should_ReturnCorrectData()
+        {
+            // Arrange
+            var fixture = new CustomizedFixture();
+            var project = fixture.Create<Project>();
+
+            project.Name = "Project Test";
+            project.Status = StatusEnum.INP;
+            await _dbContext.Projects.AddAsync(project);
+            await _dbContext.SaveChangesAsync();
+
+            var searchTerm = "Project Test";
+            var status = StatusEnum.INP;
+            // Act
+            var result = await _projectRepository.FilterProjectsAsync(searchTerm, status);
+
+            // Assert
+            result.Should().NotBeNullOrEmpty();
+            result.Should().HaveCount(1);
+        }
     }
 }
-

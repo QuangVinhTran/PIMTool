@@ -32,44 +32,12 @@ namespace Infrastructures.Repositories
             return null;
         }
 
-        public async Task<IEnumerable<Project>> GetProjectsByStatusAsync(StatusEnum status)
-        {
-            return await _context.Projects.Where(p => p.Status == status).ToListAsync();
-        }
-
         public bool IsProjectNumberExists(int projectNumber)
         {
             IQueryable<Project> query = base.Get();
             var isExist = query.Any(x => x.ProjectNumber == projectNumber);
 
             return isExist;
-        }
-
-        public async Task<IEnumerable<Project>> SearchProjectAsync(string name, int? projectNumber, string? customer, StatusEnum? status)
-        {
-            IQueryable<Project> query = base.Get();
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                query = query.Where(x => x.Name.Contains(name));
-            }
-
-            if (projectNumber.HasValue)
-            {
-                query = query.Where(x => x.ProjectNumber == projectNumber.Value);
-            }
-
-            if (!string.IsNullOrEmpty(customer))
-            {
-                query = query.Where(x => x.Customer.Contains(customer));
-            }
-
-            if (status.HasValue)
-            {
-                query = query.Where(x => x.Status == status.Value);
-            }
-
-            return await query.OrderBy(x => x.ProjectNumber).ToListAsync();
         }
 
         public async Task<IEnumerable<Project>> FilterProjectsAsync(string searchTerm, StatusEnum? status)
@@ -92,22 +60,5 @@ namespace Infrastructures.Repositories
                             .OrderBy(x => x.ProjectNumber)
                             .ToListAsync();
         }
-
-        public async Task<IEnumerable<Project>> SearchProjectAsync(string searchTerm)
-        {
-            IQueryable<Project> query = _context.Projects;
-
-            if (!string.IsNullOrWhiteSpace(searchTerm))
-            {
-                query = query.Where(x => x.Name.Contains(searchTerm) ||
-                                    x.ProjectNumber.ToString().Contains(searchTerm) ||
-                                    x.Customer.Contains(searchTerm));
-            }
-
-            return await query
-                            .OrderBy(x => x.ProjectNumber)
-                            .ToListAsync();
-        }
-
     }
 }
