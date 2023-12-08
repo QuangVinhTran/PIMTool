@@ -11,8 +11,8 @@ using Moq;
 
 namespace Domain.Tests
 {
-	public class SetupTest : IDisposable
-	{
+    public class SetupTest : IDisposable
+    {
         protected readonly IMapper _mapperConfig;
         protected readonly Fixture _fixture;
         protected readonly Mock<IUnitOfWork> _unitOfWorkMock;
@@ -32,7 +32,7 @@ namespace Domain.Tests
         protected readonly PimContext _dbContext;
 
         public SetupTest()
-		{
+        {
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new MapperConfigurationsProfile());
@@ -61,7 +61,6 @@ namespace Domain.Tests
                 .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
             _dbContext = new PimContext(options);
-
         }
 
         public void Dispose()
@@ -70,4 +69,3 @@ namespace Domain.Tests
         }
     }
 }
-

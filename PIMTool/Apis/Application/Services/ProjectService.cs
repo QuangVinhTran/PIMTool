@@ -226,64 +226,6 @@ namespace Application.Services
             return response;
         }
 
-        public async Task<ServiceResponse<IEnumerable<ProjectViewModel>>> GetProjects()
-        {
-            var _response = new ServiceResponse<IEnumerable<ProjectViewModel>>();
-
-            var projects = await _unitOfWork.ProjectRepository.GetAllAsync();
-
-            if (projects is null)
-            {
-                throw new NotFoundException("Projects not found ");
-            }
-
-            var projectDtos = projects.Select(x => _mapper.Map<ProjectViewModel>(x)).ToList();
-
-            _response = ServiceResponse<IEnumerable<ProjectViewModel>>.SuccessResult(projectDtos, "Projects retrieved successfully");
-
-            return _response;
-        }
-
-        public async Task<Pagination<ProjectViewModel>> GetProjectsByStatus(StatusEnum status, int pageIndex = 0, int pageSize = 5)
-        {
-            var filteredProjects = await _unitOfWork.ProjectRepository.GetProjectsByStatusAsync(status);
-
-            if (filteredProjects is null) throw new NotFoundException("Filtered projects is null");
-
-            // Thực hiện phân trang cho danh sách đã lọc
-            var paginatedProjects = filteredProjects.Skip(pageIndex * pageSize).Take(pageSize).ToList();
-
-            var result = new Pagination<ProjectViewModel>
-            {
-                TotalItemsCount = filteredProjects.Count(),
-                PageSize = pageSize,
-                PageIndex = pageIndex,
-                Items = _mapper.Map<List<ProjectViewModel>>(paginatedProjects)
-            };
-
-            return result;
-        }
-
-        public async Task<Pagination<ProjectViewModel>> SearchProjectAsync(string searchTerm, int pageIndex = 0, int pageSize = 5, CancellationToken cancellationToken = default)
-        {
-            var filteredProjects = await _unitOfWork.ProjectRepository.SearchProjectAsync(searchTerm);
-
-            if (filteredProjects is null) throw new NotFoundException("Filtered projects is null");
-
-            // Thực hiện phân trang cho danh sách đã lọc
-            var paginatedProjects = filteredProjects.Skip(pageIndex * pageSize).Take(pageSize).ToList();
-
-            var result = new Pagination<ProjectViewModel>
-            {
-                TotalItemsCount = filteredProjects.Count(),
-                PageSize = pageSize,
-                PageIndex = pageIndex,
-                Items = _mapper.Map<List<ProjectViewModel>>(paginatedProjects)
-            };
-
-            return result;
-        }
-
         public async Task<Pagination<ProjectViewModel>> FilterProjectsAsync(string searchTerm, StatusEnum? status, int pageIndex, int pageSize = 5, CancellationToken cancellationToken = default)
         {
             var filteredProjects = await _unitOfWork.ProjectRepository.FilterProjectsAsync(searchTerm, status);
@@ -401,14 +343,3 @@ namespace Application.Services
         }
     }
 }
-
-
-/*
-
-    ban dau currentProjectEmployeeId la 31, 1033, 32
-    ban dau co selectedEmployeeId la: 31, 1033, 7 => nghia la xoa 32 roi
-                                                 nghia la 7 chua co => add vo database thang 7 => done
-
-    => them 1 list selectedEmployeeIdToRemove => phai add thang 32 vo
-
-*/

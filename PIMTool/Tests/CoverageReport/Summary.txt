@@ -1,0 +1,357 @@
+Summary
+  Generated on: 08/12/2023 - 16:16:50
+  Coverage date: 08/12/2023 - 16:00:25 - 08/12/2023 - 16:00:41
+  Parser: MultiReport (4x Cobertura)
+  Assemblies: 29
+  Classes: 281
+  Files: 130
+  Line coverage: 1.1%
+  Covered lines: 257
+  Uncovered lines: 21221
+  Coverable lines: 21478
+  Total lines: 9106
+  Branch coverage: 0.4% (5 of 1163)
+  Covered branches: 5
+  Total branches: 1163
+  Method coverage: 4.8% (86 of 1767)
+  Covered methods: 86
+  Total methods: 1767
+
+Application                                                            5.5%
+  Application.Commons.AppConfiguration                                 0.0%
+  Application.Commons.Pagination<T>                                  100.0%
+  Application.Commons.ServiceResponse.ServiceResponse<T>               0.0%
+  Application.Exceptions.BadRequestException                           0.0%
+  Application.Exceptions.CreateException                               0.0%
+  Application.Exceptions.DeleteException                               0.0%
+  Application.Exceptions.NotFoundException                             0.0%
+  Application.Exceptions.ProjectNumberAlreadyExistsException           0.0%
+  Application.Exceptions.ValidationException                           0.0%
+  Application.Services.EmployeeService                                 0.0%
+  Application.Services.GroupService                                    0.0%
+  Application.Services.ProjectEmployeeService                          0.0%
+  Application.Services.ProjectService                                  0.0%
+  Application.Utils.StringUtils                                        0.0%
+  Application.ViewModels.EmployeeViewModels.CreateEmployeeViewModel    0.0%
+  Application.ViewModels.EmployeeViewModels.EmployeeViewModel        100.0%
+  Application.ViewModels.EmployeeViewModels.UpdateEmployeeViewModel    0.0%
+  Application.ViewModels.GroupViewModels.CreateGroupViewModel          0.0%
+  Application.ViewModels.GroupViewModels.GroupViewModel              100.0%
+  Application.ViewModels.GroupViewModels.UpdateGroupViewModel          0.0%
+  Application.ViewModels.ProjectViewModels.CreateProjectViewModel      0.0%
+  Application.ViewModels.ProjectViewModels.ProjectViewModel          100.0%
+  Application.ViewModels.ProjectViewModels.UpdateProjectViewModel      0.0%
+
+Application 2                                                          0.0%
+  Application.Commons.AppConfiguration                                 0.0%
+  Application.Commons.Pagination<T>                                    0.0%
+  Application.Commons.ServiceResponse.ServiceResponse<T>               0.0%
+  Application.Exceptions.BadRequestException                           0.0%
+  Application.Exceptions.CreateException                               0.0%
+  Application.Exceptions.DeleteException                               0.0%
+  Application.Exceptions.NotFoundException                             0.0%
+  Application.Exceptions.ProjectNumberAlreadyExistsException           0.0%
+  Application.Exceptions.ValidationException                           0.0%
+  Application.Services.EmployeeService                                 0.0%
+  Application.Services.GroupService                                    0.0%
+  Application.Services.ProjectEmployeeService                          0.0%
+  Application.Services.ProjectService                                  0.0%
+  Application.Utils.StringUtils                                        0.0%
+  Application.ViewModels.EmployeeViewModels.CreateEmployeeViewModel    0.0%
+  Application.ViewModels.EmployeeViewModels.EmployeeViewModel          0.0%
+  Application.ViewModels.EmployeeViewModels.UpdateEmployeeViewModel    0.0%
+  Application.ViewModels.GroupViewModels.CreateGroupViewModel          0.0%
+  Application.ViewModels.GroupViewModels.GroupViewModel                0.0%
+  Application.ViewModels.GroupViewModels.UpdateGroupViewModel          0.0%
+  Application.ViewModels.ProjectViewModels.CreateProjectViewModel      0.0%
+  Application.ViewModels.ProjectViewModels.ProjectViewModel            0.0%
+  Application.ViewModels.ProjectViewModels.UpdateProjectViewModel      0.0%
+
+Application 3                                                          0.0%
+  Application.Commons.AppConfiguration                                 0.0%
+  Application.Commons.Pagination<T>                                    0.0%
+  Application.Commons.ServiceResponse.ServiceResponse<T>               0.0%
+  Application.Exceptions.BadRequestException                           0.0%
+  Application.Exceptions.CreateException                               0.0%
+  Application.Exceptions.DeleteException                               0.0%
+  Application.Exceptions.NotFoundException                             0.0%
+  Application.Exceptions.ProjectNumberAlreadyExistsException           0.0%
+  Application.Exceptions.ValidationException                           0.0%
+  Application.Services.EmployeeService                                 0.0%
+  Application.Services.GroupService                                    0.0%
+  Application.Services.ProjectEmployeeService                          0.0%
+  Application.Services.ProjectService                                  0.0%
+  Application.Utils.StringUtils                                        0.0%
+  Application.ViewModels.EmployeeViewModels.CreateEmployeeViewModel    0.0%
+  Application.ViewModels.EmployeeViewModels.EmployeeViewModel          0.0%
+  Application.ViewModels.EmployeeViewModels.UpdateEmployeeViewModel    0.0%
+  Application.ViewModels.GroupViewModels.CreateGroupViewModel          0.0%
+  Application.ViewModels.GroupViewModels.GroupViewModel                0.0%
+  Application.ViewModels.GroupViewModels.UpdateGroupViewModel          0.0%
+  Application.ViewModels.ProjectViewModels.CreateProjectViewModel      0.0%
+  Application.ViewModels.ProjectViewModels.ProjectViewModel            0.0%
+  Application.ViewModels.ProjectViewModels.UpdateProjectViewModel      0.0%
+
+Application 4                                                          0.0%
+  Application.Commons.AppConfiguration                                 0.0%
+  Application.Commons.Pagination<T>                                    0.0%
+  Application.Commons.ServiceResponse.ServiceResponse<T>               0.0%
+  Application.Exceptions.BadRequestException                           0.0%
+  Application.Exceptions.CreateException                               0.0%
+  Application.Exceptions.DeleteException                               0.0%
+  Application.Exceptions.NotFoundException                             0.0%
+  Application.Exceptions.ProjectNumberAlreadyExistsException           0.0%
+  Application.Exceptions.ValidationException                           0.0%
+  Application.Services.EmployeeService                                 0.0%
+  Application.Services.GroupService                                    0.0%
+  Application.Services.ProjectEmployeeService                          0.0%
+  Application.Services.ProjectService                                  0.0%
+  Application.Utils.StringUtils                                        0.0%
+  Application.ViewModels.EmployeeViewModels.CreateEmployeeViewModel    0.0%
+  Application.ViewModels.EmployeeViewModels.EmployeeViewModel          0.0%
+  Application.ViewModels.EmployeeViewModels.UpdateEmployeeViewModel    0.0%
+  Application.ViewModels.GroupViewModels.CreateGroupViewModel          0.0%
+  Application.ViewModels.GroupViewModels.GroupViewModel                0.0%
+  Application.ViewModels.GroupViewModels.UpdateGroupViewModel          0.0%
+  Application.ViewModels.ProjectViewModels.CreateProjectViewModel      0.0%
+  Application.ViewModels.ProjectViewModels.ProjectViewModel            0.0%
+  Application.ViewModels.ProjectViewModels.UpdateProjectViewModel      0.0%
+
+Application 5                                                          0.0%
+  Application.Commons.AppConfiguration                                 0.0%
+  Application.Commons.Pagination<T>                                    0.0%
+  Application.Commons.ServiceResponse.ServiceResponse<T>               0.0%
+  Application.Exceptions.BadRequestException                           0.0%
+  Application.Exceptions.CreateException                               0.0%
+  Application.Exceptions.DeleteException                               0.0%
+  Application.Exceptions.NotFoundException                             0.0%
+  Application.Exceptions.ProjectNumberAlreadyExistsException           0.0%
+  Application.Exceptions.ValidationException                           0.0%
+  Application.Services.EmployeeService                                 0.0%
+  Application.Services.GroupService                                    0.0%
+  Application.Services.ProjectEmployeeService                          0.0%
+  Application.Services.ProjectService                                  0.0%
+  Application.Utils.StringUtils                                        0.0%
+  Application.ViewModels.EmployeeViewModels.CreateEmployeeViewModel    0.0%
+  Application.ViewModels.EmployeeViewModels.EmployeeViewModel          0.0%
+  Application.ViewModels.EmployeeViewModels.UpdateEmployeeViewModel    0.0%
+  Application.ViewModels.GroupViewModels.CreateGroupViewModel          0.0%
+  Application.ViewModels.GroupViewModels.GroupViewModel                0.0%
+  Application.ViewModels.GroupViewModels.UpdateGroupViewModel          0.0%
+  Application.ViewModels.ProjectViewModels.CreateProjectViewModel      0.0%
+  Application.ViewModels.ProjectViewModels.ProjectViewModel            0.0%
+  Application.ViewModels.ProjectViewModels.UpdateProjectViewModel      0.0%
+
+Application.Tests 2                                                    0.0%
+  Application.Tests.UnitTest1                                          0.0%
+
+Application.Tests 3                                                        
+
+Domain                                                                90.6%
+  Domain.Entities.Employee                                           100.0%
+  Domain.Entities.ErrorModel.ErrorDetail                               0.0%
+  Domain.Entities.Group                                              100.0%
+  Domain.Entities.Project                                            100.0%
+  Domain.Entities.ProjectEmployee                                    100.0%
+
+Domain 2                                                               0.0%
+  Domain.Entities.Employee                                             0.0%
+  Domain.Entities.ErrorModel.ErrorDetail                               0.0%
+  Domain.Entities.Group                                                0.0%
+  Domain.Entities.Project                                              0.0%
+  Domain.Entities.ProjectEmployee                                      0.0%
+
+Domain 3                                                               0.0%
+  Domain.Entities.Employee                                             0.0%
+  Domain.Entities.ErrorModel.ErrorDetail                               0.0%
+  Domain.Entities.Group                                                0.0%
+  Domain.Entities.Project                                              0.0%
+  Domain.Entities.ProjectEmployee                                      0.0%
+
+Domain 4                                                               0.0%
+  Domain.Entities.Employee                                             0.0%
+  Domain.Entities.ErrorModel.ErrorDetail                               0.0%
+  Domain.Entities.Group                                                0.0%
+  Domain.Entities.Project                                              0.0%
+  Domain.Entities.ProjectEmployee                                      0.0%
+
+Domain 5                                                               0.0%
+  Domain.Entities.Employee                                             0.0%
+  Domain.Entities.ErrorModel.ErrorDetail                               0.0%
+  Domain.Entities.Group                                                0.0%
+  Domain.Entities.Project                                              0.0%
+  Domain.Entities.ProjectEmployee                                      0.0%
+
+Domain.Tests                                                         100.0%
+  Domain.Tests.Customized.CustomizedFixture                          100.0%
+  Domain.Tests.Customized.EmployeeSpecimenBuilder                    100.0%
+  Domain.Tests.Customized.GroupSpecimenBuilder                       100.0%
+  Domain.Tests.Customized.ProjectSpecimenBuilder                     100.0%
+  Domain.Tests.SetupTest                                             100.0%
+
+Domain.Tests 2                                                         0.0%
+  Domain.Tests.SetupTest                                               0.0%
+
+Domain.Tests 3                                                         0.0%
+  Domain.Tests.Customized.CustomizedFixture                            0.0%
+  Domain.Tests.Customized.EmployeeSpecimenBuilder                      0.0%
+  Domain.Tests.Customized.GroupSpecimenBuilder                         0.0%
+  Domain.Tests.Customized.ProjectSpecimenBuilder                       0.0%
+  Domain.Tests.SetupTest                                               0.0%
+
+Domain.Tests 4                                                         0.0%
+  Domain.Tests.Customized.CustomizedFixture                            0.0%
+  Domain.Tests.Customized.EmployeeSpecimenBuilder                      0.0%
+  Domain.Tests.Customized.GroupSpecimenBuilder                         0.0%
+  Domain.Tests.Customized.ProjectSpecimenBuilder                       0.0%
+  Domain.Tests.SetupTest                                               0.0%
+
+Domain.Tests 5                                                         0.0%
+  Domain.Tests.Customized.CustomizedFixture                            0.0%
+  Domain.Tests.Customized.EmployeeSpecimenBuilder                      0.0%
+  Domain.Tests.Customized.GroupSpecimenBuilder                         0.0%
+  Domain.Tests.Customized.ProjectSpecimenBuilder                       0.0%
+  Domain.Tests.SetupTest                                               0.0%
+
+Infrastructure.Tests 2                                                 0.0%
+  Infrastructure.Tests.Mappers.MapperConfigurasionTests                0.0%
+  Infrastructure.Tests.PimContextTests                                 0.0%
+  Infrastructure.Tests.Repositories.Repository                         0.0%
+  Infrastructure.Tests.UnitOfWorkTests                                 0.0%
+
+Infrastructure.Tests 3                                                 0.0%
+  Infrastructure.Tests.Mappers.MapperConfigurasionTests                0.0%
+  Infrastructure.Tests.PimContextTests                                 0.0%
+  Infrastructure.Tests.Repositories.Repository                         0.0%
+  Infrastructure.Tests.UnitOfWorkTests                                 0.0%
+
+Infrastructure.Tests 4                                                 0.0%
+  Infrastructure.Tests.Mappers.MapperConfigurasionTests                0.0%
+  Infrastructure.Tests.PimContextTests                                 0.0%
+  Infrastructure.Tests.Repositories.Repository                         0.0%
+  Infrastructure.Tests.UnitOfWorkTests                                 0.0%
+
+Infrastructure.Tests 5                                                 0.0%
+  Infrastructure.Tests.Mappers.MapperConfigurasionTests                0.0%
+  Infrastructure.Tests.PimContextTests                                 0.0%
+  Infrastructure.Tests.Repositories.EmployeeRepositoryTests            0.0%
+  Infrastructure.Tests.Repositories.GroupRepositoryTests               0.0%
+  Infrastructure.Tests.Repositories.ProjectRepositoryTests             0.0%
+  Infrastructure.Tests.Repositories.Repository                         0.0%
+  Infrastructure.Tests.UnitOfWorkTests                                 0.0%
+
+Infrastructures                                                        7.0%
+  Infrastructures.DenpendencyInjection                                 0.0%
+  Infrastructures.Mappers.MapperConfigurationsProfile                100.0%
+  Infrastructures.Migrations._001FixDatabase                           0.0%
+  Infrastructures.Migrations._002FixDatabase                           0.0%
+  Infrastructures.Migrations._003FixDatabase                           0.0%
+  Infrastructures.Migrations._004FixDatabase                           0.0%
+  Infrastructures.Migrations._005FixDatabase                           0.0%
+  Infrastructures.Migrations._006FixDatabase                           0.0%
+  Infrastructures.Migrations.InitialDatabase                           0.0%
+  Infrastructures.Migrations.PimContextModelSnapshot                   0.0%
+  Infrastructures.PimContext                                         100.0%
+  Infrastructures.Repositories.EmployeeRepository                    100.0%
+  Infrastructures.Repositories.GroupRepository                       100.0%
+  Infrastructures.Repositories.ProjectEmployeeRepository               0.0%
+  Infrastructures.Repositories.ProjectRepository                      20.8%
+  Infrastructures.Repositories.Repository<T>                          93.3%
+  Infrastructures.UnitOfWork                                          17.6%
+
+Infrastructures 2                                                      0.0%
+  Infrastructures.DenpendencyInjection                                 0.0%
+  Infrastructures.Mappers.MapperConfigurationsProfile                  0.0%
+  Infrastructures.Migrations._001FixDatabase                           0.0%
+  Infrastructures.Migrations._002FixDatabase                           0.0%
+  Infrastructures.Migrations._003FixDatabase                           0.0%
+  Infrastructures.Migrations._004FixDatabase                           0.0%
+  Infrastructures.Migrations._005FixDatabase                           0.0%
+  Infrastructures.Migrations._006FixDatabase                           0.0%
+  Infrastructures.Migrations.InitialDatabase                           0.0%
+  Infrastructures.Migrations.PimContextModelSnapshot                   0.0%
+  Infrastructures.PimContext                                           0.0%
+  Infrastructures.Repositories.EmployeeRepository                      0.0%
+  Infrastructures.Repositories.GroupRepository                         0.0%
+  Infrastructures.Repositories.ProjectEmployeeRepository               0.0%
+  Infrastructures.Repositories.ProjectRepository                       0.0%
+  Infrastructures.Repositories.Repository<T>                           0.0%
+  Infrastructures.UnitOfWork                                           0.0%
+
+Infrastructures 3                                                      0.0%
+  Infrastructures.DenpendencyInjection                                 0.0%
+  Infrastructures.Mappers.MapperConfigurationsProfile                  0.0%
+  Infrastructures.Migrations._001FixDatabase                           0.0%
+  Infrastructures.Migrations._002FixDatabase                           0.0%
+  Infrastructures.Migrations._003FixDatabase                           0.0%
+  Infrastructures.Migrations._004FixDatabase                           0.0%
+  Infrastructures.Migrations._005FixDatabase                           0.0%
+  Infrastructures.Migrations._006FixDatabase                           0.0%
+  Infrastructures.Migrations.InitialDatabase                           0.0%
+  Infrastructures.Migrations.PimContextModelSnapshot                   0.0%
+  Infrastructures.PimContext                                           0.0%
+  Infrastructures.Repositories.EmployeeRepository                      0.0%
+  Infrastructures.Repositories.GroupRepository                         0.0%
+  Infrastructures.Repositories.ProjectEmployeeRepository               0.0%
+  Infrastructures.Repositories.ProjectRepository                       0.0%
+  Infrastructures.Repositories.Repository<T>                           0.0%
+  Infrastructures.UnitOfWork                                           0.0%
+
+Infrastructures 4                                                      0.0%
+  Infrastructures.DenpendencyInjection                                 0.0%
+  Infrastructures.Mappers.MapperConfigurationsProfile                  0.0%
+  Infrastructures.Migrations._001FixDatabase                           0.0%
+  Infrastructures.Migrations._002FixDatabase                           0.0%
+  Infrastructures.Migrations._003FixDatabase                           0.0%
+  Infrastructures.Migrations._004FixDatabase                           0.0%
+  Infrastructures.Migrations._005FixDatabase                           0.0%
+  Infrastructures.Migrations._006FixDatabase                           0.0%
+  Infrastructures.Migrations.InitialDatabase                           0.0%
+  Infrastructures.Migrations.PimContextModelSnapshot                   0.0%
+  Infrastructures.PimContext                                           0.0%
+  Infrastructures.Repositories.EmployeeRepository                      0.0%
+  Infrastructures.Repositories.GroupRepository                         0.0%
+  Infrastructures.Repositories.ProjectEmployeeRepository               0.0%
+  Infrastructures.Repositories.ProjectRepository                       0.0%
+  Infrastructures.Repositories.Repository<T>                           0.0%
+  Infrastructures.UnitOfWork                                           0.0%
+
+Infrastructures 5                                                      0.0%
+  Infrastructures.DenpendencyInjection                                 0.0%
+  Infrastructures.Mappers.MapperConfigurationsProfile                  0.0%
+  Infrastructures.Migrations._001FixDatabase                           0.0%
+  Infrastructures.Migrations._002FixDatabase                           0.0%
+  Infrastructures.Migrations._003FixDatabase                           0.0%
+  Infrastructures.Migrations._004FixDatabase                           0.0%
+  Infrastructures.Migrations._005FixDatabase                           0.0%
+  Infrastructures.Migrations._006FixDatabase                           0.0%
+  Infrastructures.Migrations.InitialDatabase                           0.0%
+  Infrastructures.Migrations.PimContextModelSnapshot                   0.0%
+  Infrastructures.PimContext                                           0.0%
+  Infrastructures.Repositories.EmployeeRepository                      0.0%
+  Infrastructures.Repositories.GroupRepository                         0.0%
+  Infrastructures.Repositories.ProjectEmployeeRepository               0.0%
+  Infrastructures.Repositories.ProjectRepository                       0.0%
+  Infrastructures.Repositories.Repository<T>                           0.0%
+  Infrastructures.UnitOfWork                                           0.0%
+
+WebAPI                                                                 0.0%
+  Program                                                              0.0%
+  WebAPI.Controllers.EmployeeController                                0.0%
+  WebAPI.Controllers.GroupController                                   0.0%
+  WebAPI.Controllers.ProjectController                                 0.0%
+  WebAPI.DependencyInjection                                           0.0%
+  WebAPI.Middlewares.GlobalExceptionMiddleware                         0.0%
+  WebAPI.Middlewares.PerformanceMiddleware                             0.0%
+
+WebAPI 2                                                               0.0%
+  Program                                                              0.0%
+  WebAPI.Controllers.EmployeeController                                0.0%
+  WebAPI.Controllers.GroupController                                   0.0%
+  WebAPI.Controllers.ProjectController                                 0.0%
+  WebAPI.DependencyInjection                                           0.0%
+  WebAPI.Middlewares.GlobalExceptionMiddleware                         0.0%
+  WebAPI.Middlewares.PerformanceMiddleware                             0.0%
+
+WebAPI.Tests 2                                                         0.0%
+  WebAPI.Tests.UnitTest1                                               0.0%

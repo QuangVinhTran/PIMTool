@@ -9,7 +9,6 @@ namespace Domain.Tests.Customized
         public EmployeeSpecimenBuilder()
         {
         }
-
         public void Customize(IFixture fixture)
         {
             fixture.Customize<Employee>(composer =>
@@ -19,4 +18,3 @@ namespace Domain.Tests.Customized
         }
     }
 }
-

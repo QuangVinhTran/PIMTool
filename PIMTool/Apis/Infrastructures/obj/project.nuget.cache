@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uAJ57ut8WPjrWb+Sql/29aV8mj3wtgJSYx8UuaivGWiKt972b74XyFCuDvD1uMF2sXjA1awLzCGh4/1IdR+dAA==",
+  "dgSpecHash": "b+E3QQTvqgK5x7h2aqwvSdqOvYJSYtpqlEqYKZMk7r9PhTcxmVk5pxFLvTb/Mm08VG5YL7cM3vsAXIA4TzmsLA==",
   "success": true,
   "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Infrastructures/Infrastructures.csproj",
   "expectedPackageFiles": [
@@ -74,7 +74,9 @@
     "/Users/thinhtran/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.threading.tasks/4.3.0/system.threading.tasks.4.3.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/system.windows.extensions/5.0.0/system.windows.extensions.5.0.0.nupkg.sha512"
+    "/Users/thinhtran/.nuget/packages/system.windows.extensions/5.0.0/system.windows.extensions.5.0.0.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

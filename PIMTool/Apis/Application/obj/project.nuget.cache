@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "XdXCa7xEvAQh07uaozY5f5Fx9HlPvFdzLwHNYPHzLDG0/5EMppad7HRxPKNxyzBICp4sGtFop5BEn2z2LKN+lg==",
+  "dgSpecHash": "/dYXxHD2qSQPQ+K+pMjxU0Y1j1A3a3if6FaMZ1e1erWw5LZickqyz67mH9Y6OxPFZoyvFYXXKk2pzeAUyYrICw==",
   "success": true,
   "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Application/Application.csproj",
   "expectedPackageFiles": [
@@ -25,7 +25,9 @@
     "/Users/thinhtran/.nuget/packages/microsoft.identitymodel.tokens/6.15.1/microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.identitymodel.tokens.jwt/6.15.1/system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.linq.dynamic.core/1.3.5/system.linq.dynamic.core.1.3.5.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512"
+    "/Users/thinhtran/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

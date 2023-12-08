@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dnOChnlFUcW25CXmduNVOBU2aUQGgE232/sL1prM4gZfdlMoxtK7td/wI30r45K7Jk5dMQ3hwCty5m0/NdsmZA==",
+  "dgSpecHash": "HeqAGo7/NiIk6mIZRNuafWKx0TG0YJM1HFCeJm9eQh5KyiLjaR0tI68bVWqTleWavpK++3XidNkOtSRxzMqfDQ==",
   "success": true,
   "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/WebAPI/WebAPI.csproj",
   "expectedPackageFiles": [
@@ -114,7 +114,21 @@
     "/Users/thinhtran/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.windows.extensions/5.0.0/system.windows.extensions.5.0.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/system.xml.readerwriter/4.0.11/system.xml.readerwriter.4.0.11.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512"
+    "/Users/thinhtran/.nuget/packages/system.xml.xdocument/4.0.11/system.xml.xdocument.4.0.11.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.host.osx-x64/7.0.14/microsoft.netcore.app.host.osx-x64.7.0.14.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Newtonsoft.Json' 9.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-5crp-9r3c-p9vr",
+      "libraryId": "Newtonsoft.Json",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

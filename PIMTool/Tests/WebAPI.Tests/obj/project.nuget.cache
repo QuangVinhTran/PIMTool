@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nomB/fA0xkem+vHFhEl7nbKM6adnHRxwdr0Y555SaotmGQ4c0BtfHewKbwMRDzemcaiVtUBD0YT+3LuRF7lFhw==",
+  "dgSpecHash": "4x/aIDSPmcZUFB0GxPnikgu6lpnuESQm39lWJekq/qnW81Beoxtej+5terdCtCBe16cgL/F3cOkP92IwkywUqA==",
   "success": true,
   "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/WebAPI.Tests/WebAPI.Tests.csproj",
   "expectedPackageFiles": [
@@ -188,7 +188,9 @@
     "/Users/thinhtran/.nuget/packages/xunit.core/2.4.2/xunit.core.2.4.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/xunit.extensibility.core/2.4.2/xunit.extensibility.core.2.4.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/xunit.extensibility.execution/2.4.2/xunit.extensibility.execution.2.4.2.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512"
+    "/Users/thinhtran/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,6 +1,0 @@
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.csproj.AssemblyReference.cache
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.GeneratedMSBuildEditorConfig.editorconfig
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.AssemblyInfoInputs.cache
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.AssemblyInfo.cs
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.csproj.CoreCompileInputs.cache
-/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/obj/Debug/net7.0/Tests.sourcelink.json

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "A9+FTaSfjN9575dZ8/5WSG5CtCeKKde7GjpCL4qIBRWNNu7rY1YCN0ywnLH42TyrxvjeXAClYsLD9IOdPvMZtw==",
+  "dgSpecHash": "2y2izOHuYgswVjA4Tbvh/aBkkQgYwdBopuPKVwgE/f8sroYlIt0p33Qf6zbq4/APW/fBHSAOZ7f/mNi88h+yqw==",
   "success": true,
   "projectFilePath": "/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Tests/Infrastructure.Tests/Infrastructure.Tests.csproj",
   "expectedPackageFiles": [
@@ -20,10 +20,10 @@
     "/Users/thinhtran/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.data.sqlclient/5.0.1/microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.data.sqlclient.sni.runtime/5.0.1/microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore/7.0.2/microsoft.entityframeworkcore.7.0.2.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.2/microsoft.entityframeworkcore.abstractions.7.0.2.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.2/microsoft.entityframeworkcore.analyzers.7.0.2.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.2/microsoft.entityframeworkcore.inmemory.7.0.2.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore/7.0.14/microsoft.entityframeworkcore.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.14/microsoft.entityframeworkcore.abstractions.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.14/microsoft.entityframeworkcore.analyzers.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.inmemory/7.0.14/microsoft.entityframeworkcore.inmemory.7.0.14.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.relational/7.0.2/microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.entityframeworkcore.sqlserver/7.0.2/microsoft.entityframeworkcore.sqlserver.7.0.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/microsoft.extensions.caching.abstractions/7.0.0/microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
@@ -153,7 +153,9 @@
     "/Users/thinhtran/.nuget/packages/xunit.core/2.4.2/xunit.core.2.4.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/xunit.extensibility.core/2.4.2/xunit.extensibility.core.2.4.2.nupkg.sha512",
     "/Users/thinhtran/.nuget/packages/xunit.extensibility.execution/2.4.2/xunit.extensibility.execution.2.4.2.nupkg.sha512",
-    "/Users/thinhtran/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512"
+    "/Users/thinhtran/.nuget/packages/xunit.runner.visualstudio/2.4.5/xunit.runner.visualstudio.2.4.5.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/thinhtran/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }

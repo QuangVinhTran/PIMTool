@@ -20,7 +20,7 @@ namespace Infrastructures
             _employeeRepository = employeeRepository;
             _groupRepository = groupRepository;
             _projectEmployeeRepository = projectEmployeeRepository;
-        }   
+        }
         public bool IsTransactionActive => _currentTransaction != null;
 
         public IProjectRepository ProjectRepository => _projectRepository;

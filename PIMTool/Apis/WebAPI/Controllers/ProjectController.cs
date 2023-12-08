@@ -122,14 +122,6 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("/api/projects/search")]
-        public async Task<IActionResult> SearchProject(string? searchTerm, int pageIndex = 0, int pageSize = 5)
-        {
-            if (string.IsNullOrEmpty(searchTerm)) return await GetAllProject(pageIndex, pageSize);
-            var projects = await _projectService.SearchProjectAsync(searchTerm, pageIndex, pageSize);
-            return Ok(projects);
-        }
-
         [HttpGet("/api/projects/filter")]
         public async Task<IActionResult> FilterProjects(string? searchTerm, StatusEnum? status, int pageIndex = 0, int pageSize = 5, CancellationToken cancellationToken = default)
         {
@@ -182,13 +174,6 @@ namespace WebAPI.Controllers
 
             var result = await _projectService.GetEmployeeInProject(id, cancellationToken);
 
-            return Ok(result);
-        }
-
-        [HttpGet("/api/projects/filter-status")]
-        public async Task<IActionResult> FilterProjectByStatus(StatusEnum status, int pageIndex = 0, int pageSize = 5)
-        {
-            var result = await _projectService.GetProjectsByStatus(status, pageIndex, pageSize);
             return Ok(result);
         }
     }
