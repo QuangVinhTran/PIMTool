@@ -1,0 +1,64 @@
+﻿<Properties StartupConfiguration="{FCAF16BE-1A1A-4809-BE81-9183DC76AF1F}|WebAPI Develop Enviroment">
+  <MonoDevelop.Ide.ItemProperties.Apis.WebAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Application/Services/ProjectService.cs" relfile="Apis/Application/Services/ProjectService.cs" line="117" column="1" />
+      <Breakpoint file="/Users/thinhtran/Desktop/elca-pimtool/PIMTool/PIMTool/Apis/Application/Services/ProjectService.cs" relfile="Apis/Application/Services/ProjectService.cs" line="341" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Apis/Infrastructures/Repositories/ProjectRepository.cs">
+    <Files>
+      <File FileName="Tests/Domain.Tests/Customized/EmployeeSpecimenBuilder.cs" />
+      <File FileName="Tests/Domain.Tests/Customized/GroupSpecimenBuilder.cs" />
+      <File FileName="Tests/Domain.Tests/Customized/ProjectSpecimenBuilder.cs" />
+      <File FileName="Tests/Domain.Tests/Customized/CustomizedFixture.cs" />
+      <File FileName="Apis/Infrastructures/Repositories/EmployeeRepository.cs" Line="1" Column="1" />
+      <File FileName="Apis/Infrastructures/Repositories/GroupRepository.cs" Line="1" Column="1" />
+      <File FileName="Apis/Infrastructures/Repositories/ProjectEmployeeRepository.cs" Line="1" Column="1" />
+      <File FileName="Apis/Infrastructures/Repositories/ProjectRepository.cs" Line="109" Column="44" />
+      <File FileName="Apis/Infrastructures/Repositories/Repository.cs" />
+      <File FileName="Tests/Infrastructure.Tests/Repositories/Repository.cs" />
+      <File FileName="Tests/Infrastructure.Tests/Mappers/MapperConfigurasionTests.cs" />
+      <File FileName="Tests/Infrastructure.Tests/UnitOfWorkTests.cs" />
+      <File FileName="Tests/Domain.Tests/SetupTest.cs" />
+      <File FileName="Apis/Application/Services/GroupService.cs" />
+      <File FileName="Apis/Application/Services/ProjectEmployeeService.cs" />
+      <File FileName="Apis/Application/Services/EmployeeService.cs" />
+      <File FileName="Tests/Infrastructure.Tests/Repositories/ProjectRepositoryTests.cs" />
+      <File FileName="Apis/Application/Services/ProjectService.cs" />
+      <File FileName="Tests/Infrastructure.Tests/Repositories/EmployeeRepositoryTests.cs" />
+      <File FileName="Apis/Application/Interfaces/Repositories/IProjectRepository.cs" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PIMTool" expanded="True">
+            <Node name="Apis" expanded="True">
+              <Node name="Infrastructures" expanded="True">
+                <Node name="Repositories" expanded="True">
+                  <Node name="ProjectRepository.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+            <Node name="Tests" expanded="True">
+              <Node name="Domain.Tests" expanded="True">
+                <Node name="Customized" expanded="True" />
+              </Node>
+              <Node name="Infrastructure.Tests" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>Tests/Domain.Tests/Infrastructure.Tests/Infrastructure.Tests.csproj</String>
+  </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.Tests.Infrastructure.Tests PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>
