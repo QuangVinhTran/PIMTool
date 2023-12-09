@@ -12,8 +12,8 @@ using PIMTool.Database;
 namespace PIMTool.Migrations
 {
     [DbContext(typeof(PimContext))]
-    [Migration("20231204104241_add-cascade")]
-    partial class addcascade
+    [Migration("20231208194044_update timestamp")]
+    partial class updatetimestamp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -48,8 +48,11 @@ namespace PIMTool.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.Property<string>("Visa")
                         .IsRequired()
@@ -74,8 +77,11 @@ namespace PIMTool.Migrations
                     b.Property<int>("GroupLeaderId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("Id");
 
@@ -95,7 +101,7 @@ namespace PIMTool.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("GroupId")
@@ -117,8 +123,11 @@ namespace PIMTool.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Version")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
 
                     b.HasKey("Id");
 

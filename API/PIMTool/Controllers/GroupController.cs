@@ -40,7 +40,6 @@ namespace PIMTool.Controllers
             }
             Group group = new Group
             {
-                Version = request.Version,
                 GroupLeaderId = leader.Id,
                 Employees = employees
             };
@@ -56,7 +55,6 @@ namespace PIMTool.Controllers
             {
                 Id = g.Id,
                 GroupLeaderId = g.GroupLeaderId,
-                Version = g.Version,
                 Employees = g.Employees.Select(e => new EmployeeDto
                 {
                     Id = e.Id,
@@ -64,7 +62,6 @@ namespace PIMTool.Controllers
                     LastName = e.LastName,
                     BirthDate = e.BirthDate,
                     Visa = e.Visa,
-                    Version = e.Version
                 }).ToList()
             })).Result;
 

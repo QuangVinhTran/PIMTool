@@ -31,9 +31,4 @@
     <ProjectReference Include="..\PIMTool.Core\PIMTool.Core.csproj" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

@@ -28,8 +28,8 @@ namespace PIMTool.Core.Domain.Entities
         [Required]
         public DateTime BirthDate { get; set; }
 
-        [Required]
-        public int Version { get; set; }
+        [Timestamp]
+        public byte[] Version { get; set; }
 
         public int? GroupId { get; set; }
         public Group? Group { get; set; }

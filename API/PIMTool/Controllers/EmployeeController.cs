@@ -32,7 +32,6 @@ namespace PIMTool.Controllers
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 BirthDate = request.BirthDate,
-                Version = request.Version,
             };
             await _employeeService.AddAsync(employee);
             return Ok();

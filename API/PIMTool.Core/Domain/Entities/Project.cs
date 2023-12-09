@@ -28,8 +28,9 @@ namespace PIMTool.Core.Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
-        [Required]
-        public int Version { get; set; }
+        [Timestamp]
+        [ConcurrencyCheck]
+        public byte[] Version { get; set; }
 
         public int GroupId { get; set; }
         public Group? Group { get; set; }

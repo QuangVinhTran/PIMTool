@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Diagnostics;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
@@ -40,39 +41,20 @@ namespace PIMTool.Controllers
         {
             try
             {
-                Group group = await _groupService.GetAsync(request.GroupId);
-
-                Project project = await _projectService.GetByProjectNumber(request.ProjectNumber);
-                if(project != null)
-                {
-                    throw new BusinessException($"Project number already exist");
-                }
-
-                project = new Project
-                {
-                    ProjectNumber = request.ProjectNumber,
-                    Name = request.Name,
-                    Customer = request.Customer,
-                    Group = group,
-                    StartDate = request.StartDate,
-                    EndDate = request.EndDate,
-                    Status = request.Status,
-                };
-
+                Project newProject = _mapper.Map<Project>(request);
                 foreach (var employeeId in request.Members)
                 {
                     Employee employee = await _employeeService.GetAsync(employeeId);
-                    if(employee.GroupId != request.GroupId)
+                    if (employee.GroupId != request.GroupId)
                     {
-                        throw new Exception($"An employee does not belong to group ${request.GroupId}");
+                        throw new BusinessException($"An employee does not belong to group ${request.GroupId}");
                     }
-                    project.ProjectEmployees.Add(new ProjectEmployee { Employee = employee, Project = project });
+                    newProject.ProjectEmployees.Add(new ProjectEmployee { Employee = employee, Project = newProject });
                 }
 
-                await _projectService.AddAsync(project);
-                await _projectService.SaveChangesAsync();
+                await _projectService.AddAsync(newProject);
 
-                return Ok(project);
+                return Ok(newProject);
             }
             catch (BusinessException ex)
             {
@@ -89,7 +71,7 @@ namespace PIMTool.Controllers
         public async Task<IActionResult> AutoCreateProject()
         {
 
-            for (int i = 6; i < 100; i++)
+            for (int i = 1; i < 100; i++)
             {
                 try
                 {
@@ -155,23 +137,7 @@ namespace PIMTool.Controllers
         {
             try
             {
-                Project existingProject = await _projectService.GetByProjectNumber(projectNumber);
-                if (existingProject == null)
-                {
-                    return NotFound($"Project {projectNumber} not found.");
-                }
-
-                existingProject.ProjectNumber = request.ProjectNumber;
-                existingProject.Name = request.Name;
-                existingProject.Customer = request.Customer;
-                existingProject.StartDate = request.StartDate;
-                existingProject.EndDate = request.EndDate;
-                existingProject.Status = request.Status;
-
-                Group group = await _groupService.GetAsync(request.GroupId);
-                existingProject.Group = group;
-
-                existingProject.ProjectEmployees.Clear();
+                Project newProject = _mapper.Map<Project>(request);
                 foreach (var employeeId in request.Members)
                 {
                     Employee employee = await _employeeService.GetAsync(employeeId);
@@ -179,12 +145,13 @@ namespace PIMTool.Controllers
                     {
                         throw new BusinessException($"An employee does not belong to the group of the existing project.");
                     }
-                    existingProject.ProjectEmployees.Add(new ProjectEmployee { Employee = employee, Project = existingProject });
+
+                    newProject.ProjectEmployees.Add(new ProjectEmployee { Employee = employee, Project = newProject });
                 }
+                await _projectService.UpdateProject(projectNumber, newProject);
 
-                await _projectService.SaveChangesAsync();
 
-                return Ok(existingProject);
+                return Ok();
             }
             catch (BusinessException ex)
             {
@@ -192,50 +159,39 @@ namespace PIMTool.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Something went wrong");
+                return StatusCode(500, ex.Message);
             }
         }
 
         [HttpGet]
         public IActionResult Get([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
         {
-            var queryableSource = _projectService.Get().Select(
-               p => new ProjectDto
-               {
-                   Id = p.Id,
-                   ProjectNumber = p.ProjectNumber,
-                   Name = p.Name,
-                   Customer = p.Customer,
-                   Status = p.Status,
-                   StartDate = p.StartDate,
-                   EndDate = p.EndDate,
-               });
+            var queryableSource = _projectService.Get().Select(p => _mapper.Map<ProjectDto>(p));
 
             PageList<ProjectDto> projects = PageList<ProjectDto>.ToPagedList(queryableSource, pageNumber, pageSize);
-            Debug.WriteLine(projects);
             return Ok(projects);
         }
 
         [HttpGet("search")]
-        public ActionResult<IEnumerable<Project>> SearchProjectByNameAndStatus([FromQuery] string? searchValue, [FromQuery] string? status)
+        public ActionResult<IEnumerable<Project>> SearchProjectByNameAndStatus(
+            [FromQuery] string? searchValue,
+            [FromQuery] string? status,
+            [FromQuery] int pageNumber = 1,
+            [FromQuery] int pageSize = 5)
         {
-            var projects = _projectService.SearchProjectByProjectNumberOrNameOrCustomerAndStatus(searchValue, status).Select(
-                p => new ProjectDto
-                {
-                    Id = p.Id,
-                    ProjectNumber = p.ProjectNumber,
-                    Name = p.Name,
-                    Customer = p.Customer,
-                    Status = p.Status,
-                    StartDate = p.StartDate,
-                    EndDate = p.EndDate,
-                }
-           );
+            IQueryable<ProjectDto> queryableSource;
 
-            if (projects == null || !projects.Any())
+            if (string.IsNullOrEmpty(searchValue) && string.IsNullOrEmpty(status))
             {
-                return NotFound();
+                queryableSource = _projectService.Get().Select(p => _mapper.Map<ProjectDto>(p));
             }
+            else
+            {
+                queryableSource = _projectService.SearchProjectByProjectNumberOrNameOrCustomerAndStatus(searchValue, status)
+                    .Select(p => _mapper.Map<ProjectDto>(p));
+            }
+
+            PageList<ProjectDto> projects = PageList<ProjectDto>.ToPagedList(queryableSource, pageNumber, pageSize);
 
             return Ok(projects);
         }
@@ -250,17 +206,7 @@ namespace PIMTool.Controllers
                 return NotFound();
             }
 
-            var projectDto = new CreateProjectRequestDto
-            {
-                ProjectNumber = project.ProjectNumber,
-                Name = project.Name,
-                Customer = project.Customer,
-                Status = project.Status,
-                StartDate = project.StartDate,
-                EndDate = project.EndDate,
-                GroupId = project.GroupId,
-                Members = project.ProjectEmployees.Select(pe => pe.EmployeeId).ToList(),
-            };
+            var projectDto = _mapper.Map<CreateProjectRequestDto>(project);
 
             return Ok(projectDto);
         }
@@ -297,11 +243,5 @@ namespace PIMTool.Controllers
             }
         }
 
-        [HttpGet("ok")]
-        public IActionResult Ge11t()
-        {
-            
-            return Ok("xzojxzj");
-        }
     }
 }

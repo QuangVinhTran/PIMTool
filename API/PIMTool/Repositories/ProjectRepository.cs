@@ -3,14 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using PIMTool.Core.Domain.Entities;
 using PIMTool.Core.Interfaces.Repositories;
 using PIMTool.Database;
+using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace PIMTool.Repositories
 {
     public interface IProjectRepository : IRepository<Project>
     {
-        IEnumerable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status);
+        IQueryable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status);
         Task<Project> GetByProjectNumber(int projectNumber);
+        Task UpdateProject(Project project);
     }
     public class ProjectRepository : Repository<Project>, IProjectRepository
     {
@@ -22,7 +24,7 @@ namespace PIMTool.Repositories
             _set = _pimContext.Set<Project>();
         }
 
-        public IEnumerable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status)
+        public IQueryable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status)
         {
             var query = _pimContext.Projects.AsQueryable();
 
@@ -41,7 +43,7 @@ namespace PIMTool.Repositories
                 query = query.Where(p => p.Status.ToLower() == status.ToLower());
             }
 
-            return query.ToList();
+            return query;
         }
 
         public async Task<Project> GetByProjectNumber(int projectNumber)
@@ -49,6 +51,11 @@ namespace PIMTool.Repositories
             var project = _pimContext.Projects.Where(p => p.ProjectNumber == projectNumber).Include(g => g.ProjectEmployees).FirstOrDefault();
 
             return project;
+        }
+
+        public async Task UpdateProject(Project project)
+        {
+            _pimContext.Projects.Update(project);
         }
     }
 }

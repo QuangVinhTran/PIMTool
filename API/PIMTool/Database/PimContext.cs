@@ -23,6 +23,8 @@ namespace PIMTool.Database
                 e.HasKey(e => e.Id);
             });
 
+
+
             modelBuilder.Entity<Group>(e =>
             {
                 e.ToTable("Groups");

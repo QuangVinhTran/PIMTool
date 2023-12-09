@@ -13,8 +13,8 @@ namespace PIMTool.Core.Domain.Entities
         [Required]
         public int Id { get; set; }
 
-        [Required]
-        public int Version { get; set; }
+        [Timestamp]
+        public byte[] Version { get; set; }
 
         public int GroupLeaderId { get; set; }
 

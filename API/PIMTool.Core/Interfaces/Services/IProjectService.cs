@@ -12,10 +12,12 @@ namespace PIMTool.Core.Interfaces.Services
 
         IQueryable<Project> Get();
 
-        IEnumerable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status, CancellationToken cancellationToken = default);
+        IQueryable<Project> SearchProjectByProjectNumberOrNameOrCustomerAndStatus(string searchValue, string status, CancellationToken cancellationToken = default);
 
         Task<Project> GetByProjectNumber(int projectNumber, CancellationToken cancellationToken = default);
         Task DeleteProjects(Project[] projects);
+
+        Task<bool> UpdateProject(int projectNumber, Project newProject);
 
     }
 }

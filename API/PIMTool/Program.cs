@@ -13,11 +13,11 @@ builder.Services.AddCors(opt =>
     opt.AddPolicy(name: "apiCorsPolicy",
                       builder =>
                       {
-                          builder.WithOrigins("https://pimtool-client.onrender.com")
+                          builder.WithOrigins("https://pimtool-client.onrender.com", "http://localhost:4200")
                             .AllowAnyHeader()
                             .AllowAnyMethod()
                             .AllowCredentials();
-                          //.WithMethods("OPTIONS", "GET");
+         
                       });
 });
 

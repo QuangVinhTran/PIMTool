@@ -8,6 +8,5 @@ namespace PIMTool.Dtos
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
-        public int Version { get; set; }
     }
 }
