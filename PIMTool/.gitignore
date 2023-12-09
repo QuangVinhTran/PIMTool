@@ -131,3 +131,13 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+
+# VSCode config
+.vscode/
+
+# Ignore Visual Studio dir
+.vs/
+
+# Jetbrains IDEs
+.idea/

@@ -1,7 +1,0 @@
-{
-  "Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/thinhtran\/Desktop\/elca-pimtool\/PIMTool\/PIMTool\/Apis\/Application",
-  "Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/thinhtran\/Desktop\/elca-pimtool\/PIMTool\/PIMTool\/Apis\/Domain",
-  "Domain.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/thinhtran\/Desktop\/elca-pimtool\/PIMTool\/PIMTool\/Tests\/Domain.Tests",
-  "Infrastructures, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/thinhtran\/Desktop\/elca-pimtool\/PIMTool\/PIMTool\/Apis\/Infrastructures",
-  "WebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null": "\/Users\/thinhtran\/Desktop\/elca-pimtool\/PIMTool\/PIMTool\/Apis\/WebAPI"
-}
