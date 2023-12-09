@@ -1,0 +1,124 @@
+<div class="pr-56 pl-14">
+    <h1 *ngIf="!isUpdate" class="mt-5 text-2xl border-b border-b-gray-400 pb-5">{{'newProject'
+        | translate}}</h1>
+    <h1 *ngIf="isUpdate" class="mt-5 text-2xl border-b border-b-gray-400 pb-5">{{'updateProject'
+        | translate}}</h1>
+
+    <form [formGroup]="createProjectForm"
+        (ngSubmit)="isUpdate ? updateProject() : createProject()"
+        class="w-full h-full flex flex-col gap-7 relative">
+        <div *ngIf="!validForm"
+            class="pl-3 text-base w-full font-semibold text-red-400 bg-red-100 h-8 absolute">
+            {{formMessage | translate}} <span
+                (click)="hiddenMessage()"
+                class="float-right items-center pr-5 cursor-pointer text-gray-500">x</span>
+        </div>
+        <div class="grid grid-cols-12 mt-14">
+            <label class="col-start-1 col-end-3">{{'projectNumber' | translate}}
+                <span class="text-red-600 text-lg">*</span></label>
+            <input class="small-input col-start-3 col-end-6 text-end" type="number"
+                [readonly]="isUpdate ? true : false"
+                (blur)="isUpdate ? '' : checkExistProjectNumber($event.target)"
+                formControlName="projectNumber" />
+            <div *ngIf="isChecking"
+                class="flex pt-6 h-[30px] items-center justify-center">
+                <fa-icon
+                    class="loading text-[#D2492A]" size="lg"
+                    [icon]="faSpinner"></fa-icon>
+            </div>
+            <span *ngIf="isExistProjectNumber && !isChecking"
+                class="col-start-6 col-end-13 text-sm text-red-600 pl-3 flex items-center">
+                {{'existingProject' | translate}}
+            </span>
+
+        </div>
+        <div class="grid grid-cols-12 relative">
+            <label class="col-start-1 col-end-3">{{'projectName' | translate}}<span
+                    class="text-red-600 text-lg">*</span></label>
+            <input type="text" class="large-input col-start-3 col-end-12" (keyup)="checkMaxLength($event.target, 50)"
+                maxlength="50"
+                formControlName="projectName" />
+            <span class="absolute top-8 text-blue-400 left-[17%] hidden">{{messageLength | translate}}</span>
+        </div>
+        <div class="grid grid-cols-12 relative">
+            <label class="col-start-1 col-end-3">{{'customer' | translate}}<span
+                    class="text-red-600 text-lg">*</span></label>
+            <input type="text" class="large-input col-start-3 col-end-12" (keyup)="checkMaxLength($event.target, 50)"
+                formControlName="customer" maxlength="50" />
+                <span class="absolute top-8 text-blue-400 left-[17%] hidden">{{messageLength | translate}}</span>
+            
+        </div>
+        <div class="grid grid-cols-12">
+            <label class="col-start-1 col-end-3">{{'group' | translate}}<span
+                    class="text-red-600 text-lg">*</span></label>
+            <select class="small-input col-start-3 col-end-6"
+                formControlName="groupId">
+                <option *ngFor="let groupId of listGroupId" value="{{groupId}}">
+                    Group: {{groupId}}
+                </option>
+            </select>
+        </div>
+        <div class="grid grid-cols-12">
+            <label class="col-start-1 col-end-3">{{'members' | translate}}</label>
+            <ng-multiselect-dropdown
+                formControlName="member"
+                class="h-[30px] col-start-3 col-end-12"
+                [placeholder]="'Select member'"
+                [maxlength]="100"
+                [settings]="dropdownSettings"
+                [data]="dropdownList"
+                [(ngModel)]="selectedItems">
+            </ng-multiselect-dropdown>
+            <!-- <select class="large-input col-start-3 col-end-12">
+                <option selected hidden></option>
+                <option *ngFor="let e of listEmployee" value="{{e.id}}">
+                    {{e.visa + ": " + e.firstName + " " + e.lastName}}
+                </option>
+            </select> -->
+        </div>
+        <div class="grid grid-cols-12">
+            <label class="col-start-1 col-end-3">{{'status' | translate}}<span
+                    class="text-red-600 text-lg">*</span></label>
+            <select class="small-input col-start-3 col-end-6"
+                formControlName="status">
+                <option value="NEW">{{'new' | translate}}</option>
+                <option value="PLA">{{'planned' | translate}}</option>
+                <option value="INP">{{'inProgress' | translate}}</option>
+                <option value="FIN">{{'finished' | translate}}</option>
+            </select>
+        </div>
+        <div class=" grid grid-cols-12 border-b pb-3 border-b-gray-400">
+            <label class="col-start-1 col-end-3">{{'startDate' | translate}}<span
+                    class="text-red-600 text-lg">*</span></label>
+            <input class="small-input col-start-3 col-end-6" type="date"
+                (focus)="continueInput()"
+                (blur)="checkStartDate($event.target)"
+                formControlName="startDate">
+
+            <label class="col-start-8 col-end-9">{{'endDate' | translate}}</label>
+            <input class="small-input col-start-9 col-end-12" type="date"
+                (focus)="continueInput()"
+                (blur)="checkEndDate($event.target)"
+                formControlName="endDate">
+        </div>
+        <div class="flex justify-end gap-7 w-[80%]">
+            <button
+                class="h-9 w-[20%] border border-gray-600 text-black rounded"
+                [disabled]="isProcessing"
+                type="button" (click)="cancelCreate()">{{'cancel' | translate}}</button>
+            <button *ngIf="!isUpdate && !isProcessing"
+                class="h-9 w-[20%] bg-[#2F85FA] text-white rounded"
+                [disabled]="isExistProjectNumber || isChecking"
+                type="submit">{{'createProject' | translate}}</button>
+            <button *ngIf="isUpdate && !isProcessing"
+                class="h-9 w-[20%] bg-[#2F85FA] text-white rounded"
+                [disabled]="isExistProjectNumber || isChecking"
+                type="submit">{{'updateProject' | translate}}</button>
+            <button *ngIf="isProcessing"
+                class="h-9 w-[20%] bg-[#2F85FA] text-white rounded cursor-not-allowed"
+                disabled>
+                <i class="text-base text-[#f8f8f7] fas fa-spinner fa-pulse"></i>
+                {{'processing' | translate}}</button>
+        </div>
+    </form>
+</div>
