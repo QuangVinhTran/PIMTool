@@ -1,0 +1,12 @@
+# Ignore bin folders
+*/bin/
+*/obj/
+
+# Ignore VSCode dir
+.vscode
+
+# Ignore Visual Studio dir
+.vs/
+
+# Ignore Rider/IntelliJ dir
+.idea

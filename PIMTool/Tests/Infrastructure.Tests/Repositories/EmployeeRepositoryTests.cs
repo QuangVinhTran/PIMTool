@@ -20,7 +20,7 @@ namespace Infrastructure.Tests.Repositories
 		[Theory]
 		[InlineData("ABC")]
 		[InlineData("XYZ")]
-		public async Task SearchEmployeeByVisaAsync_WithValidData_ShoudReturnCorrectData(string visaToSearch)
+		public async Task SearchEmployeeByVisaAsync_WithValidData_ShouldReturnCorrectData(string visaToSearch)
 		{
 			// Arrange
 			var fixture = new CustomizedFixture();
@@ -35,6 +35,22 @@ namespace Infrastructure.Tests.Repositories
 			Assert.NotNull(result);
 			Assert.True(result.All(e => e.Visa != visaToSearch));
 		}
+
+		[Theory]
+		[InlineData("NonExistentVisa")]
+		public async Task SearchEmployeeByVisaAsync_WithNoMatch_ShouldReturnEmptyList(string visaToSearch)
+		{
+			// Arrange
+			var fixture = new CustomizedFixture();
+			var mockData = fixture.CreateMany<Employee>(10).ToList();
+			await _employeeRepository.AddRangeAsync(mockData);
+			await _dbContext.SaveChangesAsync();
+
+			// Act
+			var result = await _employeeRepository.SearchEmployeeByVisaAsync(visaToSearch);
+
+			// Assert
+			Assert.Empty(result);
+		}
 	}
 }
-

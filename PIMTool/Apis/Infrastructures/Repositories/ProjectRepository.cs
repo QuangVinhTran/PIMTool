@@ -40,7 +40,7 @@ namespace Infrastructures.Repositories
             return isExist;
         }
 
-        public async Task<IEnumerable<Project>> FilterProjectsAsync(string searchTerm, StatusEnum? status)
+        public async Task<IEnumerable<Project>> FilterProjectsAsync(string? searchTerm, StatusEnum? status)
         {
             IQueryable<Project> query = _context.Projects;
 
