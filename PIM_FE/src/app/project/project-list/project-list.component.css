@@ -1,0 +1,30 @@
+table{
+    border: 1px solid black;
+    font-family:  'Segoe UI';
+    font-size: 14px ;
+}
+td, th {
+    border-right: 1px solid black;
+}
+.last{
+    border-right: 0px;
+}
+thead > tr {
+    border-bottom: 1px solid black ;
+}
+/*paging*/
+
+
+/* Loading */
+.loading {
+    animation: spinner 8s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}

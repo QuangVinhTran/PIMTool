@@ -1,0 +1,251 @@
+<div class="px-10">
+    <app-test [(show)]="show"
+        (result)="singleOrMultiple === 'single' ? removeProject(this.id) : removeRange()"></app-test>
+    <!-- <app-test *ngIf="singleOrMultiple === 'multiple'" [(show)]="show" (result)="removeRange()"></app-test> -->
+    <h1 class="my-7 text-2xl border-b border-b-gray-400 pb-5">{{'projectList' |
+        translate}}</h1>
+    <form [formGroup]="searchFrom" (ngSubmit)="searchProject()">
+        <input type="text"
+            class="w-1/4 h-7 rounded-md border border-gray-500 px-2 text-sm"
+            placeholder="{{'placeHolderInputSearch' | translate}}"
+            formControlName="searchText" [value]="'default'" />
+        <select
+            class="w-1/6 h-7 rounded-md border border-gray-500 text-sm px-2 ml-8"
+            formControlName="searchStatus">
+            <option hidden selected value="0">{{'placeHolderSelectedStatus' |
+                translate}}</option>
+            <option value="NEW">{{'new' | translate}}</option>
+            <option value="PLA">{{'planned' | translate}}</option>
+            <option value="INP">{{'inProgress' | translate}}</option>
+            <option value="FIN">{{'finished' | translate}}</option>
+        </select>
+        <button type="submit"
+            class="bg-blue-400 text-white px-3 py-1 rounded ml-20">{{'searchProject'
+            | translate}}</button>
+        <button type="button" (click)="resetSearch()"
+            class="text-blue-400 px-3 py-1 rounded ml-8">{{'resetSearch' |
+            translate}}</button>
+    </form>
+    <div class="mt-5 w-full" *ngIf="isLoading">
+        <div class="w-full h-[400px] flex justify-center items-center">
+            <!-- <fa-icon class="loading flex justify-center items-center h-[100px] w-[100px]" size="10x" [icon]="faSpinner"></fa-icon> -->
+            <i class="text-9xl text-[#D2492A] fas fa-spinner fa-pulse"></i>
+        </div>
+    </div>
+    <div class="mt-5" *ngIf="!isLoading">
+        <div class="flex justify-center items-center">
+            <div class="w-[300px] flex justify-center items-center"
+                *ngIf="projects.length == 0">
+                <img src="../../../assets/images/no-results.png" alt="Not found">
+            </div>
+        </div>
+        <table class="w-full font-semibold text-[#666666]"
+            *ngIf="projects.length != 0">
+            <!-- <colgroup> -->
+                <!-- <col class="max-w-[calc(8%)] w-[calc(8%)] min-w-0">
+                <col class="max-w-[calc(8%)] w-[calc(8%)] min-w-0">
+                <col class="max-w-[calc(30%)] w-[calc(30%)] min-w-0">
+                <col class="max-w-[calc(14%)] w-[calc(14%)] min-w-0">
+                <col class="max-w-[calc(20%)] w-[calc(20%)] min-w-0">
+                <col class="max-w-[calc(10%)] w-[calc(10%)] min-w-0">
+                <col class="max-w-[calc(10%)] w-[calc(10%)] min-w-0"> -->
+                <!-- <col class="w-[8%]">
+                <col class="w-[8%]">
+                <col class="w-[30%]">
+                <col class="w-[7%]">
+                <col class="w-[20%]">
+                <col class="w-[10%]">
+                <col class="w-[8%]"> -->
+            <!-- </colgroup> -->
+            <thead>
+                <tr class="h-8">
+                    <th class="w-[5%]"></th>
+                    <th class="w-[8%] text-start pl-2 cursor-pointer hover:text-[#D2492A]"
+                    (click)="sortByNumber()">{{'number' | translate}}
+                        <div class="flex float-right pr-1">
+                            <fa-icon *ngIf="this.sortNumber == this.ASC"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sortNumber == this.DES"
+                                [icon]="faArrowDown"></fa-icon>
+                        </div>
+                    </th>
+                    <th (click)="sortByName()" class="text-start pl-2 w-[35%] cursor-pointer hover:text-[#D2492A]">{{'name'
+                        | translate}}
+                        <div class="flex float-right pr-1">
+                            <fa-icon *ngIf="this.sortName == this.ASC"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sortName == this.DES"
+                                [icon]="faArrowDown"></fa-icon>
+                        </div>
+                    </th>
+                    <th (click)="sortByStatus()" class="text-start pl-2 w-[10%] cursor-pointer hover:text-[#D2492A]">{{'status'
+                        | translate}}
+                        <div class="flex float-right pr-1">
+                            <fa-icon *ngIf="this.sortStatus == this.ASC"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sortStatus == this.DES"
+                                [icon]="faArrowDown"></fa-icon>
+                        </div>
+                    </th>
+                    <th (click)="sortByCustomer()" class="text-start pl-2 w-[20%] cursor-pointer hover:text-[#D2492A]">{{'customer'
+                        | translate}}
+                        <div class="flex float-right pr-1">
+                            <fa-icon *ngIf="this.sortCustomer == this.ASC"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sortCustomer == this.DES"
+                                [icon]="faArrowDown"></fa-icon>
+                        </div>
+                    </th>
+                    <th (click)="sortByStartDate()" class="text-start pl-2 w-[12%] cursor-pointer hover:text-[#D2492A]">{{'startDate'
+                        | translate}}
+                        <div class="flex float-right pr-1">
+                            <fa-icon *ngIf="this.sortStartDate == this.ASC"
+                                [icon]="faArrowUp"></fa-icon>
+                            <fa-icon *ngIf="this.sortStartDate == this.DES"
+                                [icon]="faArrowDown"></fa-icon>
+                        </div>
+                    </th>
+                    <th class="text-start pl-3 w-[9%]">{{'delete' | translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects">
+                    <td class="text-center pt-[10px]" *ngIf="project.id"><input
+                            type="checkbox"
+                            [attr.checked]="(listRemoveId.indexOf(project.id) !== -1) ? 'checked': null"
+                            (click)="clickProject(project.id)"
+                            [disabled]="project.status !== 'NEW'"
+                            class="w-4 h-4" /></td>
+                    <td class="text-end pr-2 pt-[10px] cursor-pointer hover:underline"
+                        (click)="updateProject(project.id ? project.id : 0)">{{project.projectNumber}}</td>
+                    <td class="pl-2 pt-[10px]">
+                        <span class="text-ellipsis overflow-hidden whitespace-nowrap block w-[400px]">{{project.name}}</span>
+                    </td>
+                    <td class="pl-2 pt-[10px]">{{project.status | translate}}</td>
+                    <td class="pl-2 pt-[10px] text-ellipsis overflow-hidden">
+                        <span class="text-ellipsis overflow-hidden whitespace-nowrap block w-[215px]">{{project.customer}}</span>
+                    </td>
+                    <!-- <td class="pl-4 pt-[10px]">{{project.startDate.toLocaleDateString().replaceAll('/',
+                        '.')}}</td> -->
+                    <td class="pl-2 pt-[10px] text-center">
+                        {{datePipe.transform(project.startDate,'dd.MM.yyyy')}}
+                    </td>
+                    <td class="flex justify-center pt-[10px] border-none last"
+                        *ngIf="project.status === 'NEW'">
+                        <div
+                            class="cursor-pointer flex justify-center"
+                            (click)="removeSingle(project.id)">
+                            <fa-icon
+                                [icon]="faTrashCan" class="text-red-400"></fa-icon>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="listRemoveId.length > 0"
+            class="w-full h-8 text-blue-400 font-semibold flex items-center justify-between border-x px-5 border-x-black border-b  border-b-black">
+            <div>{{listRemoveId.length}} {{'itemsSelect' | translate}}</div>
+            <div class="text-red-400 flex justify-between">{{'deleteSelectedItems'
+                | translate}}
+                <div class="cursor-pointer" (click)="removeMultiple()">
+                    <fa-icon
+                        [icon]="faTrashCan" class="text-red-400 ml-4"></fa-icon>
+                </div>
+            </div>
+        </div>
+        <div class="mt-5 h-8 border border-gray-400 float-right"
+            *ngIf="projects.length != 0">
+            <ul class="flex h-full w-full">
+                <li (click)="movePage(currentPageIndex - 1)"
+                    *ngIf="currentPageIndex > 1"
+                    class="w-8 h-full border-x text-ellipsis border-x-gray-400 flex justify-center items-center text-blue-400">
+                    <fa-icon
+                        class="w-full h-full cursor-pointer flex justify-center items-center text-[10px]"
+                        [icon]="faAnglesLeft"></fa-icon>
+                </li>
+                <li *ngIf="currentPageIndex > 3"
+                    class="w-8 h-full border-x text-ellipsis border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip="{{1}}"
+                        (click)="movePage(1)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{1}}
+                    </button>
+                </li>
+                <li
+                    *ngIf="currentPageIndex > 4"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center text-blue-400">
+                    <span class="w-full h-full flex justify-center items-center">...</span>
+                </li>
+                <li *ngIf="currentPageIndex > 2"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip=" {{currentPageIndex- 2}}"
+                        (click)="movePage(currentPageIndex - 2)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{currentPageIndex- 2}}
+                    </button>
+                </li>
+                <li *ngIf="currentPageIndex > 1"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip="{{currentPageIndex- 1}}"
+                        (click)="movePage(currentPageIndex - 1)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{currentPageIndex- 1}}
+                    </button>
+                </li>
+                <li
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer bg-gray-200 text-gray-600">
+                    <button mat-raised-button
+                        matTooltip="{{currentPageIndex}}"
+                        (click)="movePage(currentPageIndex)"
+                        class="w-full h-full flex justify-center items-center text-[14px] text-[#666666]">
+                        {{currentPageIndex}}
+                    </button>
+                </li>
+                <li
+                    *ngIf="arrayTotalPage.length > 2 && currentPageIndex < arrayTotalPage.length - 1"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip="{{currentPageIndex + 1}}"
+                        (click)="movePage(currentPageIndex + 1)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{currentPageIndex + 1}}
+                    </button>
+                </li>
+                <li
+                    *ngIf="arrayTotalPage.length > 3 && currentPageIndex < arrayTotalPage.length - 2"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip="{{currentPageIndex + 2}}"
+                        (click)="movePage(currentPageIndex + 2)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{currentPageIndex + 2}}
+                    </button>
+                </li>
+                <li
+                    *ngIf="currentPageIndex < arrayTotalPage.length - 3"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center text-blue-400">
+                    <span class="w-full h-full flex justify-center items-center">...</span>
+                </li>
+                <li *ngIf="currentPageIndex != arrayTotalPage.length"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center cursor-pointer text-blue-400">
+                    <button mat-raised-button
+                        matTooltip="{{arrayTotalPage.length}}"
+                        (click)="movePage(arrayTotalPage.length)"
+                        class="w-full h-full flex justify-center items-center text-[14px]">
+                        {{arrayTotalPage.length}}
+                    </button>
+                </li>
+                <li (click)="movePage(currentPageIndex + 1)"
+                    *ngIf="!(currentPageIndex == arrayTotalPage.length)"
+                    class="w-8 h-full border-x text-ellipsis overflow-hidden border-x-gray-400 flex justify-center items-center text-blue-400">
+                    <fa-icon
+                        class="w-full h-full cursor-pointer flex justify-center items-center text-[10px]"
+                        [icon]="faAnglesRight"></fa-icon>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
