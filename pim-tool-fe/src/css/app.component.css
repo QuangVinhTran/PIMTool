@@ -1,0 +1,103 @@
+.full-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.full-container .header {
+  width: 100%;
+  display: flex;
+  padding: 0.8rem 8%;
+  margin: 0;
+  justify-content: space-between;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  height: fit-content;
+}
+.full-container .header-left {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  align-items: end;
+}
+.full-container .header-left__logo {
+  margin-right: 2rem;
+}
+.full-container .header-left__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gray);
+  padding-bottom: 0.2rem;
+}
+.full-container .header-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-bottom: 0.2rem;
+}
+.full-container .header-right__language {
+  display: flex;
+  align-items: end;
+  padding-left: 2rem;
+  font-weight: 600;
+}
+.full-container .header-right__end {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-weight: 600;
+}
+.full-container .header-right__end__help {
+  cursor: pointer;
+  color: var(--blue);
+  padding-left: 0.5rem;
+}
+.full-container .header-right__end__logOut {
+  cursor: pointer;
+  opacity: 0.4;
+}
+.full-container .appBody {
+  width: 100%;
+  flex-grow: 1 !important;
+  margin: 0;
+  display: flex;
+}
+.full-container .appBody-sideBar {
+  width: 21%;
+  border-right: 1px solid var(--line);
+  height: 100%;
+  padding-left: 9.5%;
+  padding-top: 2.5%;
+}
+.full-container .appBody-sideBar__big-title {
+  font-size: 18pt;
+  font-weight: 600;
+  color: var(--blue);
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+.full-container .appBody-sideBar__func-title ul {
+  list-style: none;
+}
+.full-container .appBody-sideBar__func-title ul li {
+  font-size: 14pt;
+  color: var(--gray);
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.full-container .appBody-sideBar__func-title ul .func-new {
+  font-size: 18pt;
+  font-weight: 600;
+  color: var(--blue);
+  margin-bottom: 1rem;
+}
+.full-container .appBody-sideBar__func-title ul .func-active {
+  font-weight: 600;
+  color: var(--black2);
+}
+.full-container .appBody-funcArea {
+  flex-grow: 1;
+  padding-left: 3rem;
+  padding-top: 2.5%;
+}/*# sourceMappingURL=app.component.css.map */

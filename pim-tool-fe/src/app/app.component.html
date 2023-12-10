@@ -1,0 +1,53 @@
+<div class="full-container">
+  <div class="header row">
+    <div class="header-left col-md-6">
+      <div class="header-left__logo">
+        <img src="../assets/img/logo_elca.png" alt="" />
+      </div>
+      <p class="header-left__name">{{ "header.title" | translate}}</p>
+    </div>
+
+    <div class="header-right col-md-3">
+      <div class="header-right__language">
+        <a style="margin-right: 0.3rem" [class.active-lang]="siteCodeLang === 'en'"
+          [class.inactive-lang]="siteCodeLang !== 'en'" (click)="changeSiteLanguage('en')">
+          EN
+        </a>
+        <p>|</p>
+        <a style="margin-left: 0.3rem" [class.active-lang]="siteCodeLang === 'fr'"
+          [class.inactive-lang]="siteCodeLang !== 'fr'" (click)="changeSiteLanguage('fr')">
+          FR
+        </a>
+
+      </div>
+      <div class="header-right__end">
+        <div class="header-right__end__help">{{ "header.help" | translate}}</div>
+        <div class="header-right__end__logOut">{{ "header.logout" | translate}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="appBody row">
+    <div class="appBody-sideBar">
+      <div class="appBody-sideBar__big-title">
+        <a style="text-decoration: none" routerLink="/list" [class.active-link]="isActiveRoute('/list')">{{ "sideBar.projectList" | translate}}</a>
+      </div>
+      <div class="appBody-sideBar__func-title">
+        <ul>
+          <li class="func-new">
+            <a href="">{{ "sideBar.new" | translate}}</a>
+          </li>
+          <li class="func-active">
+            <a routerLink="/project" [class.active-link]="isActiveRoute('/project')">{{ "sideBar.project" | translate}}</a>
+          </li>
+          <li>{{ "sideBar.customer" | translate}}</li>
+          <li>{{ "sideBar.supplier" | translate}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="appBody-funcArea">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

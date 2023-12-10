@@ -1,0 +1,136 @@
+{
+    "header":{
+
+        "title": "Project Information Management",
+
+        "help": "Help",
+    
+        "logout": "Log out"
+
+    },
+
+   "sideBar":{
+
+        "projectList": "Project List",
+
+        "new": "New",
+
+        "project": "Project",
+
+        "customer": "Customer",
+
+        "supplier": "Supplier"
+
+   },
+
+   "projectList":{
+
+        "projectList": "Project List",
+
+        "search":{
+            "name": "Project number, name, customer name",
+
+            "status": "Project status",
+
+            "btnSearch": "Search project",
+
+            "resetSearch": "Reset search"
+        },
+
+        "tableHeading":{
+
+            "number": "Number",
+
+            "name": "Name",
+
+            "status": "Status",
+            
+            "customer": "Customer",
+
+            "start": "Start Date",
+
+            "delete": "Delete"
+
+        },
+
+        "delete":{
+            "warning": "Warning",
+
+            "question": "Are you sure you want to delete all the selected project?",
+
+            "btnClose": "Close",
+
+            "btnDelete": "Delete",
+
+            "itemsSelected": "items selected",
+
+            "deleteSelected": "Delete selected items"
+        }
+   },
+
+   "projectDetail":{
+    
+        "create":{
+
+            "title": "New Project",
+
+            "btnCreate": "Create Project"
+
+        },
+
+        "update":{
+
+            "title": "Edit Project information",
+         
+            "btnUpdate": "Save Changes"
+
+        },
+
+        "please": "Please",
+
+        "or": "or",
+
+        "contactAdmin": "contact your administrator",
+        
+        "back": "back to search project",
+
+        "serverError": "Unexpected error occurred.",
+
+        "globalError": "Please enter all the mandatory fields (*)",
+
+        "startBeforeCurrent": "Start date must be the same or after current date",
+
+        "startAfterEnd": "End date must be the same or after Start date",
+
+        "numberExist": "The project number already existed. Please select a different project number",
+
+        "membersError": "Selected visas do not exist in the system. Please select different visas",
+
+        "createProjectFailed": "Create project failed",
+
+        "concurrentUpdate": "The project has been updated by another user. Please refresh the page and try again.",
+
+        "updateProjectFailed": "Update project failed",
+        
+        "projectName": "Project Name",
+
+        "projectNumber": "Project Number",
+
+        "customer": "Customer",
+
+        "group": "Group",
+
+        "members": "Members",
+
+        "startDate": "Start Date",
+
+        "endDate": "End Date",
+
+        "status": "Status",
+
+        "btnCancel": "Cancel"
+
+   }
+
+
+  }

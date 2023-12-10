@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="error-container">
+        <div class="error-container__icon">
+            <i class="fa-solid fa-circle-xmark fa-2xl"></i>
+        </div>
+        <div class="error-container__detail">
+            <div class="error-container__detail__line01">{{ serverErr | translate }}</div>
+            <div class="error-container__detail__line02">{{ please | translate}} <span class="msg-line02">{{ contactAdmin | translate}}</span></div>
+            <div class="error-container__detail__line03">{{ or | translate}} <span class="msg-line03" (click)="navigateToProjectList()">{{ back | translate}}</span></div>
+        </div>
+    </div>
+</div>
