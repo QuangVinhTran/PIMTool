@@ -1,0 +1,43 @@
+.sidebar-container {
+  width: 100%;
+  height: 100%;
+  padding: 0 0 0 100px;
+  .title {
+    font-size: 20pt;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2f85fa;
+    text-decoration: none;
+  }
+  nav {
+    .status {
+      font-size: 18pt;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #2f85fa;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        a {
+          display: block;
+          text-decoration: none;
+          color: #666666;
+          padding-top: 8px;
+          font-size: 14pt;
+          font-weight: 500;
+        }
+        .active {
+          color: black;
+        }
+      }
+    }
+  }
+  .active {
+    color: black;
+  }
+}

@@ -1,0 +1,42 @@
+.header-container {
+  color: #000;
+  padding: 10px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #ccc;
+
+  nav {
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 10px;
+
+      li {
+        a {
+          text-decoration: none;
+          font-weight: bold;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: #ffcc00; // Change color on hover
+          }
+        }
+      }
+    }
+  }
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  .logo {
+    width: 50px;
+  }
+  .logo-title {
+    font-size: 20px;
+  }
+}

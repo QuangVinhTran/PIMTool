@@ -1,0 +1,209 @@
+<div class="create-container">
+  <div class="fill-form-message" *ngIf="!isFillForm">
+    <span>Please enter all mandatory field (*)</span>
+  </div>
+  <div class="fill-form-message" *ngIf="!isDateRangeValid">
+    <span>End date must be more than start date</span>
+  </div>
+  <form [formGroup]="formCreateProject" (ngSubmit)="onFormSubmit()">
+    <div class="input-container">
+      <div class="input-title">
+        <label> Project number </label>
+        <span>*</span>
+      </div>
+
+      <div class="input-user">
+        <input
+          [readonly]="!isAddMode"
+          id="projectNumber"
+          name="projectNumber"
+          type="number"
+          formControlName="projectNumber"
+          min="1"
+          class="number"
+          [ngClass]="!isAddMode ? 'disable-input' : ''"
+        />
+        <small
+          class="error-message"
+          *ngIf="
+            projectNumber.invalid &&
+            (projectNumber.dirty || projectNumber.touched)
+          "
+        >
+          <div *ngIf="projectNumber.errors?.['required']">
+            Project number is required
+          </div>
+        </small>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-title">
+        <label> Project name </label>
+        <span>*</span>
+      </div>
+      <div class="input-user">
+        <input
+          required
+          id="projectName"
+          name="projectName"
+          type="text"
+          style="flex: 1"
+          formControlName="name"
+        />
+        <small
+          class="error-message"
+          *ngIf="name.invalid && (name.dirty || name.touched)"
+        >
+          <div *ngIf="name.errors?.['required']">Project name is required</div>
+        </small>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-title">
+        <label> Customer </label>
+        <span>*</span>
+      </div>
+      <div class="input-user">
+        <input
+          required
+          id="customer"
+          name="customer"
+          type="text"
+          style="flex: 1"
+          formControlName="customer"
+        />
+        <small
+          class="error-message"
+          *ngIf="customer.invalid && (customer.dirty || customer.touched)"
+        >
+          <div *ngIf="customer.errors?.['required']">Customer is required</div>
+        </small>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-title">
+        <label> Group </label>
+        <span>*</span>
+      </div>
+      <div class="input-user">
+        <p-dropdown
+          [options]="groupList"
+          formControlName="groupId"
+          placeholder="Select group"
+          optionLabel="id"
+          optionValue="id"
+          [style]="{ width: '160px', height: '30px' }"
+          (onChange)="changeGroup($event.value)"
+        ></p-dropdown>
+        <small
+          class="error-message"
+          *ngIf="groupId.invalid && (groupId.dirty || groupId.touched)"
+        >
+          <div *ngIf="groupId.errors?.['required']">Group is required</div>
+        </small>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <div class="input-title">
+        <label> Members </label>
+      </div>
+      <div class="input-user">
+        <div class="select-container">
+          <p-multiSelect
+            [options]="employeeList"
+            formControlName="members"
+            optionLabel="visa"
+            optionValue="id"
+            [style]="{ width: '100%', height: '30px' }"
+          ></p-multiSelect>
+        </div>
+      </div>
+    </div>
+    <div class="input-container">
+      <div class="input-title">
+        <label> Status </label>
+        <span>*</span>
+      </div>
+      <div class="input-user">
+        <p-dropdown
+          [options]="statusList"
+          formControlName="status"
+          placeholder="Status"
+          optionLabel="name"
+          optionValue="value"
+          [style]="{ width: '160px', height: '30px' }"
+        ></p-dropdown>
+      </div>
+    </div>
+
+    <div class="date-container">
+      <div class="input-container">
+        <div class="input-title">
+          <label> Start date </label>
+          <span>*</span>
+        </div>
+        <div class="input-user">
+          <p-calendar
+            formControlName="startDate"
+            [showIcon]="true"
+            [style]="{
+              width: '160px',
+            }"
+            placeholder="dd.mm.yyyy"
+            dateFormat="dd.mm.yy"
+            class="custom-calendar"
+          >
+          </p-calendar>
+
+          <small
+            class="error-message"
+            *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)"
+          >
+            <div *ngIf="startDate.errors?.['required']">
+              Start date is required
+            </div>
+          </small>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-title">
+          <label> End date </label>
+        </div>
+
+        <div class="input-user">
+          <p-calendar
+            formControlName="endDate"
+            [showIcon]="true"
+            [style]="{
+              width: '160px',
+            }"
+            placeholder="dd.mm.yyyy"
+            dateFormat="dd.mm.yy"
+            class="custom-calendar"
+          >
+          </p-calendar>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="cancel-btn" type="button" (click)="cancel()">
+        Cancel
+      </button>
+      <button class="create-btn" type="submit">
+        <!-- <div class="loading">
+          <ngx-spinner
+            bdColor="transparent"
+            size="small"
+            color="#fff"
+            type="ball-clip-rotate"
+            [fullScreen]="false"
+            name="createUpdate"
+          ></ngx-spinner>
+        </div> -->
+        {{ isAddMode ? "Create project" : "Update project" }}
+      </button>
+    </div>
+  </form>
+</div>

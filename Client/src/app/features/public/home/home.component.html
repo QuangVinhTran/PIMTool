@@ -1,0 +1,15 @@
+<div class="home-container">
+  <div class="">
+    <app-header></app-header>
+  </div>
+
+  <div class="body-container">
+    <div class="sidebar">
+      <app-sidebar [title]="title" [action]="action"></app-sidebar>
+    </div>
+    <div class="content">
+      <p class="status">{{ action | titlecase }} {{ title | titlecase }}</p>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="sidebar-container">
+  <a
+    [ngClass]="{ active: action === 'list' }"
+    [routerLink]="['project/list']"
+    class="title"
+    >{{ title | titlecase }} list</a
+  >
+  <nav>
+    <h3 class="status">{{ action | titlecase }}</h3>
+    <ul>
+      <li>
+        <a
+          [ngClass]="{ active: action === 'new' }"
+          [routerLink]="['project/new']"
+          >Project</a
+        >
+      </li>
+      <li><a>Customer</a></li>
+      <li><a>Supplier</a></li>
+    </ul>
+  </nav>
+</div>
