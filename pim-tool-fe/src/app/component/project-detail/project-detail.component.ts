@@ -14,6 +14,7 @@ import { EmployeeService } from 'src/app/service/employee.service';
 import { ProjectMembers } from '../../model/project';
 import { formatDate } from '@angular/common';
 import { Employee } from '../../model/employee';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-project-detail',
@@ -46,6 +47,8 @@ export class ProjectDetailComponent {
   formGroup: FormGroup | undefined;
   selectedEmployee: number[] = [];
   hasEmp: boolean = false;
+  startDate: any;
+  endDate: any;
 
   constructor(
     private projectService: ProjectService,
@@ -151,6 +154,12 @@ export class ProjectDetailComponent {
         console.log("test proj: ", this.updateProject);
         console.log("test mem: ", this.selectedEmployee);
         console.log("version: ", this.updateProject.version);
+        console.log("start dateeeeeeeeeeee", moment(this.updateProject.startDate).format('DD.MM.YYYY'));
+        this.startDate = moment(this.updateProject.startDate).format('DD.MM.YYYY');
+        console.log("start date: ", this.startDate);
+        if (this.updateProject.endDate){
+          this.endDate = moment(this.updateProject.endDate).format('DD.MM.YYYY');
+        }
 
         // find the members from the empList that has the correct id from listEmpId and add to the selectedItem
         response.listEmpId.forEach((e: number) => {
@@ -339,5 +348,15 @@ export class ProjectDetailComponent {
 
   navigateToErrorPage() {
     this.router.navigate(['/error']);
+  }
+
+  formatDate(date: any): any {
+    date = date + '';
+    var myDate = moment(date).format('DD.MM.YYYY');
+    return myDate;
+  }
+
+  refreshPage() {
+    location.reload();
   }
 }

@@ -6,6 +6,9 @@
     <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
       <span aria-hidden="true">&times;</span>
     </button>
+    <button type="button" class="close" style="padding-right: 0.5rem;" aria-label="Close" (click)="refreshPage()">
+      <span aria-hidden="true"><i style="font-size: 1.1rem;" class="fas fa-sync-alt"></i> </span>
+    </button>
   </div>
   <div class="form-container">
     <form #detailForm="ngForm" (ngSubmit)="editMode ? onUpdateProject(detailForm) : onAddProject(detailForm)">
@@ -16,7 +19,7 @@
         <div class="input-container">
           <input type="text" ngModel [readonly]="editMode" [ngModel]="editMode ? updateProject.projectNumber: null"
             *ngIf="!editMode || editMode" name="projectNumber" class="form-control short-input" id="projectNumber"
-            [ngClass]="{ 'red-border': numberErr !== '' }" required />
+            [ngClass]="{ 'red-border': numberErr !== '' }" required style="text-align: right;"/>
         </div>
       </div>
 
@@ -77,7 +80,7 @@
           <div class="input-container">
             <input type="date" [ngModel]="editMode ? updateProject.startDate : null" *ngIf="!editMode || editMode"
               name="startDate" class="form-control short-input" id="startDate"
-              [ngClass]="{ 'red-border': ennDateErr !== '' }" required />
+              [ngClass]="{ 'red-border': ennDateErr !== '' }" required style="text-align: center;" />
           </div>
         </div>
 
@@ -86,7 +89,7 @@
           <div class="input-container">
             <input type="date" [ngModel]="editMode ? updateProject.endDate : null" *ngIf="!editMode || editMode"
               name="endDate" class="form-control short-input" id="endDate"
-              [ngClass]="{ 'red-border': ennDateErr !== '' }" />
+              [ngClass]="{ 'red-border': ennDateErr !== '' }" style="text-align: center;"/>
           </div>
         </div>
       </div>
@@ -152,3 +155,5 @@
 <pre>{{ detailForm.value.status | json }}</pre>
 <pre>{{ detailForm.value.startDate | json }}</pre>
 <pre>{{ detailForm.value.endDate | json }}</pre> -->
+
+

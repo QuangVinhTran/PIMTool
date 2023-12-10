@@ -114,9 +114,7 @@ namespace PIMTool.Controllers
             }
             catch (Exception ex)
             {
-                //_logger.LogError(ex, "Unexpected exception");
-                //return BadRequest(ex.Message);
-                throw new Exception(ex.Message);
+                return BadRequest(ex);
             }
             if (!ModelState.IsValid)
             {
@@ -137,10 +135,11 @@ namespace PIMTool.Controllers
 
             var currentProject = await _projectService.GetAsync(id);
 
-            Console.WriteLine("@@@@@@@@db version: ");
-            Console.WriteLine(currentProject.Version.ToString());
-            Console.WriteLine("@@@@@@@@coming version: ");
-            Console.WriteLine(projMember.ProjectDto.Version.ToString());
+            if (currentProject == null)
+            {
+                  throw new ProjectNotFound();
+            }
+
 
             if (!currentProject.Version.SequenceEqual(projMember.ProjectDto.Version))
             {
@@ -203,33 +202,6 @@ namespace PIMTool.Controllers
                 }
                 catch (DbUpdateConcurrencyException ex)
                 {
-                    //foreach (var entry in ex.Entries)
-                    //{
-                    //    if (entry.Entity is Employee)
-                    //    {
-                    //        var proposedValues = entry.CurrentValues;
-                    //        var databaseValues = entry.GetDatabaseValues();
-
-                    //        foreach (var property in proposedValues.Properties)
-                    //        {
-                    //            var proposedValue = proposedValues[property];
-                    //            var databaseValue = databaseValues[property];
-
-                    //            // TODO: decide which value should be written to database
-                    //            // proposedValues[property] = <value to be saved>;
-                    //        }
-
-                    //        // Refresh original values to bypass next concurrency check
-                    //        entry.OriginalValues.SetValues(databaseValues);
-                    //    }
-                    //    else
-                    //    {
-                    //        throw new NotSupportedException(
-                    //            "Don't know how to handle concurrency conflicts for "
-                    //            + entry.Metadata.Name);
-                    //    }
-                    //}
-
                     throw new ConcurrentUpdateException();
                 }
             }
@@ -239,6 +211,10 @@ namespace PIMTool.Controllers
         public async Task<ActionResult<ProjectDto>> DeleteProject([FromQuery][Required] int id)
         {
             var project = await _projectService.GetAsync(id);
+            if (project == null)
+            {
+                throw new ConcurrentUpdateForDeleteCaseException();
+            }
             await _projectService.DeleteAsync(project);
             return Ok(_mapper.Map<ProjectDto>(project));
         }
@@ -277,16 +253,12 @@ namespace PIMTool.Controllers
         [HttpGet("count")]
         public async Task<ActionResult<int>> CountProjects()
         {
-            var entities = await _projectService.GetProjects();
+            int count = await _projectService.GetProjectsCount();
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (!entities.Any())
-            {
-                return NotFound();
-            }
-            return Ok(entities.Count());
+            return Ok(count);
         }
     }
 }

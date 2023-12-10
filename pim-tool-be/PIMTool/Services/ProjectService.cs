@@ -63,6 +63,11 @@ namespace PIMTool.Services
             return entities;
         }
 
+        public async Task<int> GetProjectsCount()
+        {
+            return await _pimContext.Projects.CountAsync();
+        }
+
         public async Task<IEnumerable<Project>> GetProjectsPagination(int skip, int limit)
         {
             var entities = await _pimContext.Projects
