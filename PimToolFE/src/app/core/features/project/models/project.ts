@@ -1,5 +1,5 @@
-export interface CreateProjectModel{
-  projectNumber?: string;
+export interface ProjectModel {
+  projectNumber?: number;
   name?: string;
   customer?: string;
   groupId?: number;
