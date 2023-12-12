@@ -11,6 +11,6 @@ namespace PIMTool.Core.Domain.Objects
     {
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 3;
-        public int? TotalPage { get; set; }
+        public int TotalPage { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace PIMTool.Services
                     employeeId.Add(employee.Id);
                 }
 
-                if(employeeId.Count() == 0)
+                if (employeeId.Count() == 0)
                 {
                     throw new Exception("Employees do not exist!");
                 }
@@ -66,8 +66,11 @@ namespace PIMTool.Services
         public async Task Delete(Project project)
         {
             var projectEmployeeList = _projectEmployeeRepository.FindByCondition(pe => pe.ProjectId == project.Id).ToArray();
-            await _projectEmployeeRepository.DeleteRange(projectEmployeeList);
-            await _projectEmployeeRepository.SaveChangesAsync();
+            if (projectEmployeeList.Length > 0)
+            {
+                await _projectEmployeeRepository.DeleteRange(projectEmployeeList);
+                await _projectEmployeeRepository.SaveChangesAsync();
+            }
 
             await _projectRepository.Delete(project);
             await _projectRepository.SaveChangesAsync();
@@ -75,6 +78,14 @@ namespace PIMTool.Services
 
         public async Task DeleteRange(params Project[] projects)
         {
+            foreach (var project in projects)
+            {
+                var projectEmployeeList = _projectEmployeeRepository.FindByCondition(pe => pe.ProjectId == project.Id).ToArray();
+                if(projectEmployeeList.Length > 0)
+                await _projectEmployeeRepository.DeleteRange(projectEmployeeList);
+                await _projectEmployeeRepository.SaveChangesAsync();
+            }
+
             await _projectRepository.DeleteRange(projects);
             await _projectRepository.SaveChangesAsync();
         }
@@ -92,26 +103,25 @@ namespace PIMTool.Services
 
             if (filterParameters != null)
             {
-                filterProject = p => p.Name.ToLower().Equals(filterParameters) ||
-                p.ProjectNumber.ToString().Equals(filterParameters) ||
-                p.Customer.ToLower().Equals(filterParameters);
+                filterProject = p => p.Name.ToLower().Contains(filterParameters) ||
+                p.ProjectNumber.ToString().Contains(filterParameters) ||
+                p.Customer.ToLower().Contains(filterParameters);
             }
 
             var status = projectParameters.Status;
             if (status != null)
             {
-                filterProjectStatus = p => p.Status.ToString().Equals(status);
+                filterProjectStatus = p => p.Status.Equals(Enum.Parse(typeof(ProjectStatus), status));
             }
 
             if (filterProject != null && filterProjectStatus != null)
             {
-                expression = Expression.Lambda<Func<Project, bool>>(
-                            Expression.AndAlso(
-                                filterProject.Body,
-                                filterProjectStatus.Body
-                            ),
-                            filterProject.Parameters
-                        );
+                var param = Expression.Parameter(typeof(Project), "p");
+                var body = Expression.AndAlso(
+                        Expression.Invoke(filterProject, param),
+                        Expression.Invoke(filterProjectStatus, param)
+                    );
+                expression = Expression.Lambda<Func<Project, bool>>(body, param);
             }
             else if (filterProject != null)
             {
@@ -119,9 +129,9 @@ namespace PIMTool.Services
             }
             else expression = filterProjectStatus;
 
-            if (expression == null) 
+            if (expression == null)
             {
-                var projects = _projectRepository.Get();
+                var projects = _projectRepository.Get().OrderBy(p => p.ProjectNumber);
                 var tempSize = (int)Math.Ceiling((decimal)projects.Count() / projectParameters.PagingParameters.PageSize);
                 projectParameters.PagingParameters.TotalPage = tempSize;
                 return projects.Skip((projectParameters.PagingParameters.PageNumber - 1) * projectParameters.PagingParameters.PageSize)
@@ -129,7 +139,7 @@ namespace PIMTool.Services
             }
 
             var projectLists = _projectRepository.FindByCondition(expression);
-            var tempPageSize = (int)Math.Ceiling((decimal)projectLists.Count()/ projectParameters.PagingParameters.PageSize);
+            var tempPageSize = (int)Math.Ceiling((decimal)projectLists.Count() / projectParameters.PagingParameters.PageSize);
             projectParameters.PagingParameters.TotalPage = tempPageSize;
             return projectLists.Skip((projectParameters.PagingParameters.PageNumber - 1) * projectParameters.PagingParameters.PageSize)
                 .Take(projectParameters.PagingParameters.PageSize);
@@ -146,6 +156,11 @@ namespace PIMTool.Services
             return entity;
         }
 
+        public IQueryable<Project?> SearchProjectByNumber(int number)
+        {
+            return _projectRepository.FindByCondition(p => p.ProjectNumber == number);
+        }
+
         public async Task Update(Project project, List<string> employeeVisaList)
         {
 
@@ -159,8 +174,9 @@ namespace PIMTool.Services
 
                 foreach (var visa in employeeVisaList)
                 {
-                    Employee employee = _employeeRepository.FindByCondition(e => e.Visa.Equals(visa)).First();
-                    employeeId.Add(employee.Id);
+                    Employee employee = _employeeRepository.FindByCondition(e => e.Visa.Equals(visa)).SingleOrDefault();
+                    if (employee != null)
+                        employeeId.Add(employee.Id);
                 }
 
 
@@ -177,19 +193,20 @@ namespace PIMTool.Services
 
                 await _projectEmployeeRepository.AddRangeAsync(projectEmployees);
                 await _projectEmployeeRepository.SaveChangesAsync();
+
             }
 
             var updatingProject = _projectRepository.FindByCondition(p => p.Id == project.Id).First();
             List<Project> existedProjectList = _projectRepository.Get().ToList();
             existedProjectList.Remove(updatingProject);
-            _projectRepository.ClearTrackers();
+
 
             foreach (var existedProject in existedProjectList)
             {
                 if (existedProject.ProjectNumber.Equals(project.ProjectNumber))
                     throw new Exception("Project number already existed");
             }
-
+            _projectRepository.ClearTrackers();
             await _projectRepository.Update(project);
             await _projectRepository.SaveChangesAsync();
         }

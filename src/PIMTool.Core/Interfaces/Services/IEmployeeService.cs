@@ -14,5 +14,6 @@ namespace PIMTool.Core.Interfaces.Services
         Task<ICollection<Employee>> SearchEmployeeByProjId(int projectId, CancellationToken cancellationToken = default);
         Task AddAsync(Employee employee, CancellationToken cancellationToken = default);
         Task Update(Employee employee);
+        List<string> CheckNonExistentVisa(string visaList);
     }
 }

@@ -11,5 +11,6 @@ namespace PIMTool.Core.Interfaces.Services
         Task Delete(Project project);
         Task DeleteRange(params Project[] projects);
         Task Update(Project project, List<string> employeeVisaList);
+        IQueryable<Project?> SearchProjectByNumber(int number);
     }
 }

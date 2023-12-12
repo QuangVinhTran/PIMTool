@@ -34,6 +34,26 @@ namespace PIMTool.Services
 
         }
 
+        public List<string> CheckNonExistentVisa(string list)
+        {
+            List<string> result = new();
+            if (list != null && list.Length > 0)
+            {
+                string[] visaList = list.Split(",");
+
+                foreach (var visa in visaList)
+                {
+                    var employee = _repository.FindByCondition(e => e.Visa.ToUpper().Equals(visa.ToUpper())).FirstOrDefault();
+                    if (employee == null)
+                    {
+                        result.Add(visa.ToUpper());
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public IQueryable<Employee> Get()
         {
             return _repository.Get(null);
@@ -41,7 +61,7 @@ namespace PIMTool.Services
 
         public async Task<Employee?> GetAsync(int id, CancellationToken cancellationToken = default)
         {
-            var entity = await _repository.GetAsync(id,null, cancellationToken);
+            var entity = await _repository.GetAsync(id, null, cancellationToken);
             return entity;
         }
 
@@ -60,9 +80,9 @@ namespace PIMTool.Services
             var existedEmployeeList = _repository.Get().ToList();
             var updatingEmployee = _repository.FindByCondition(e => e.Id == employee.Id).First();
             existedEmployeeList.Remove(updatingEmployee);
-            foreach(var emp in existedEmployeeList)
+            foreach (var emp in existedEmployeeList)
             {
-                if(emp.Visa.Equals(employee.Visa))
+                if (emp.Visa.Equals(employee.Visa))
                 {
                     throw new Exception("Employee visa already in use!");
                 }

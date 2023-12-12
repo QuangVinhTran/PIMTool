@@ -16,9 +16,7 @@ public class ProjectDto
     public string Status { get; set; } = null!;
     public DateTime StartDate { get; set; }
     public DateTime? EndDate { get; set; }
-    public byte[]? Version { get; set; }
-    public ICollection<Employee>? Employees { get; set; }
-
-    [NotMapped]
-    public List<string>? EmployeeVisas { get; set; }
+    public byte[]? Version { get; set; } = null!;
+    public int? TotalPage { get; set; }
+    public List<string>? EmployeeVisas { get; set; } = new List<string>();
 }

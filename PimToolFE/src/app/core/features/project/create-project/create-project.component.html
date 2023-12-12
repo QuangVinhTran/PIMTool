@@ -13,10 +13,13 @@
 
 <form (ngSubmit)="onFormSubmit()">
 <div class="row">
-  <label  class="col-sm-3 control-label">Project Number<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <label class="col-sm-3 control-label">Project Number<span class="text-danger" style="padding-left: 10px">*</span></label>
   <div class="col-sm-3 ">
-    <input type="text" class="form-control" [(ngModel)]="model.projectNumber" name="project number">
+    <div class="form-group" [class.has-error]="duplicatedNumber">
+      <input type="number" class="form-control" [(ngModel)]="model.projectNumber" name="project number">
+    </div>
   </div>
+        <div class="help-block" style="color: #a94442" *ngIf="duplicatedNumber">The project number already existed. Please select a different project number</div>
 </div>
 
 <div class="space"></div>
@@ -42,8 +45,10 @@
 <div class="row">
   <label class="col-sm-3 control-label">Group<span class="text-danger" style="padding-left: 10px">*</span></label>
   <div class="col-sm-3">
-    <select class="form-control" *ngFor="let group of groups" [(ngModel)]="model.groupId" name="group">
-      <option value="{{group.id}}" >{{group.name}}</option>
+    <select class="form-control" [(ngModel)]="model.groupId" name="group">
+      <ng-container *ngFor="let group of groups" >
+        <option value="{{group.id}}" >{{group.name}}</option>
+      </ng-container>
     </select>
   </div>
 </div>
@@ -53,9 +58,19 @@
 <div class="row">
   <label class="col-sm-3 control-label">Members</label>
   <div class="col-sm-9">
+    <div class="form-group" [class.has-error]="nonExistentialVisas.length > 0">
     <input type="text" class="form-control" [(ngModel)]="membersInput" name="member">
+      </div>
+  </div>
+  <div class="col-sm-3"></div>
+  <div class="help-block col-sm-9" style="color: #a94442" *ngIf="nonExistentialVisas.length > 0">The following visas do not exist:
+    <span *ngFor="let visa of nonExistentialVisas; let last = last">
+      {{visa}}<ng-container *ngIf="!last">,</ng-container><ng-container *ngIf="last">.</ng-container>
+    </span>
+
   </div>
 </div>
+
 
 <div class="space"></div>
 
@@ -63,10 +78,10 @@
   <label class="col-sm-3 control-label">Status<span class="text-danger" style="padding-left: 10px">*</span></label>
   <div class="col-sm-3 mt-2">
     <select class="form-control" [(ngModel)]="model.status" name="status">
-      <option value="0">New</option>
-      <option value="1">Planned</option>
-      <option value="2">In progress</option>
-      <option value="3">Finished</option>
+      <option value="NEW">New</option>
+      <option value="PLA">Planned</option>
+      <option value="INP">In progress</option>
+      <option value="FIN">Finished</option>
     </select>
   </div>
 </div>
@@ -98,7 +113,7 @@
 
 <div class="row">
   <div class="col-sm-6"></div>
-  <button class="btn btn-cancel col-sm-2 pt-1" type="button" [routerLink]="['project/list']">Cancel</button>
+  <a class="btn btn-cancel col-sm-2 pt-1" role="button" [routerLink]="['/project/list']">Cancel</a>
   <button class="btn btn-create col-sm-2 pt-1" type="submit">Create Project</button>
 </div>
 </form>

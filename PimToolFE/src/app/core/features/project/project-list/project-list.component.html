@@ -1,30 +1,32 @@
 
 <p style="margin-top: 20px; margin-bottom: 40px;padding-bottom: 10px; border-bottom: 1px solid #ddd;">Project List</p>
-
-<div class="row">
+<form (ngSubmit)="onFormSubmit()">
+  <div class="row">
   <div class="col-sm-4">
-    <input type="text" class="form-control" placeholder="Project number, name, customer name">
+    <input type="text" class="form-control" placeholder="Project number, name, customer name" [(ngModel)]="this.model.filterParameters" name="filter">
   </div>
-  <div class="col-sm-2 ">
-    <select class="form-control">
-      <option value="NEW" selected>New</option>
+  <div class="col-sm-3">
+    <select class="form-control" [(ngModel)]="this.model.status" name="status">
+      <option value="" disabled hidden>Project status</option>
+      <option value="NEW" >New</option>
       <option value="PLA">Planned</option>
       <option value="INP">In progress</option>
       <option value="FIN">Finished</option>
     </select>
   </div>
-  <div class="col-sm-2">
-    <button class="btn btn-create pt-1">Create Project</button>
+  <div class="col-sm-3" >
+    <button class="btn btn-search col-sm-10" type="submit">Search Project</button>
   </div>
   <div class="col-sm-2">
-    <a class="btn btn-create col-sm-2 pt-1" href="#" role="button">Create Project</a>
+    <button class="btn btn-reset col-sm-12" (click)="onReset()">Reset Search</button>
   </div>
 </div>
+</form>
 
 <div class="space"></div>
 
 <div class="row">
-  <div class="col-sm-10">
+  <div class="col-sm-12">
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -37,20 +39,53 @@
       <td>Delete</td>
     </tr>
     </thead>
+    <tbody style="text-align: left">
     <ng-container *ngIf="projects">
-      <tbody>
       <tr *ngFor="let project of projects">
-        <td><input type="checkbox" style="width: 15px; height: 15px"/></td>
-        <td>{{project.projectNumber}}</td>
+        <td><input type="checkbox"  (change)="addDeletingRow($event,project.id!)" style="width: 15px; height: 15px"/></td>
+        <td><a [routerLink]="['/project/edit/',project.id]" style="color:#666666;">{{project.projectNumber}}</a></td>
         <td>{{project.name}}</td>
-        <td>{{status[project.status]}}</td>
+        <td>{{project.status}}</td>
         <td>{{project.customer}}</td>
         <td>{{project.startDate | date:'dd.MM.yyyy'}}</td>
-        <td style="text-align: center"><span class="glyphicon glyphicon-trash" style="color: red;"></span></td>
+        <td style="text-align: center">
+        <ng-container *ngIf="project.status === 'NEW'">
+          <button class="glyphicon glyphicon-trash" (click)="onDelete(project.id!)" style="color: red;border: none;background: none"></button>
+        </ng-container>
+        </td>
       </tr>
-      </tbody>
+      <tr *ngIf="selectedDeletingRows.length > 0">
+        <td [attr.colspan]="7">
+          <span style="float: left; color: #2F85FA">{{selectedDeletingRows.length}} items selected</span>
+          <button (click)="onDeleteProjects()" style="float: right;border: none;background: none;color: red;">delete selected items <span class="glyphicon glyphicon-trash"></span></button>
+        </td>
+      </tr>
     </ng-container>
+      </tbody>
+
   </table>
 </div>
 </div>
 
+<div class="row">
+  <nav>
+    <ul class="pagination pagination-container">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" [class.disabled]="currentPage === 1" (click)="currentPage !== 1" [routerLink]="['/project/list/',currentPage-1]" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <ng-container *ngFor="let item of totalPageIndex; let i = index">
+        <li [class.active]="currentPage === i + 1"  class="page-item"><a class="page-link" [routerLink]="['/project/list/',i+1]">{{i+1}}</a></li>
+      </ng-container>
+
+      <li class="page-item" [class.disabled] = "currentPage === totalPageIndex[totalPageIndex.length-1]">
+        <a class="page-link" (click)="currentPage !== totalPageIndex[totalPageIndex.length-1]"  aria-label="Next" [routerLink]="['/project/list/',totalPageIndex[totalPageIndex.length-1]]">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

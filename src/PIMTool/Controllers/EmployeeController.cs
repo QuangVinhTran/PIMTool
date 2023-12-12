@@ -22,8 +22,7 @@ namespace PIMTool.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        [Route("search-employee/{projectId}")]
+        [HttpGet("Search/{projectId}")]
         public async Task<ActionResult<EmployeeDto>> SearchEmployee(int projectId)
         {
             try
@@ -82,6 +81,20 @@ namespace PIMTool.Controllers
             }
         }
 
+        [HttpGet("Visa")]
+        public async Task<ActionResult<List<string>>> CheckExistedVisa([FromQuery]string? visaList)
+        {
+            try
+            {
+                var result = _employeeService.CheckNonExistentVisa(visaList);
+                return Ok(result);
+
+            }
+            catch (BusinessException ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
 
     }
 }

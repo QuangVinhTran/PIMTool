@@ -28,28 +28,53 @@ namespace PIMTool.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectDto>> Get([FromRoute][Required] int id)
         {
-            var entity = await _projectService.GetAsync(id);
-            if(entity == null)
+            try
             {
-                return BadRequest("Project does not exist!");
+                var entity = await _projectService.GetAsync(id);
+                if (entity == null)
+                {
+                    return BadRequest(_mapper.Map<ProjectDto>(entity));
+                }
+                ProjectDto result = _mapper.Map<ProjectDto>(entity);
+                foreach (var employee in entity.Employees)
+                {
+                    result.EmployeeVisas.Add(employee.Visa);
+                }
+                return Ok(result);
+
             }
-            return Ok(_mapper.Map<ProjectDto>(entity));
+            catch (BusinessException ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+
         }
 
         [HttpGet]
-        public async Task<ActionResult<ProjectDto>> GetAll([FromQuery]ProjectParameters projectParameters)
+        public async Task<ActionResult<List<ProjectDto>>> GetAll([FromQuery] ProjectParameters projectParameters)
         {
-            var projectList = _projectService.Get(projectParameters).ToList();
-            return Ok(_mapper.Map<List<ProjectDto>>(projectList));
+            try
+            {
+                var projectList = _projectService.Get(projectParameters).ToList();
+                var projectDtoList = _mapper.Map<List<ProjectDto>>(projectList);
+                foreach (var projectDto in projectDtoList)
+                    projectDto.TotalPage = projectParameters.PagingParameters.TotalPage;
+                return Ok(projectDtoList);
+            }
+            catch (BusinessException ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+
         }
 
         [HttpPost]
-        public async Task<ActionResult<ProjectDto>> Create(ProjectDto projectDto)
+        public async Task<ActionResult> Create(ProjectDto projectDto)
         {
             try
             {
                 await _projectService.AddAsync(_mapper.Map<Project>(projectDto), projectDto.EmployeeVisas);
-                return Ok("Create a project successfully");
+                return Ok();
             }
             catch (BusinessException ex)
             {
@@ -59,18 +84,17 @@ namespace PIMTool.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<ProjectDto>> Update(ProjectDto projectDto)
+        public async Task<ActionResult> Update(ProjectDto projectDto)
         {
             try
             {
                 var project = await _projectService.GetAsync(projectDto.Id);
                 if (project == null)
                 {
-                    return BadRequest("Project does not exist!");
+                    return BadRequest();
                 }
-                projectDto.Version = project.Version;
                 await _projectService.Update(_mapper.Map<Project>(projectDto), projectDto.EmployeeVisas);
-                return Ok("Update a project successfully!");
+                return Ok();
 
             }
             catch (BusinessException ex)
@@ -81,17 +105,57 @@ namespace PIMTool.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<ActionResult<ProjectDto>> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
                 var project = await _projectService.GetAsync(id);
                 if (project == null)
                 {
-                    return BadRequest("Project does not exsit!");
+                    return BadRequest();
                 }
                 await _projectService.Delete(project);
-                return Ok("Delete a project successfully");
+                return Ok();
+            }
+            catch (BusinessException ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        [HttpDelete]
+        public async Task<ActionResult> DeleteAll([FromBody] List<int> idList)
+        {
+            try
+            {
+                List<Project> projects = new();
+                foreach (var id in idList)
+                {
+                    var project = await _projectService.GetAsync(id);
+                    if (project != null)
+                        projects.Add(project);
+                }
+                if (projects.Count() == 0)
+                {
+                    return BadRequest();
+                }
+                await _projectService.DeleteRange(projects.ToArray());
+                return Ok();
+            }
+            catch (BusinessException ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        [HttpGet("Number")]
+        public async Task<ActionResult<ProjectDto>> SearchByProjectNumber([FromQuery] int number)
+        {
+            try
+            {
+                var project = _projectService.SearchProjectByNumber(number).FirstOrDefault();
+                return Ok(project);
+
             }
             catch (BusinessException ex)
             {

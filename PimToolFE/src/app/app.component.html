@@ -1,3 +1,14 @@
-<app-top-bar></app-top-bar>
-<app-body></app-body>
+<ng-container *ngIf="showTopBarAndBody">
+  <div>
+    <app-top-bar></app-top-bar>
+    <app-body></app-body>
+  </div>
+</ng-container>
+<ng-container *ngIf="!showTopBarAndBody">
+  <div>
+    <app-top-bar></app-top-bar>
+    <app-error></app-error>
+  </div>
+</ng-container>
+
 <router-outlet></router-outlet>
