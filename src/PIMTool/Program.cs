@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using PIMTool.Core.Interfaces.Repositories;
+using PIMTool.Core.Interfaces.Services;
 using PIMTool.Database;
 using PIMTool.Extensions;
 using PIMTool.Middlewares;
+using PIMTool.Repositories;
+using PIMTool.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +21,7 @@ builder.Services.AddCors(opt =>
 });
 builder.Services.AddControllers().AddNewtonsoftJson();
 
-builder.Services.AddDbContext<PimContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<PimContext>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

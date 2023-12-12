@@ -11,6 +11,9 @@ namespace PIMTool.Extensions
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IProjectEmployeeService, ProjectEmployeeService>();
+            services.AddScoped<IGroupService, GroupService>();
         }
     }
 }
