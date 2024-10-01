@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">PIM Tool</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/project" routerLinkActive="active">Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div id="titleContent">
+    <a routerLink="/">
+      <img src="assets/img/logo.png"/>
+    </a>  
+    <br />  
+</div>
+<div class="container body-content">
+  <router-outlet></router-outlet>
+  <hr />
+  <footer>
+    <p>&copy; 2020</p>
+  </footer>
+</div>
+
