@@ -1,0 +1,23 @@
+<div class="h-screen">
+    <div id="toast"></div>
+    <div class="h-[12%]">
+        <layout-header></layout-header>
+    </div>
+    <div class="w-screen flex justify-center items-center h-[88%]">
+        <div class="w-3/5 h-3/5 flex">
+            <div class="h-full w-2/5 flex items-center">
+                <img class="h-4/5" src="../../assets/images/error.png" alt>
+            </div>
+            <div class="h-full w-3/5 flex justify-center items-center flex-col">
+                <div class="float-right w-5/6">
+                    <div class="text-3xl font-semibold text-[#666666]">Unexpected error occurred. </div>
+                    <div class="text-3xl font-semibold text-[#666666]">Please
+                        <span class="text-red-500">contact your administrator</span></div>
+                    <div class="text-3xl font-semibold text-[#666666] mt-6">or <button
+                            (click)="backToProjectList()" class="text-blue-500">back
+                            to search project</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

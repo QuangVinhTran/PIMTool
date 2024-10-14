@@ -1,0 +1,19 @@
+<div class="header grid grid-cols-12 border-b border-black h-full">
+    <div class="flex justify-center col-start-2 col-end-3 col-span-1">
+        <img class="w-16 h-16 m-3" src="../../../assets/images/logo_elca.png"
+            alt="logo_elca">
+    </div>
+    <div class="flex items-center whitespace-nowrap">
+        <h1 class="text-3xl font-semibold">{{'projectInformationManagement' | translate}}</h1>
+    </div>
+    <div class="flex items-center col-start-8 col-end-10">
+        <a value="en" class="cursor-pointer" [ngClass]="{'active': lang === 'en'}" (click)="changeLang($event.target)">EN</a>
+        <span class="mx-1 text-blue-500"> | </span>
+        <a value="fr" class="cursor-pointer" [ngClass]="{'active': lang === 'fr'}" (click)="changeLang($event.target)" (click)="changeLang($event.target)">FR</a>
+    </div>
+    <div
+        class="items-center col-start-10 col-end-12 flex justify-around">
+        <a class="text-blue-500 cursor-not-allowed">{{'help' | translate}}</a>
+        <button (click)="logout()" class="cursor-pointer">{{'logOut' | translate}}</button>
+    </div>
+</div>

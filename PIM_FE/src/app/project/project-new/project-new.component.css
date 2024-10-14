@@ -1,0 +1,38 @@
+.small-input {
+    height: 30px;
+    /* width: 25%; */
+    border: 1px solid gray;
+}
+label {
+    color: #333;
+    font-family: 'Segoe UI';
+    font-weight: 18pt;
+}
+.large-input {
+    height: 30px;
+    /* width: 70%; */
+    border: 1px solid gray;
+}
+/* .invalidInput {
+    border: 1px solid red !important;
+} */
+.active {
+    display: block !important;
+}
+input, select {
+    padding-left: 10px;
+}
+/* loading */
+
+.loading {
+    animation: spinner 3s linear infinite;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
