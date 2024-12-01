@@ -1,0 +1,18 @@
+<div class="navbar-container">
+    <h3><a routerLink="/" routerLinkActive="active-blue">Project list</a></h3>
+
+    <ul>
+        <li (click)="toggleLinks()">
+            <a>New</a>
+        </li>
+        <li *ngIf="showProject">
+            <a routerLink="/create/project" routerLinkActive="active-link">Project</a>
+        </li>
+        <li *ngIf="showCustomer">
+            <a>Customer</a>
+        </li>
+        <li *ngIf="showSupplier">
+            <a>Supplier</a>
+        </li>
+    </ul>
+</div>

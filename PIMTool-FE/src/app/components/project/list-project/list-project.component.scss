@@ -1,0 +1,132 @@
+.project-list-wrapper {
+  height: 100%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  .header-list-wrapper {
+    padding-bottom: 13px;
+    border-bottom: solid 1px #ccc;
+    width: 100%;
+    margin-bottom: 60px;
+    h2 {
+      color: #666;
+      font-weight: 500;
+    }
+  }
+  .search-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2em;
+    input,
+    select {
+      height: 38px;
+      color: #666;
+      font-weight: 500;
+      padding-left: 10px;
+    }
+    .input-search {
+      margin-right: -10px;
+      input {
+        font-size: 15px;
+        width: 500px;
+      }
+    }
+    .filter-status {
+      select {
+        width: 200px;
+      }
+    }
+    .search-button {
+      margin: 0 15px;
+      button {
+        width: 200px;
+        height: 45px;
+      }
+    }
+    .reset-search {
+      p {
+        a {
+          color: #2f85fa;
+        }
+      }
+    }
+  }
+  .table-list-project {
+    margin-top: 30px;
+    p-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      tr {
+        color: #666;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        text-align: center;
+        vertical-align: middle;
+        ion-icon {
+          cursor: pointer;
+        }
+      }
+      td:first-child {
+        width: 32px;
+      }
+      thead {
+        tr {
+          height: 32px;
+          th {
+            font-size: 13pt;
+            color: #666;
+            font-weight: 400;
+            background-color: #fff;
+          }
+        }
+      }
+      tbody {
+        font-size: 14pt;
+        tr td {
+          border-bottom: none;
+          border-top: none;
+          height: 60px;
+        }
+        tr:last-child td {
+          border-bottom: 1px solid #ccc;
+        }
+      }
+    }
+  }
+  .right {
+    text-align: right !important;
+    padding-right: 12px !important;
+  }
+  .left {
+    text-align: left !important;
+    padding-left: 12px !important;
+  }
+  .selected--project-delete {
+    display: flex;
+    flex-direction: row;
+    height: 35pt;
+    justify-content: space-between;
+    // background-color: pink;
+    align-items: center;
+    border: solid 1px #ccc;
+    .select-left {
+      margin-left: 18px;
+    }
+    .select-right {
+      margin-right: 0.7%;
+      span.pi.pi-trash.p-button-icon.ng-star-inserted {
+        width: 16.66px;
+        height: 18.66px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .Pagination {
+    margin-top: 20px;
+    margin-left: auto;
+  }
+}

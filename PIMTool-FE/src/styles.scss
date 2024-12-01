@@ -1,0 +1,269 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Importing Bootstrap SCSS file. This includes variables and mixins needed by Bootstrap components.
+// Importing Bootstrap Alert component
+@import "bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+
+@import "bootstrap/scss/bootstrap";
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$PIMTool-FE-primary: mat.define-palette(mat.$indigo-palette);
+$PIMTool-FE-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$PIMTool-FE-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$PIMTool-FE-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $PIMTool-FE-primary,
+      accent: $PIMTool-FE-accent,
+      warn: $PIMTool-FE-warn,
+    ),
+  )
+);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($PIMTool-FE-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  padding: 0;
+}
+
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ccc;
+}
+
+a.active {
+  color: #2f85fa;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul.p-autocomplete-multiple-container.p-component.p-inputtext.ng-star-inserted {
+  height: 30px;
+  padding: 0 0 0 10px;
+}
+
+ul#pn_id_1_list {
+  padding: 0 0 0 10px;
+}
+
+input.p-element {
+  height: 30px;
+}
+
+.p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-token {
+  background: #dee2e6;
+  color: #495057;
+  border-radius: 5px;
+}
+
+span.p-autocomplete-token-label.ng-star-inserted {
+  margin: 0 8px 0 8px;
+}
+
+span.p-autocomplete-token-icon {
+  margin: 0 8px 0 0;
+}
+
+.p-autocomplete-panel.p-component.ng-tns-c3177733119-0 {
+  padding: 0 0 10px 0;
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.flex.align-items-center.gap-2.ng-star-inserted {
+  margin-bottom: 10px;
+  display: flex;
+  padding: 8px 8px 0 8px;
+}
+
+button.p-ripple.p-element.p-button.p-component.p-button-icon-only {
+  background-color: #fff;
+}
+
+span.pi.pi-trash.p-button-icon.ng-star-inserted {
+  color: red;
+  width: 18.66px;
+  height: 18.66px;
+  margin-bottom: 6px;
+}
+
+.ng-trigger.ng-trigger-animation.ng-tns-c3435727603-1.p-dialog.p-confirm-dialog.p-component.ng-star-inserted {
+  height: 220px;
+}
+
+// .p-dialog-header.ng-tns-c3435727603-1.ng-star-inserted {
+//      display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     flex-shrink: 0;
+// }
+.p-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.p-dialog .p-dialog-header {
+  border-bottom: 0 none;
+  background: #ffffff;
+  color: #343a40;
+  padding: 1.5rem 1.5rem 0.8rem 1.5rem;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.p-confirm-dialog .p-dialog-content {
+  display: flex;
+  align-items: center;
+}
+
+.p-dialog .p-dialog-content {
+  background: #ffffff;
+  color: #495057;
+  padding: 0 1.5rem 2rem 1.5rem;
+}
+
+.p-dialog-content {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.pi-info-circle {
+  font-size: 2rem;
+  margin-right: 1.5rem;
+}
+
+.p-dialog .p-dialog-footer {
+  border-top: 0 none;
+  background: #ffffff;
+  color: #495057;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  text-align: right;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.p-dialog-footer {
+  flex-shrink: 0;
+}
+
+button.p-element.p-ripple.ng-tns-c3435727603-1.p-confirm-dialog-accept.p-button.p-component.ng-star-inserted {
+  margin: 0;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background: #3b82f6;
+  border: 1px solid #3b82f6;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+}
+
+button.p-element.p-ripple.ng-tns-c3435727603-1.p-confirm-dialog-reject.p-button.p-component.ng-star-inserted {
+  margin: 0;
+  display: inline-flex;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  color: #ffffff;
+  background: #3b82f6;
+  border: 1px solid #3b82f6;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+  border-radius: 6px;
+}
+
+checkicon.p-element.p-icon-wrapper.ng-tns-c3435727603-1.ng-star-inserted {
+  margin-right: 10px;
+}
+
+timesicon.p-element.p-icon-wrapper.ng-tns-c3435727603-1.ng-star-inserted {
+  margin-right: 10px;
+}
+
+.p-toast .p-toast-message .p-toast-message-content {
+  padding: 1rem;
+  border-width: 0 0 0 6px;
+  max-height: 80px;
+}
+
+.p-toast .p-toast-message .p-toast-message-content .p-toast-message-text {
+  margin: 0 0 0 1rem;
+}
+
+/* styles.scss */
+
+/* Importing Datepicker SCSS file. */
+
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";

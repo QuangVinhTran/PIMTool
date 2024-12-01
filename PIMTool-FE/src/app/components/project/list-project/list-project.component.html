@@ -1,0 +1,102 @@
+<div class="project-list-wrapper">
+    <p-toast [baseZIndex]="1000"></p-toast>
+    <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+    <div class="header-list-wrapper">
+        <h2>Project List</h2>
+    </div>
+
+    <div class="search-wrapper">
+        <div class="input-search">
+            <input type="text" placeholder="Project number, name, customer name" [formControl]="searchControl" />
+        </div>
+        <div class="filter-status">
+            <select [formControl]="statusFilterControl">
+        <option value="">Project status</option>
+        <option value="0">New</option>
+        <option value="1">PLA</option>
+        <option value="2">INP</option>
+        <option value="3">FIN</option>
+      </select>
+        </div>
+
+        <div class="search-button">
+            <button mat-raised-button color="primary" (click)="onSearch()">
+        Search Project
+      </button>
+        </div>
+        <button class="reset-search" (click)="onResetSearch()">
+      <p>
+        <a routerLink="/">Reset search</a>
+      </p>
+    </button>
+    </div>
+
+    <div class="table-list-project">
+        <p-table [value]="projects" [tableStyle]="{ width: '100%' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="left" style="width: 4.5%;"></th>
+                    <th pSortableColumn="projectNumber" style="width: 8%">
+                        Number
+                        <p-sortIcon field="projectNumber"></p-sortIcon>
+                    </th>
+                    <th class="left" pSortableColumn="name" style="width: 30%">
+                        Name
+                        <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th class="left" pSortableColumn="status" style="width: 10%">
+                        Status
+                        <p-sortIcon field="status"></p-sortIcon>
+                    </th>
+                    <th class="left" pSortableColumn="customer" style="width: 20%">
+                        Customer
+                        <p-sortIcon field="customer"></p-sortIcon>
+                    </th>
+                    <th class="left" pSortableColumn="startDate" style="width: 10%">
+                        Start Date
+                        <p-sortIcon field="startDate"></p-sortIcon>
+                    </th>
+                    <th class="left" style="width: 5%">Delete</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-project>
+                <tr>
+                    <td style="width: 4.5%; height: 32px">
+                        <input type="checkbox" style="width: 15px; height: 15px; opacity: 0.8" (click)="toggleProjectSelection(project.id)" />
+                    </td>
+                    <td class="right" style="width: 8%">
+                        <a (click)="navigateToProjectDetail(project.id)">
+                          {{ project.projectNumber }}
+                        </a>
+                    </td>
+                    <td class="left" style="width: 30%">{{ project.name }}</td>
+                    <td class="left" style="width: 10%">{{ project.status | statusEnumToString }}</td>
+                    <td class="left" style="width: 20%">{{ project.customer }}</td>
+                    <td class="left" style="width: 10%">
+                        {{ project.startDate | date : "dd-MM-yyyy" }}
+                    </td>
+                    <td style="width: 5%">
+                        <p-button (click)="confirmDelete(project.id)" *ngIf="project.status === 0" icon="pi pi-trash" class="p-button-danger"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+
+    <div class="selected--project-delete" *ngIf="selectedProjects.length > 0">
+        <div class="select-left">
+            <p style="color: #2f85fa">{{ selectedProjects.length }} items selected</p>
+        </div>
+        <div class="select-right">
+            <p style="color: red">
+                delete selected items
+                <p-button (click)="confirmDeleteProjects()" icon="pi pi-trash" class="p-button-danger"></p-button>
+            </p>
+        </div>
+    </div>
+
+    <div class="Pagination">
+        <ngb-pagination [collectionSize]="totalItems" [(page)]="currentPage" [pageSize]="pageSize" [maxSize]="3" [rotate]="false" [boundaryLinks]="true" (pageChange)="onPageChanged($event)"></ngb-pagination>
+    </div>
+</div>
