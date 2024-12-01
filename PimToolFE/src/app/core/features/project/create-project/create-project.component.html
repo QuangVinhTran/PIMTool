@@ -1,0 +1,119 @@
+
+<p style="margin-top: 20px;padding-bottom: 10px; border-bottom: 1px solid #ddd;">New Project</p>
+<div *ngIf="showAlert;else noAlert" class="alert alert-danger" role="alert">
+  <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  Please enter all the mandatory fields (*)
+</div>
+<ng-template #noAlert>
+  <div style="margin-bottom: 60px">
+  </div>
+</ng-template>
+
+<form (ngSubmit)="onFormSubmit()">
+<div class="row">
+  <label class="col-sm-3 control-label">Project Number<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 ">
+    <div class="form-group" [class.has-error]="duplicatedNumber">
+      <input type="number" class="form-control" [(ngModel)]="model.projectNumber" name="project number">
+    </div>
+  </div>
+        <div class="help-block" style="color: #a94442" *ngIf="duplicatedNumber">The project number already existed. Please select a different project number</div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Project Name<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" [(ngModel)]="model.name" name="project name">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Customer<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-9">
+    <input type="text" class="form-control" [(ngModel)]="model.customer" name="customer">
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Group<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3">
+    <select class="form-control" [(ngModel)]="model.groupId" name="group">
+      <ng-container *ngFor="let group of groups" >
+        <option value="{{group.id}}" >{{group.name}}</option>
+      </ng-container>
+    </select>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Members</label>
+  <div class="col-sm-9">
+    <div class="form-group" [class.has-error]="nonExistentialVisas.length > 0">
+    <input type="text" class="form-control" [(ngModel)]="membersInput" name="member">
+      </div>
+  </div>
+  <div class="col-sm-3"></div>
+  <div class="help-block col-sm-9" style="color: #a94442" *ngIf="nonExistentialVisas.length > 0">The following visas do not exist:
+    <span *ngFor="let visa of nonExistentialVisas; let last = last">
+      {{visa}}<ng-container *ngIf="!last">,</ng-container><ng-container *ngIf="last">.</ng-container>
+    </span>
+
+  </div>
+</div>
+
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Status<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 mt-2">
+    <select class="form-control" [(ngModel)]="model.status" name="status">
+      <option value="NEW">New</option>
+      <option value="PLA">Planned</option>
+      <option value="INP">In progress</option>
+      <option value="FIN">Finished</option>
+    </select>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <label class="col-sm-3 control-label">Start Date<span class="text-danger" style="padding-left: 10px">*</span></label>
+  <div class="col-sm-3 mt-2">
+    <div class="input-group">
+      <input type="date" class="form-control" [(ngModel)]="model.startDate" name="start date">
+       <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+  </div>
+  <label class="col-sm-2 control-label" style="padding-left: 50px">End Date</label>
+  <div class="col-sm-3 mt-2">
+    <div class="input-group">
+      <input type="date" class="form-control" [(ngModel)]="model.endDate" name="end date">
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+    </div>
+  </div>
+</div>
+
+<div class="space"></div>
+
+<div class="row">
+  <div class="col-sm-6"></div>
+  <a class="btn btn-cancel col-sm-2 pt-1" role="button" [routerLink]="['/project/list']">Cancel</a>
+  <button class="btn btn-create col-sm-2 pt-1" type="submit">Create Project</button>
+</div>
+</form>

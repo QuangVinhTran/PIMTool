@@ -1,0 +1,31 @@
+.nav-link {
+  font-family: "Segoe UI Semibold";
+  font-size: 18pt;
+  color: #2F85FA;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: none;
+}
+
+.dropdown-item {
+  font-family: "Segoe UI";
+  font-size: 14pt;
+  color: #666666;
+}
+
+.projectActive{
+  font-family: "Segoe UI Semibold";
+  font-size: 14pt;
+  color: #333333;
+}
+
+.projectListActive{
+  font-family: "Segoe UI Semibold";
+  font-size: 18pt;
+  color: #333333;
+}
+
+
+

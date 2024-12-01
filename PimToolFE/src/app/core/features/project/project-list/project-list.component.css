@@ -1,0 +1,33 @@
+p {
+  font-family: "Segoe UI Semibold";
+  font-size: 18pt;
+  color: #666666;
+}
+
+.space {
+  height: 38px;
+}
+
+tbody tr td {
+  font-family: "Segoe UI Semibold";
+  font-size: 14px;
+  color: #666666;
+    /* Remove the bottom border */
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-search {
+  background-color: #0074CB;
+  color: white;
+}
+
+.btn-reset {
+  font-family: "Segoe UI Semibold";
+  font-size: 14pt;
+  background: none;
+  color: #2F85FA;
+}
