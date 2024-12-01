@@ -1,0 +1,162 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+.new-project-container {
+  width: 71%;
+  .area-title {
+    font-size: 18pt;
+    color: var(--gray);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.5rem;
+  }
+
+  .form-container {
+    padding-top: 3rem;
+    padding-left: 2.5rem;
+    position: relative;
+
+    .required {
+      color: red;
+    } 
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 38px;
+      justify-content: space-between;
+      label {
+        font-size: 14pt;
+        width: 30%;
+        font-weight: 600;
+        color: var(--gray);
+      }
+
+      .input-container {
+        display: flex;
+        flex: 1;
+        input {
+          height: 30px;
+          width: 100%;
+        }
+        
+        .autocompleteee{
+          height: 30px;
+          width: 100% !important;
+        }
+
+        .short-input {
+          width: 30%;
+        }
+      }
+    }
+
+    .group-input{
+      margin-bottom: 6.7rem;
+      // margin-bottom: 110px;
+    }
+
+    .member-outside-form {
+      position: absolute;
+      top: 21.5rem;
+      left: 2.5rem;
+      // width: 95.5%;
+      // width: 96%;
+      width: 97.2%;
+    }
+
+    .member-outside-form-err {
+      position: absolute;
+      top: 23rem;
+      left: 2.5rem;
+      // width: 95.5%;
+      // width: 96%;
+      width: 97.2%;
+    }
+
+    .member-err {
+      position: absolute;
+      top: 25.5rem;
+      left: 2.5rem;
+      // width: 95.5%;
+      // width: 96%;
+      width: 97.2%;
+    }
+
+    .err-date {
+      color: red; 
+      transform: translateY(-2rem)
+    } 
+
+    .form-date {
+      display: flex;
+
+      &__start {
+        width: 51%;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 6rem;
+
+        label {
+          width: 59%;
+        }
+
+        .input-container {
+          width: 50%;
+          display: flex;
+          justify-content: flex-end;
+
+          input {
+            width: 100% !important;
+          }
+        }
+      }
+
+      &__end {
+        flex-grow: 1;
+
+        label {
+          width: 40%;
+        }
+
+        .input-container {
+          width: 100%;
+
+          input {
+            width: 100% !important;
+          }
+        }
+      }
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      border-top: 1px solid var(--line);
+      padding: 2rem 0;
+
+      .modal-footer {
+        width: 30.5%;
+        padding: 0;
+        border-radius: 5px;
+      }
+
+      .cancel-btn {
+        margin-right: 1rem;
+      }
+
+      .create-btn {
+        background-color: var(--blue);
+      }
+
+      button {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.red-border {
+  border: 1px solid red;
+}

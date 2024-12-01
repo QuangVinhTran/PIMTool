@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #2f85fa;
+  --white: #ffffff;
+  --gray: #666666;
+  --line: rgb(209, 201, 201);
+  --black2: #333333;
+  --cancel: #b9b9b9;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+
+  font-family: "Segoe UI";
+}

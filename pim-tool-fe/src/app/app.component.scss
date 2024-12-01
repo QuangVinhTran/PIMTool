@@ -1,0 +1,133 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+.full-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  .header {
+    width: 100%;
+    display: flex;
+    padding: 0.8rem 8%;
+    margin: 0;
+    justify-content: space-between;
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+    height: fit-content;
+
+    &-left {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 1rem;
+      align-items: end;
+      &__logo {
+        margin-right: 2rem;
+      }
+      &__name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray);
+        padding-bottom: 0.2rem;
+      }
+    }
+
+    &-right {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      padding-bottom: 0.2rem;
+
+      &__language {
+        display: flex;
+        align-items: end;
+        padding-left: 2rem;
+        font-weight: 600;
+
+        .active-lang {
+          color: var(--blue);
+        }
+
+        .inactive-lang {
+          color: black;
+          cursor: pointer;
+        }
+      }
+
+      &__end {
+        width: 56%;
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        font-weight: 600;
+
+        &__help {
+          cursor: pointer;
+          color: var(--blue);
+          padding-left: 0.5rem;
+        }
+
+        &__logOut {
+          cursor: pointer;
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  .appBody {
+    width: 100%;
+    flex-grow: 1 !important;
+    margin: 0;
+    display: flex;
+
+    &-sideBar {
+      width: 21%;
+      border-right: 1px solid var(--line);
+      height: 100%;
+
+      padding-left: 8.5%;
+      padding-top: 2.5%;
+
+      &__big-title {
+        font-size: 18pt;
+        font-weight: 600;
+        color: var(--blue);
+        cursor: pointer;
+        margin-bottom: 2rem;
+      }
+
+      &__func-title {
+        ul {
+          list-style: none;
+          li {
+            font-size: 14pt;
+            color: var(--gray);
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+          }
+
+          a {
+            font-weight: 600;
+            color: var(--black2);
+            text-decoration: none;
+          }
+
+          a.active-link {
+            font-size: 18pt;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 1rem;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    &-funcArea {
+      flex-grow: 1;
+      padding-left: 3rem;
+      padding-top: 2.5%;
+    }
+  }
+}

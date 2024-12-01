@@ -1,0 +1,9 @@
+# Angular
+*.spec.ts
+pim-tool-fe/.angular
+pim-tool-fe/package-lock.json
+pim-tool-fe/node_modules
+pim-tool-fe/.vscode
+pim-tool-fe/.angular
+pim-tool-fe/src/assets/bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js
+pim-tool-fe/src/assets/bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css

@@ -1,0 +1,134 @@
+{
+    "header":{
+        "title": "Gestion des informations sur le projet",
+
+        "help": "Aide",
+    
+        "logout": "Se déconnecter"
+    },
+
+    "sideBar":{
+
+        "projectList": "Liste des projets",
+
+        "new": "Nouvelle",
+
+        "project": "Projet",
+
+        "customer": "Cliente",
+
+        "supplier": "Fournisseuse"
+
+   },
+
+   "projectList":{
+
+        "projectList": "Liste des projets",
+
+        "search":{
+            "name": "Numéro de projet, nom, nom du client",
+
+            "status": "L'état du projet",
+
+            "btnSearch": "Rechercher un projet",
+
+            "resetSearch": "Réinitialiser la recherche"
+        },
+
+        "tableHeading":{
+        
+            "number": "Nombre",
+
+            "name": "Nom",
+
+            "status": "Statut",
+
+            "customer": "Cliente",
+
+            "start": "Date de début",
+
+            "delete": "Supprimer"
+
+        },
+
+        "delete":{
+            "warning": "Avertissement",
+
+            "question": "Êtes-vous sûr de vouloir supprimer tous les projets sélectionnés?",
+
+            "btnClose": "Fermer",
+
+            "btnDelete": "Supprimer",
+
+            "itemsSelected": "éléments sélectionnés",
+
+            "deleteSelected": "Supprimer les éléments sélectionnés"
+        }
+    },
+
+    "projectDetail":{
+    
+        "create":{
+
+            "title": "Nouveau projet",
+
+            "btnCreate": "Créer un projet"
+
+        },
+
+        "update":{
+
+            "title": "Modifier les informations du projet",
+
+            "btnUpdate": "Sauvegarder les modifications"
+
+        },
+
+        "please": "S'il te plaît",
+
+        "or": "ou",
+
+        "contactAdmin": "contactez votre administrateur",
+
+        "back": "retour à la recherche de projet",
+
+        "serverError": "Une erreur inattendue s'est produite.",
+        
+        "globalError": "Veuillez saisir tous les champs obligatoires (*)",
+
+        "startBeforeCurrent": "La date de début doit être la même ou postérieure à la date actuelle",
+
+        "startAfterEnd": "La date de fin doit être la même ou postérieure à la date de début",
+
+        "numberExist": "Le numéro de projet existait déjà. Sélectionner un autre numéro de projet",
+
+        "membersError": "Les visas sélectionnés n'existent pas dans le système. Veuillez sélectionner différents visas",
+
+        "createProjectFailed": "La création du projet a échoué",
+
+        "concurrentUpdate": "Le projet a été mis à jour par un autre utilisateur. Veuillez actualiser la page et réessayer.",
+
+        "updateProjectFailed": "Échec de la mise à jour du projet",
+
+        "projectName": "Nom du projet",
+
+        "projectNumber": "Numéro de projet",
+
+        "customer": "Cliente",
+
+        "group": "Groupe",
+
+        "members": "Membres",
+
+        "startDate": "Date de début",
+
+        "endDate": "Date de fin",
+
+        "status": "Statut",
+
+        "btnCancel": "Annuler"
+
+   }
+  
+   
+  }

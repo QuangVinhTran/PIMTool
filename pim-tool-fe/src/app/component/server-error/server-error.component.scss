@@ -1,0 +1,40 @@
+.container{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error-container{
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+    &__icon{
+        display: flex;
+        align-items: center;
+        i{
+            color: #f96d3e;
+            transform: scale(4.5);
+        }
+    }
+
+    &__detail{
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        font-size: 20pt;
+
+        &__line02{
+            .msg-line02{
+                color: #f96d3e;
+            }
+        }
+
+        &__line03{
+            .msg-line03{
+                color: var(--blue);
+                cursor: pointer
+            }
+        }
+    }
+}
