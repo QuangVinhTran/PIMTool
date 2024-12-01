@@ -1,0 +1,13 @@
+<div class="confirmation-dialog-content">
+  <p>Are you sure you want to delete this item?</p>
+  <div class="confirmation-buttons">
+    <button pButton type="button" label="Cancel" (click)="cancel()"></button>
+    <button
+      pButton
+      type="button"
+      label="Delete"
+      class="p-button-danger"
+      (click)="confirmDelete()"
+    ></button>
+  </div>
+</div>

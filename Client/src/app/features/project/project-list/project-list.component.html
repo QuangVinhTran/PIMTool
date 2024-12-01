@@ -1,0 +1,131 @@
+<form [formGroup]="searchForm" (ngSubmit)="onFormSubmit()">
+  <div>
+    <input
+      id="search-input"
+      name="search-input"
+      type="text"
+      placeholder="Project number, name, customer name"
+      formControlName="searchValue"
+    />
+
+    <p-dropdown
+      [options]="statusList"
+      formControlName="status"
+      placeholder="Project status"
+      optionLabel="name"
+      optionValue="value"
+      [style]="{ width: '160px', height: '38px' }"
+    ></p-dropdown>
+  </div>
+
+  <button type="submit" class="search-btn">Search Project</button>
+  <div (click)="resetSearch()" class="reset-btn">Reset Search</div>
+</form>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th class="number">Number</th>
+        <th class="text">Name</th>
+        <th class="text">Status</th>
+        <th class="text">Customer</th>
+        <th class="date">Start date</th>
+        <th class="icon">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let project of projectList">
+        <td class="checkbox">
+          <input
+            id="checkbox-table-1"
+            type="checkbox"
+            [disabled]="project.status !== 'NEW'"
+            [(ngModel)]="project.checked"
+            (change)="handleCheckedDelete()"
+          />
+        </td>
+        <td
+          class="number"
+          [routerLink]="['../update', project.projectNumber]"
+          routerLinkActive="active"
+        >
+          {{ project.projectNumber }}
+        </td>
+
+        <td class="text">
+          {{ project.name }}
+        </td>
+        <td class="text">
+          {{ statusConvert[project.status] }}
+        </td>
+        <td class="text">
+          {{ project.customer }}
+        </td>
+        <td class="date">
+          {{ extractDateComponents(project.startDate) }}
+        </td>
+        <td class="icon">
+          <svg
+            fill="#ff0000"
+            viewBox="0 0 32 32"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="#ff0000"
+            *ngIf="project.status == 'NEW'"
+            (click)="showDialog([project.projectNumber])"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M28.025 4.97l-7.040 0v-2.727c0-1.266-1.032-2.265-2.298-2.265h-5.375c-1.267 0-2.297 0.999-2.297 2.265v2.727h-7.040c-0.552 0-1 0.448-1 1s0.448 1 1 1h1.375l2.32 23.122c0.097 1.082 1.019 1.931 2.098 1.931h12.462c1.079 0 2-0.849 2.096-1.921l2.322-23.133h1.375c0.552 0 1-0.448 1-1s-0.448-1-1-1zM13.015 2.243c0-0.163 0.133-0.297 0.297-0.297h5.374c0.164 0 0.298 0.133 0.298 0.297v2.727h-5.97zM22.337 29.913c-0.005 0.055-0.070 0.11-0.105 0.11h-12.463c-0.035 0-0.101-0.055-0.107-0.12l-2.301-22.933h17.279z"
+              ></path>
+            </g>
+          </svg>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="delete-list" *ngIf="this.checkedDeleteProject.length">
+    <span>{{ this.checkedDeleteProject.length }} items selected</span>
+    <div (click)="showDialog(this.checkedDeleteProject)">
+      <span>delete selected items</span>
+      <svg
+        fill="#ff0000"
+        viewBox="0 0 32 32"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="#ff0000"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          <path
+            d="M28.025 4.97l-7.040 0v-2.727c0-1.266-1.032-2.265-2.298-2.265h-5.375c-1.267 0-2.297 0.999-2.297 2.265v2.727h-7.040c-0.552 0-1 0.448-1 1s0.448 1 1 1h1.375l2.32 23.122c0.097 1.082 1.019 1.931 2.098 1.931h12.462c1.079 0 2-0.849 2.096-1.921l2.322-23.133h1.375c0.552 0 1-0.448 1-1s-0.448-1-1-1zM13.015 2.243c0-0.163 0.133-0.297 0.297-0.297h5.374c0.164 0 0.298 0.133 0.298 0.297v2.727h-5.97zM22.337 29.913c-0.005 0.055-0.070 0.11-0.105 0.11h-12.463c-0.035 0-0.101-0.055-0.107-0.12l-2.301-22.933h17.279z"
+          ></path>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<div class="navigate-page-container">
+  <p-paginator
+    [rows]="this.pageSize"
+    [totalRecords]="this.totalProject"
+    (onPageChange)="onPageChange($event)"
+    [first]="(this.page - 1) * this.pageSize"
+    [style]="{ backgroundColor: '#ffffff' }"
+    #p
+  ></p-paginator>
+</div>

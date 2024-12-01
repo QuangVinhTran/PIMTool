@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool", "PIMTool\PIMTool.csproj", "{024F0365-BEA6-4DB6-B4CE-225E568F9840}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PIMTool.Test", "PIMTool.Test\PIMTool.Test.csproj", "{8AC59389-6433-457D-9834-1602022BE60A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PIMTool.Core", "PIMTool.Core\PIMTool.Core.csproj", "{1FC7EBE7-058B-4B79-954D-DED33D64687F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{024F0365-BEA6-4DB6-B4CE-225E568F9840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{024F0365-BEA6-4DB6-B4CE-225E568F9840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{024F0365-BEA6-4DB6-B4CE-225E568F9840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{024F0365-BEA6-4DB6-B4CE-225E568F9840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC59389-6433-457D-9834-1602022BE60A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC59389-6433-457D-9834-1602022BE60A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC59389-6433-457D-9834-1602022BE60A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC59389-6433-457D-9834-1602022BE60A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FC7EBE7-058B-4B79-954D-DED33D64687F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FC7EBE7-058B-4B79-954D-DED33D64687F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FC7EBE7-058B-4B79-954D-DED33D64687F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FC7EBE7-058B-4B79-954D-DED33D64687F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {96AF79D9-2368-4B45-8E9D-861AD84AD37A}
+	EndGlobalSection
+EndGlobal

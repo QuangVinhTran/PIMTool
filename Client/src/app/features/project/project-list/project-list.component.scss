@@ -1,0 +1,152 @@
+form {
+  width: 100%;
+  display: flex;
+  height: 38px;
+  margin-bottom: 20px;
+  gap: 40px;
+  div {
+    height: 100%;
+    display: flex;
+    gap: 10px;
+    input {
+      height: 100%;
+      outline: none;
+      padding: 0 10px;
+      width: 400px;
+    }
+  }
+  button {
+    height: 100%;
+    border: none;
+    padding: 0 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .search-btn {
+    background-color: #2f85fa;
+    color: white;
+  }
+  .search-btn:hover {
+    background-color: #1f77f2;
+  }
+  .reset-btn {
+    background-color: transparent;
+    color: #2f85fa;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.table-container {
+  //   position: relative;
+  height: 370px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    thead {
+      tr {
+        th {
+          padding: 12px;
+          border: 1px solid #ccc;
+          color: #777777;
+          font-weight: 600;
+        }
+        .number {
+          text-align: right;
+        }
+        .text {
+          text-align: left;
+        }
+
+        .icon,
+        .date {
+          text-align: center;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        td {
+          border-left: 1px solid #ccc;
+          border-right: 1px solid #ccc;
+          color: #666666;
+          font-weight: 600;
+          padding: 12px;
+        }
+        .checkbox {
+          text-align: center;
+          input {
+            width: 16px;
+            height: 16px;
+          }
+        }
+        .number {
+          text-align: right;
+          cursor: pointer;
+        }
+        .text {
+          text-align: left;
+        }
+        .icon,
+        .date {
+          text-align: center;
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .icon {
+          svg {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .delete-list {
+    background-color: #e2efff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 42px 18px 28px;
+    border: 1px solid #ccc;
+    border-top: 0px;
+    cursor: pointer;
+    span {
+      color: #1f77f2;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    div {
+      display: flex;
+      gap: 8px;
+      height: 100%;
+      align-items: center;
+      span {
+        color: red;
+      }
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.navigate-page-container {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: end;
+}

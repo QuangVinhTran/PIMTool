@@ -1,0 +1,181 @@
+.create-container {
+  width: 100%;
+
+  .fill-form-message {
+    height: 30px;
+    width: 100%;
+    background-color: rgba($color: red, $alpha: 0.3);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 4px;
+    span {
+      font-weight: 600;
+      color: rgb(141, 5, 5);
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 38px;
+    gap: 38px;
+    .input-container {
+      display: flex;
+      height: 30px;
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      .disable-input {
+        background-color: #e6e6e6;
+        outline: none;
+        border: none;
+      }
+      .input-title {
+        width: 160px;
+        display: flex;
+        // margin-right: 48px;
+
+        label {
+          display: flex;
+          align-items: center;
+        }
+        span {
+          color: red;
+        }
+      }
+
+      .input-user {
+        // width: 100%;
+        flex: 1;
+        // height: 100%;
+        // align-items: center;
+        // gap: 20px;
+        input {
+          height: 100%;
+          width: 160px;
+        }
+        .error-message {
+          color: rgb(141, 5, 5);
+          font-weight: 600;
+        }
+        .select-container {
+          height: 100%;
+          flex: 1;
+        }
+        .number {
+          text-align: right;
+        }
+        #projectName,
+        #customer {
+          width: 100%;
+        }
+      }
+
+      select {
+        width: 160px;
+        height: 100%;
+        border-radius: 0;
+        outline: none;
+      }
+
+      .prime-multiselect {
+        height: 30px;
+        width: 100% !important;
+      }
+    }
+    .date-container {
+      width: 100%;
+      display: flex;
+      gap: 40px;
+      justify-content: space-between;
+      .input-container {
+        display: flex;
+        height: 30px;
+        .input-title {
+          width: 160px;
+          display: flex;
+          //   margin-right: 48px;
+
+          label {
+            display: flex;
+            align-items: center;
+          }
+          span {
+            color: red;
+          }
+        }
+
+        .input-user {
+          flex: 1;
+          // height: 100%;
+          // align-items: center;
+          // gap: 20px;
+          .error-message {
+            color: rgb(141, 5, 5);
+            font-weight: 600;
+          }
+          .select-container {
+            height: 100%;
+            flex: 1;
+          }
+        }
+      }
+    }
+    .btn-container {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      gap: 20px;
+      button {
+        height: 35px;
+        width: 160px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .create-btn {
+        background-color: #2f85fa;
+        color: white;
+
+        // display: flex;
+        // align-items: center;
+        // padding: 0px 20px;
+        gap: 10px;
+        .loading {
+          position: relative;
+        }
+      }
+      .create-btn:hover {
+        background-color: #2973db;
+      }
+
+      .cancel-btn {
+        background-color: #b9b9b9;
+        color: black;
+      }
+      .cancel-btn:hover {
+        background-color: #bfbfbf;
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .custom-calendar {
+    .p-inputtext {
+      text-align: center;
+      height: 30px;
+    }
+    .p-button {
+      height: 30px;
+    }
+  }
+}
